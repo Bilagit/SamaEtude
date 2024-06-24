@@ -35,6 +35,9 @@ class AdminController extends Controller
         }
     }
     public function listeprof(){
-        return view('administrateur.listeprof');
+        $profs = Professeur::paginate(10);
+        return view('administrateur.listeprof', [
+            'profs' => $profs
+        ]);
     }
 }
