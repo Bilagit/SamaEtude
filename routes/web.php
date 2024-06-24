@@ -17,4 +17,7 @@ use App\Http\Controllers\ProfessorController;
 Route::get('/', function () {
     return view('welcome');
 });
+Route::get('/login', function () {
+    return view('Auth.login');
+});
 Route::get('/Cours', [ProfessorController::class, 'cours'])->name('auth.cours');
