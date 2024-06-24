@@ -27,3 +27,4 @@ Route::post('/login', [AuthController::class, 'dologin'])->name('auth.dologin');
 Route::get('/etudiant', [EtudiantController::class, 'index'])->name('etudiant.index');
 Route::get('/professeur', [ProfessorController::class, 'index'])->name('professeur.index');
 Route::get('/admin', [AdminController::class, 'index'])->name('admin.index');
+Route::post('/logout', [AuthController::class, 'logout'])->name('auth.logout');

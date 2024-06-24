@@ -56,4 +56,14 @@ class AuthController extends Controller
             'email' => 'Email ou mot de passe invalide'
         ])->onlyInput('email');
     }
+    public function profil()
+    {
+        $user = Auth::user();
+        return view('auth.profil', ['user' => $user]);
+    }
+    public function logout()
+    {
+        Auth::logout();
+        return redirect()->route('auth.login');
+    }
 }
