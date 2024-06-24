@@ -24,5 +24,17 @@ class AdminController extends Controller
             'specialite' => $request->specialite,
             'idUser' => $user->id
         ]);
+        return redirect()->route('admin.listeprof')->with('sucess', 'Professeur ajouté avec succès ! ');
+    }
+    public function dropProfesseur($id)
+    {
+        $prof = Professeur::find($id);
+        if($prof){
+            $prof->delete();
+            return redirect()->route('admin.listeprof')->with('success', 'Professeur supprimé avec succès !');
+        }
+    }
+    public function listeprof(){
+        return view('administrateur.listeprof');
     }
 }
