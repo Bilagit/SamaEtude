@@ -423,13 +423,13 @@
                     <img src="https://github.com/mdo.png" alt="" width="42" height="42" class="rounded-circle me-2">
                 </a>
                 <ul class="dropdown-menu dropdown-menu-dark text-small shadow">
-                    <li><a class="dropdown-item" href="#">New project...</a></li>
-                    <li><a class="dropdown-item" href="#">Settings</a></li>
+                    <li><a class="dropdown-item" href="#">Ajouter un Cours...</a></li>
+                    <li><a class="dropdown-item" href="#">Configuration</a></li>
                     <li><a class="dropdown-item" href="#">Profile</a></li>
                     <li>
                         <hr class="dropdown-divider">
                     </li>
-                    <li><a class="dropdown-item" href="#">Sign out</a></li>
+                    <li><a class="dropdown-item" href="#">Se Déconnecter</a></li>
                 </ul>
             </div>
                     </div>
@@ -449,21 +449,11 @@
                     <div class="container">
                     <nav class="navbar navbar-expand-md navbar-dark bg-dark mb-4">
   <div class="container-fluid">
-    <a class="navbar-brand" href="#">Top navbar</a>
     <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarCollapse" aria-controls="navbarCollapse" aria-expanded="false" aria-label="Toggle navigation">
       <span class="navbar-toggler-icon"></span>
     </button>
     <div class="collapse navbar-collapse" id="navbarCollapse">
       <ul class="navbar-nav me-auto mb-2 mb-md-0">
-        <li class="nav-item">
-          <a class="nav-link active" aria-current="page" href="#">Home</a>
-        </li>
-        <li class="nav-item">
-          <a class="nav-link" href="#">Link</a>
-        </li>
-        <li class="nav-item">
-          <a class="nav-link disabled">Disabled</a>
-        </li>
       </ul>
       <form class="d-flex" role="search">
         <input class="form-control me-2" type="search" placeholder="Search" aria-label="Search">
@@ -495,10 +485,10 @@
                                             <p class="card-text"><strong>informatique</strong></p>
                                             <div class="d-flex justify-content-between align-items-center">
                                                 <div class="btn-group">
-                                                    <button type="button" class="btn btn-success"><img
+                                                    <button type="button" class="btn btn-light"><img
                                                             src="{{ asset('img/eye.svg') }}" width="16" height="16"
                                                             alt=""></button>
-                                                    <button type="button" class="btn btn-warning"><img
+                                                    <button type="button" class="btn btn-info"><img
                                                             src="{{ asset('img/pencil.svg') }}" width="16" height="16"
                                                             alt=""></button>
                                                     <button type="button" class="btn btn-danger"><img
@@ -519,10 +509,10 @@
                                             <p class="card-text"><strong>informatique</strong></p>
                                             <div class="d-flex justify-content-between align-items-center">
                                                 <div class="btn-group">
-                                                    <button type="button" class="btn btn-success"><img
+                                                    <button type="button" class="btn btn-light"><img
                                                             src="{{ asset('img/eye.svg') }}" width="16" height="16"
                                                             alt=""></button>
-                                                    <button type="button" class="btn btn-warning"><img
+                                                    <button type="button" class="btn btn-info"><img
                                                             src="{{ asset('img/pencil.svg') }}" width="16" height="16"
                                                             alt=""></button>
                                                     <button type="button" class="btn btn-danger"><img
@@ -544,10 +534,10 @@
                                             <p class="card-text"><strong>informatique</strong></p>
                                             <div class="d-flex justify-content-between align-items-center">
                                                 <div class="btn-group">
-                                                    <button type="button" class="btn btn-success"><img
+                                                    <button type="button" class="btn btn-light"><img
                                                             src="{{ asset('img/eye.svg') }}" width="16" height="16"
                                                             alt=""></button>
-                                                    <button type="button" class="btn btn-warning"><img
+                                                    <button type="button" class="btn btn-info"><img
                                                             src="{{ asset('img/pencil.svg') }}" width="16" height="16"
                                                             alt=""></button>
                                                     <button type="button" class="btn btn-danger"><img
@@ -569,10 +559,10 @@
                                             <p class="card-text"><strong>informatique</strong></p>
                                             <div class="d-flex justify-content-between align-items-center">
                                                 <div class="btn-group">
-                                                    <button type="button" class="btn btn-success"><img
+                                                    <button type="button" class="btn btn-light"><img
                                                             src="{{ asset('img/eye.svg') }}" width="16" height="16"
                                                             alt=""></button>
-                                                    <button type="button" class="btn btn-warning"><img
+                                                    <button type="button" class="btn btn-info"><img
                                                             src="{{ asset('img/pencil.svg') }}" width="16" height="16"
                                                             alt=""></button>
                                                     <button type="button" class="btn btn-danger"><img
@@ -593,10 +583,10 @@
                                             <p class="card-text"><strong>informatique</strong></p>
                                             <div class="d-flex justify-content-between align-items-center">
                                                 <div class="btn-group">
-                                                    <button type="button" class="btn btn-success"><img
+                                                    <button type="button" class="btn btn-light"><img
                                                             src="{{ asset('img/eye.svg') }}" width="16" height="16"
                                                             alt=""></button>
-                                                    <button type="button" class="btn btn-warning"><img
+                                                    <button type="button" class="btn btn-info"><img
                                                             src="{{ asset('img/pencil.svg') }}" width="16" height="16"
                                                             alt=""></button>
                                                     <button type="button" class="btn btn-danger"><img
@@ -644,17 +634,17 @@
                                         </span>
                                     </td>
                                     <td>
-                                        <div class="btn-group">
-                                            <button type="button" class="btn btn-success"><img
-                                                    src="{{ asset('img/eye.svg') }}" width="16" height="16"
-                                                    alt=""></button>
-                                            <button type="button" class="btn btn-warning"><img
-                                                    src="{{ asset('img/pencil.svg') }}" width="16" height="16"
-                                                    alt=""></button>
-                                            <button type="button" class="btn btn-danger"><img
-                                                    src="{{ asset('img/trash.svg') }}" width="16" height="16"
-                                                    alt=""></button>
-                                        </div>
+                                    <div class="btn-group">
+                                                    <button type="button" class="btn btn-light"><img
+                                                            src="{{ asset('img/eye.svg') }}" width="16" height="16"
+                                                            alt=""></button>
+                                                    <button type="button" class="btn btn-info"><img
+                                                            src="{{ asset('img/pencil.svg') }}" width="16" height="16"
+                                                            alt=""></button>
+                                                    <button type="button" class="btn btn-danger"><img
+                                                            src="{{ asset('img/trash.svg') }}" width="16" height="16"
+                                                            alt=""></button>
+                                                </div>
                                     </td>
                                 </tr>
                                 <tr>
@@ -670,10 +660,10 @@
                                     </td>
                                     <td>
                                         <div class="btn-group">
-                                            <button type="button" class="btn btn-success"><img
+                                            <button type="button" class="btn btn-light"><img
                                                     src="{{ asset('img/download.svg') }}" width="16" height="16"
                                                     alt=""></button>
-                                            <button type="button" class="btn btn-warning"><img
+                                            <button type="button" class="btn btn-info"><img
                                                     src="{{ asset('img/pencil.svg') }}" width="16" height="16"
                                                     alt=""></button>
                                             <button type="button" class="btn btn-danger"><img
