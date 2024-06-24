@@ -3,6 +3,7 @@
 use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\ProfessorController;
 use App\Http\Controllers\AdminController;
+use App\Http\Controllers\EtudiantController;
 use App\Http\Controllers\AuthController;
 /*
 |--------------------------------------------------------------------------
@@ -23,5 +24,6 @@ Route::get('/register', [AuthController::class, 'register'])->name('auth.registe
 Route::post('/register', [AuthController::class, 'doregister'])->name('auth.doregister');
 Route::get('/login', [AuthController::class, 'login'])->name('auth.login');
 Route::post('/login', [AuthController::class, 'dologin'])->name('auth.dologin');
-
+Route::get('/etudiant', [EtudiantController::class, 'index'])->name('etudiant.index');
+Route::get('/professeur', [ProfessorController::class, 'index'])->name('professeur.index');
 Route::get('/admin', [AdminController::class, 'index'])->name('admin.index');
