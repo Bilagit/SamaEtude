@@ -288,8 +288,6 @@
                             <th>Nom</th>
                             <th>Prénom</th>
                             <th>Email</th>
-                            <th>Téléphone</th>
-                            <th>Spécialité</th>
                             <th>Action</th>
                         </tr>
                     </thead>
@@ -300,8 +298,6 @@
                             <td>{{$etudiant->name}}</td>
                             <td>{{$etudiant->first_name}}</td>
                             <td>{{$etudiant->email}}</td>
-                            <td> {{$etudiant->phone_number}}</td>
-                            <td></td>
                             <td>
                                 <a href="#" class="delete" title="Delete" data-toggle="tooltip"><i
                                         class="material-icons">&#xE5C9;</i></a>
