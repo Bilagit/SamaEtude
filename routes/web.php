@@ -32,4 +32,6 @@ Route::get('/dropprof/{id}', [AdminController::class, 'dropProfesseur'])->name('
 Route::get('/listeprof', [AdminController::class, 'listeprof'])->name('admin.listeprof');
 Route::post('/logout', [AuthController::class, 'logout'])->name('auth.logout');
 Route::get('/profil', [AuthController::class, 'profil'])->name('auth.profil');
-Route::get('/categorie', [AdminController::class, 'categorie'])->name('admin.addcategorie');
+Route::post('/addcategorie', [AdminController::class, 'addcategorie'])->name('admin.addcategorie');
+Route::get('/listecategorie', [AdminController::class, 'listecategorie'])->name('admin.listecategorie');
+Route::post('/deletecategorie/{id}', [AdminController::class, 'deletecategorie'])->name('admin.deletecategorie');

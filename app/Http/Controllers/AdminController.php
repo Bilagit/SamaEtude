@@ -58,19 +58,19 @@ class AdminController extends Controller
             'categories' => $categories
         ]);
     }
-    public function addCategorie(AddCategorieRequest $request){
-        
+    public function addcategorie(AddCategorieRequest $request){
+        $categorie = Categorie::create([
+            'nom' => $request->nom
+        ]);
+        if ($categorie) {
+            return to_route('admin.listecategorie')->with('success', 'Catégorie ajoutée avec succès !');
+        }
     }
-    public function categorie()
-    {
-        Categorie::create([
-            'nom' => 'Informatique'
-        ]);
-        Categorie::create([
-            'nom' => 'Mathématiques'
-        ]);
-        Categorie::create([
-            'nom' => 'Physique'
-        ]);
+    public function deletecategorie($id){
+        $categorie = Categorie::find($id);
+        if ($categorie) {
+            $categorie->delete();
+            return to_route('admin.listecategorie')->with('success', 'Catégorie supprimée avec succès ! ');
+        }
     }
 }
