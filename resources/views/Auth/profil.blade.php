@@ -9,7 +9,6 @@
     <link href="{{ asset('css/profil.css') }}" rel="stylesheet">
     <script src="https://code.jquery.com/jquery-3.3.1.slim.min.js"></script>
     <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/js/bootstrap.min.js"></script>
-
 </head>
 
 <body>
@@ -90,7 +89,7 @@
                     <div class="card-body">
                         <div class="row">
                             <div class="col-sm-3">
-                                <h6 class="mb-0">Full Name</h6>
+                                <h6 class="mb-0">Nom Complet</h6>
                             </div>
                             <div class="col-sm-9 text-secondary">
                                 {{ $user->first_name . ' ' . $user->name }}
@@ -108,21 +107,36 @@
                         <hr>
                         <div class="row">
                             <div class="col-sm-3">
-                                <h6 class="mb-0">Phone</h6>
+                                <h6 class="mb-0">Téléphone</h6>
                             </div>
                             <div class="col-sm-9 text-secondary">
-                                {{ $user->etudiant ? $user->etudiant->phone_number : '' }}
+                                @if ($user->role === 'etudiant')
+                                    {{ $info->phone_number }}
+                                @elseif ($user->role === 'professeur')
+                                    {{ $info->phone_number }}
+                                @endif
                             </div>
                         </div>
                         <hr>
-                        <div class="row">
-                            <div class="col-sm-3">
-                                <h6 class="mb-0">Niveau</h6>
+                        @if ($user->role === 'etudiant')
+                            <div class="row">
+                                <div class="col-sm-3">
+                                    <h6 class="mb-0">Niveau</h6>
+                                </div>
+                                <div class="col-sm-9 text-secondary">
+                                    {{ $info->level }}
+                                </div>
                             </div>
-                            <div class="col-sm-9 text-secondary">
-                                {{ $user->etudiant->level }}
+                        @elseif ($user->role === 'professeur')
+                            <div class="row">
+                                <div class="col-sm-3">
+                                    <h6 class="mb-0">Spécialité</h6>
+                                </div>
+                                <div class="col-sm-9 text-secondary">
+                                    {{ $info->specialite }}
+                                </div>
                             </div>
-                        </div>
+                        @endif
                         <hr>
                         <!-- Button trigger modal -->
                         <button type="button" class="btn btn-primary" data-toggle="modal"
@@ -131,23 +145,22 @@
                         </button>
 
                         <!-- Modal -->
-                        <div class="modal fade" id="editProfileModal" tabindex="-1" role="dialog"
-                             aria-labelledby="editProfileModalLabel" aria-hidden="true">
+                        <div class="modal fade" id="editProfileModal" tabindex="-1" role="dialog" aria-labelledby="editProfileModalLabel"
+                             aria-hidden="true">
                             <div class="modal-dialog" role="document">
                                 <div class="modal-content">
                                     <div class="modal-header">
-                                        <h5 class="modal-title" id="editProfileModalLabel">Modifier    le profil</h5>
+                                        <h5 class="modal-title" id="editProfileModalLabel">Modifier le profil</h5>
                                         <button type="button" class="close" data-dismiss="modal" aria-label="Close">
                                             <span aria-hidden="true">&times;</span>
                                         </button>
                                     </div>
                                     <div class="modal-body">
                                         <!-- Form for updating profile -->
-                                        <form action="{{ route('profile.update', ['id' => $user->id]) }}" method="POST">
+                                        <form action="{{ route('auth.updateprofil', $user->id) }}" method="POST">
                                             @csrf
-                                            @method('POST')
+                                            @method('PUT')
 
-                                            <!-- Form fields for updating user -->
                                             <div class="form-group">
                                                 <label for="name">Nom</label>
                                                 <input type="text" class="form-control" id="name" name="name" value="{{ $user->name }}">
@@ -160,21 +173,24 @@
                                                 <label for="email">Email</label>
                                                 <input type="email" class="form-control" id="email" name="email" value="{{ $user->email }}">
                                             </div>
-
-                                            <!-- Form fields for updating etudiant -->
                                             <div class="form-group">
                                                 <label for="phone_number">Numéro de téléphone</label>
-                                                <input type="text" class="form-control" id="phone_number" name="phone_number" value="{{ $user->etudiant->phone_number }}">
+                                                <input type="text" class="form-control" id="phone_number" name="phone_number" value="{{ $info->phone_number }}">
                                             </div>
-                                            <div class="form-group">
-                                                <label for="level">Niveau</label>
-                                                <input type="text" class="form-control" id="level" name="level" value="{{ $user->etudiant->level }}">
-                                            </div>
-
+                                            @if ($user->role === 'etudiant')
+                                                <div class="form-group">
+                                                    <label for="level">Niveau</label>
+                                                    <input type="text" class="form-control" id="level" name="level" value="{{ $info->level }}">
+                                                </div>
+                                            @elseif ($user->role === 'professeur')
+                                                <div class="form-group">
+                                                    <label for="specialite">Spécialité</label>
+                                                    <input type="text" class="form-control" id="specialite" name="specialite" value="{{ $info->specialite }}">
+                                                </div>
+                                            @endif
                                             <!-- Submit button -->
                                             <button type="submit" class="btn btn-primary">Enregistrer</button>
                                         </form>
-
                                     </div>
                                 </div>
                             </div>
@@ -203,6 +219,29 @@
                                 <small>Mobile Template</small>
                                 <div class="progress mb-3" style="height: 5px">
                                     <div class="progress-bar bg-success" role="progressbar" style="width: 55%" aria-valuenow="55" aria-valuemin="0" aria-valuemax="100"></div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="col-sm-6 mb-3">
+                        <div class="card h-100">
+                            <div class="card-body">
+                                <h6 class="d-flex align-items-center mb-3">Compétences</h6>
+                                <small>Communication</small>
+                                <div class="progress mb-3" style="height: 5px">
+                                    <div class="progress-bar bg-success" role="progressbar" style="width: 90%" aria-valuenow="90" aria-valuemin="0" aria-valuemax="100"></div>
+                                </div>
+                                <small>Gestion de projet</small>
+                                <div class="progress mb-3" style="height: 5px">
+                                    <div class="progress-bar bg-success" role="progressbar" style="width: 85%" aria-valuenow="85" aria-valuemin="0" aria-valuemax="100"></div>
+                                </div>
+                                <small>Développement</small>
+                                <div class="progress mb-3" style="height: 5px">
+                                    <div class="progress-bar bg-success" role="progressbar" style="width: 75%" aria-valuenow="75" aria-valuemin="0" aria-valuemax="100"></div>
+                                </div>
+                                <small>Design</small>
+                                <div class="progress mb-3" style="height: 5px">
+                                    <div class="progress-bar bg-success" role="progressbar" style="width: 60%" aria-valuenow="60" aria-valuemin="0" aria-valuemax="100"></div>
                                 </div>
                             </div>
                         </div>

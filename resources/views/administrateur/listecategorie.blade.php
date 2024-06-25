@@ -69,9 +69,9 @@
                                     </button>
 
                                     <!-- Supprimer Button with Font Awesome -->
-                                    <form action="{{ route('admin.deletecategorie', $categorie->id) }}" method="POST" class="d-inline">
+                                    <form action="{{ route('admin.deletecategorie', $categorie->id) }}" method="GET" class="d-inline">
                                         @csrf
-                                        @method('DELETE')
+                                        @method('GET')
                                         <button type="submit" class="btn btn-danger">
                                             <i class="fas fa-trash-alt"></i>
                                         </button>
