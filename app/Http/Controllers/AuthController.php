@@ -83,7 +83,7 @@ class AuthController extends Controller
         $user->name = $request->name;
         $user->email = $request->email;
         $user->update();
-        $info = Etudiant::where('idUser', '=', $user->id);
+        $info = Etudiant::where('idUser', '=', $user->id)->first();
         $info->phone_number = $request->phone_number;
         $info->level = $request->level;
         $info->update();
@@ -102,7 +102,7 @@ class AuthController extends Controller
         $user->name = $request->name;
         $user->email = $request->email;
         $user->update();
-        $info = Professeur::where('idUser', '=', $user->id);
+        $info = Professeur::where('idUser', '=', $user->id)->first();
         $info->phone_number = $request->phone_number;
         $info->update();
         return to_route('auth.profil')->with('success', 'Profil modifié avec succès ! ');
