@@ -85,7 +85,7 @@
     <header class="navbar sticky-top bg-dark flex-md-nowrap p-0 shadow" data-bs-theme="dark">
         <h1 style="color: #f2f2f2;">SamaEtude</h1>
         <div class="dropdown">
-            <a href="#" class="d-flex align-items-center text-white text-decoration-none" data-bs-toggle="dropdown"
+            <a href="/profil" class="d-flex align-items-center text-white text-decoration-none" data-bs-toggle="dropdown"
                 aria-expanded="false">
                 <img src="https://github.com/mdo.png" alt="" width="42" height="42" class="rounded-circle me-2">Admin
             </a>
@@ -122,21 +122,21 @@
         <nav id="sidebar">
             <ul class="list-unstyled components mb-5">
                 <li class="custom-list-item">
-                    <a href="#"><span class="fa fa-home mr-3"></span> Tableau de Bord</a>
+                    <a href="/dashboard"><span class="fa fa-home mr-3"></span> Tableau de Bord</a>
                 </li>
                 <li class="active custom-list-item">
-                    <a href="#"><img src="{{ asset('img/teacher.svg') }}" width="24" height="24" alt=""> Liste des
+                    <a href="/listeprof"><img src="{{ asset('img/teacher.svg') }}" width="24" height="24" alt=""> Liste des
                         Professeurs</a>
                 </li>
                 <li class="custom-list-item">
-                    <a href="#"><img src="{{ asset('img/student.svg') }}" width="24" height="24" alt=""> Liste des
+                    <a href="/getetudiants"><img src="{{ asset('img/student.svg') }}" width="24" height="24" alt=""> Liste des
                         Etudiants</a>
                 </li>
                 <li class="custom-list-item">
-                    <a href="#"><span class="fa fa-sticky-note mr-3"></span> Gestion des Catégories</a>
+                    <a href="/listecategorie"><span class="fa fa-sticky-note mr-3"></span> Gestion des Catégories</a>
                 </li>
                 <li class="custom-list-item">
-                    <a href="#"><span class="fa fa-paper-plane mr-3"></span> Profile</a>
+                    <a href="/profil"><span class="fa fa-paper-plane mr-3"></span> Profile</a>
                 </li>
                 <li class="custom-list-item">
                     <form id="logout-form" action="{{ route('auth.logout') }}" method="POST" style="display: none;">
