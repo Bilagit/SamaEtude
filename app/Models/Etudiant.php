@@ -15,8 +15,4 @@ class Etudiant extends Model
         'idUser'
     ];
 
-    public function user()
-    {
-        return $this->belongsTo(User::class, 'idUser');
-    }
 }
