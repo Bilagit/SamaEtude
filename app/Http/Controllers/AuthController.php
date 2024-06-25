@@ -69,6 +69,58 @@ class AuthController extends Controller
         }
         return view('auth.profil', ['user' => $user]);
     }
+    public function updateprofiletud(Request $request, $id)
+    {
+        $request->validate([
+            'first_name' => 'required',
+            'name' => 'required',
+            'email' => 'required',
+            'level' => 'required',
+            'phone_number' => 'required'
+        ]);
+        $user = User::findOrFail($id);
+        $user->first_name = $request->first_name;
+        $user->name = $request->name;
+        $user->email = $request->email;
+        $user->update();
+        $info = Etudiant::where('idUser', '=', $user->id);
+        $info->phone_number = $request->phone_number;
+        $info->level = $request->level;
+        $info->update();
+        return to_route('auth.profil')->with('success', 'Profil modifié avec succès ! ');
+    }
+    public function updateprofilprof(Request $request, $id)
+    {
+        $request->validate([
+            'first_name' => 'required',
+            'name' => 'required',
+            'email' => 'required',
+            'phone_number' => 'required'
+        ]);
+        $user = User::findOrFail($id);
+        $user->first_name = $request->first_name;
+        $user->name = $request->name;
+        $user->email = $request->email;
+        $user->update();
+        $info = Professeur::where('idUser', '=', $user->id);
+        $info->phone_number = $request->phone_number;
+        $info->update();
+        return to_route('auth.profil')->with('success', 'Profil modifié avec succès ! ');
+    }
+    public function updateprofil(Request $request, $id)
+    {
+        $request->validate([
+            'first_name' => 'required',
+            'name' => 'required',
+            'email' => 'required'
+        ]);
+        $user = User::findOrFail($id);
+        $user->first_name = $request->first_name;
+        $user->name = $request->name;
+        $user->email = $request->email;
+        $user->update();
+        return to_route('auth.profil')->with('success', 'Profil modifié avec succès ! ');
+    }
     public function logout()
     {
         Auth::logout();

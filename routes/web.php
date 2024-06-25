@@ -38,3 +38,6 @@ Route::get('/deletecategorie/{id}', [AdminController::class, 'deletecategorie'])
 Route::get('/getetudiants', [AdminController::class, 'getetudiants'])->name('admin.getetudiants');
 Route::get('/suppetudiant/{id}', [AdminController::class, 'suppetudiant'])->name('admin.suppetudiant');
 Route::put('/updatecategorie/{id}', [AdminController::class, 'updatecategorie'])->name('admin.updatecategorie');
+Route::put('/updateprofil/{id}', [AuthController::class, 'updateprofil'])->name('auth.updateprofil');
+Route::put('/updateprofiletud/{id}', [AuthController::class, 'updateprofiletud'])->name('auth.updateprofiletud');
+Route::put('/updateprofilprof/{id}', [AuthController::class, 'updateprofilprof'])->name('auth.updateprofilprof');
