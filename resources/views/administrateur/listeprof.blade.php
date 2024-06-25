@@ -193,8 +193,8 @@
     }
 
     .custom-green-background {
-        background-color: green;
-        color: white;
+        background-color: #D3D3D3;
+        color:black;
         padding: 10px;
         border-radius: 5px;
     }
