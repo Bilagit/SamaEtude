@@ -18,7 +18,7 @@
                             </div>
                             <div class="col-sm-7">
                                 <button type="button" class="btn btn-primary" data-toggle="modal" data-target="#addCategorieModal">
-                                    <i class="material-icons">&#xE147;</i> Ajouter une Catégorie
+                                    <i class="fas fa-plus"></i> Ajouter une Catégorie
                                 </button>
                             </div>
                         </div>
@@ -63,13 +63,18 @@
                                 <td>{{ $categorie->id }}</td>
                                 <td>{{ $categorie->nom }}</td>
                                 <td>
+                                    <!-- Modifier Button with Font Awesome -->
                                     <button class="btn btn-warning" data-toggle="modal" data-target="#editCategorieModal{{ $categorie->id }}">
-                                        Modifier
+                                        <i class="fas fa-pencil-alt"></i>
                                     </button>
-                                    <form action="{{ route('admin.deletecategorie', $categorie->id) }}" method="GET" class="d-inline">
+
+                                    <!-- Supprimer Button with Font Awesome -->
+                                    <form action="{{ route('admin.deletecategorie', $categorie->id) }}" method="POST" class="d-inline">
                                         @csrf
                                         @method('DELETE')
-                                        <button type="submit" class="btn btn-danger">Supprimer</button>
+                                        <button type="submit" class="btn btn-danger">
+                                            <i class="fas fa-trash-alt"></i>
+                                        </button>
                                     </form>
                                 </td>
                             </tr>
@@ -84,7 +89,7 @@
                                                 <span aria-hidden="true">&times;</span>
                                             </button>
                                         </div>
-                                        <form action="" method="POST">
+                                        <form action="{{ route('admin.updatecategorie', $categorie->id) }}" method="POST">
                                             @csrf
                                             @method('PUT')
                                             <div class="modal-body">

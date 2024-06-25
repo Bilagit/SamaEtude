@@ -36,3 +36,4 @@ Route::post('/addcategorie', [AdminController::class, 'addcategorie'])->name('ad
 Route::get('/listecategorie', [AdminController::class, 'listecategorie'])->name('admin.listecategorie');
 Route::get('/deletecategorie/{id}', [AdminController::class, 'deletecategorie'])->name('admin.deletecategorie');
 Route::get('/getetudiants', [AdminController::class, 'getetudiants'])->name('admin.getetudiants');
+Route::put('/updatecategorie/{id}', [AdminController::class, 'updatecategorie'])->name('admin.updatecategorie');
