@@ -48,7 +48,7 @@ class AdminController extends Controller
         }
     }
     public function listeprof(){
-        $profs = Professeur::paginate(10);
+        $profs = User::where('role', '=', 'professeur')->paginate(10);
         return view('administrateur.listeprof', [
             'profs' => $profs
         ]);
@@ -73,6 +73,15 @@ class AdminController extends Controller
             $categorie->delete();
             return to_route('admin.listecategorie')->with('success', 'Catégorie supprimée avec succès ! ');
         }
+    }
+    public function updatecategorie(Request $request, $id){
+        $request->validate([
+            'nom' => 'required'
+        ]);
+        $categorie = Categorie::findOrFail($id);
+        $categorie->nom = $request->nom;
+        $categorie->update();
+        return to_route('admin.listecategorie')->with('success', 'Catégorie modifiée avec succès !');
     }
     public function getetudiants(){
         $etudiants = User::where('role', '=', 'etudiant')->paginate(10);
