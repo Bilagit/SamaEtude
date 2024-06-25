@@ -59,6 +59,14 @@ class AuthController extends Controller
     public function profil()
     {
         $user = Auth::user();
+        if ($user->role === 'etudiant') {
+            $info = Etudiant::find($user->id);
+            return view('auth.profil', ['user' => $user, 'info' => $info]);
+        }
+        if ($user->role === 'professeur') {
+            $info = Professeur::find($user->id);
+            return view('auth.profil', ['user' => $user, 'info' => $info]);
+        }
         return view('auth.profil', ['user' => $user]);
     }
     public function logout()
