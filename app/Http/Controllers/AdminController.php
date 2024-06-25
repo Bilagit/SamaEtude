@@ -89,4 +89,13 @@ class AdminController extends Controller
             'etudiants' => $etudiants
         ]);
     }
+    public function suppetudiant($id){
+        $user = User::findOrFail($id);
+        if($user){
+            $etudiant = Etudiant::where('idUser', '=', $id);
+            $etudiant->delete();
+            $user->delete();
+            return to_route('admin.getetudiants')->with('success', 'Etudiant supprimé avec succès !');
+        }
+    }
 }
