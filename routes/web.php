@@ -32,4 +32,3 @@ Route::get('/dropprof/{id}', [AdminController::class, 'dropProfesseur'])->name('
 Route::get('/listeprof', [AdminController::class, 'listeprof'])->name('admin.listeprof');
 Route::post('/logout', [AuthController::class, 'logout'])->name('auth.logout');
 Route::get('/profil', [AuthController::class, 'profil'])->name('auth.profil');
-Route::post('/updateprofil', [AuthController::class, 'updateprofil'])->name('auth.updateprofil');
