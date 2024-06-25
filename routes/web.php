@@ -35,3 +35,4 @@ Route::get('/profil', [AuthController::class, 'profil'])->name('auth.profil');
 Route::post('/addcategorie', [AdminController::class, 'addcategorie'])->name('admin.addcategorie');
 Route::get('/listecategorie', [AdminController::class, 'listecategorie'])->name('admin.listecategorie');
 Route::post('/deletecategorie/{id}', [AdminController::class, 'deletecategorie'])->name('admin.deletecategorie');
+Route::get('/getetudiants', [AdminController::class, 'getetudiants'])->name('admin.getetudiants');

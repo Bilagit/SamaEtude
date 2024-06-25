@@ -7,6 +7,7 @@ use App\Http\Requests\AddProfesseurRequest;
 use App\Http\Requests\AddCategorieRequest;
 use App\Models\User;
 use App\Models\Categorie;
+use App\Models\Etudiant;
 use Illuminate\Support\Facades\Hash;
 use App\Models\Professeur;
 
@@ -72,5 +73,11 @@ class AdminController extends Controller
             $categorie->delete();
             return to_route('admin.listecategorie')->with('success', 'Catégorie supprimée avec succès ! ');
         }
+    }
+    public function getetudiants(){
+        $etudiants = Etudiant::paginate(10);
+        return view('administrateur.listeEtudiant', [
+            'etudiants' => $etudiants
+        ]);
     }
 }
