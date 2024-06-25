@@ -32,11 +32,11 @@
                             @csrf
                             <div class="input-group mb-4">
                                 <span class="input-group-text border-end-0 inbg" id="basic-addon1"><i class="bi bi-person"></i></span>
-                                <input type="text" class="form-control ps-2 border-start-0 fs-7 inbg form-control-lg mb-0" placeholder="E-mail" name="email" aria-label="Username" aria-describedby="basic-addon1">
+                                <input type="text" class="form-control ps-2 border-start-0 fs-7 inbg form-control-lg mb-0" placeholder="E-mail" name="email" aria-label="Username" aria-describedby="basic-addon1" required>
                             </div>
                             <div class="input-group mb-4">
                                 <span class="input-group-text border-end-0 inbg" id="basic-addon1"><i class="bi bi-lock"></i></span>
-                                <input type="password" class="form-control ps-2 fs-7 border-start-0 form-control-lg inbg mb-0" placeholder="Mot de Passe" name="password" aria-label="Password" aria-describedby="basic-addon1">
+                                <input type="password" class="form-control ps-2 fs-7 border-start-0 form-control-lg inbg mb-0" placeholder="Mot de Passe" name="password" aria-label="Password" aria-describedby="basic-addon1" required>
                             </div>
                             <button type="submit" class="btn btn-lg fw-bold fs-7 btn-success w-100">Se Connecter</button>
                         </form>
