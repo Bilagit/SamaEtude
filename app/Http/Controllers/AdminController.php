@@ -75,7 +75,7 @@ class AdminController extends Controller
         }
     }
     public function getetudiants(){
-        $etudiants = Etudiant::paginate(10);
+        $etudiants = User::where('role', '=', 'etudiant')->paginate(10);
         return view('administrateur.listeEtudiant', [
             'etudiants' => $etudiants
         ]);
