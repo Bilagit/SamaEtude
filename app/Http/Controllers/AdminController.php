@@ -26,7 +26,12 @@ class AdminController extends Controller
             'specialite' => $request->specialite,
             'idUser' => $user->id
         ]);
-        return redirect()->route('admin.listeprof')->with('sucess', 'Professeur ajouté avec succès ! ');
+        if ($prof) {
+            return redirect()->route('admin.listeprof')->with('sucess', 'Professeur ajouté avec succès ! ');
+        }
+        else {
+            return redirect()->route('admin.index')->with('error', "Erreur lors de l'ajout.");
+        }
     }
     public function dropProfesseur($id)
     {
@@ -34,6 +39,9 @@ class AdminController extends Controller
         if($prof){
             $prof->delete();
             return redirect()->route('admin.listeprof')->with('success', 'Professeur supprimé avec succès !');
+        }
+        else{
+            return redirect()->route('admin.index')->with('error', 'impossible de supprimer le professeur.');
         }
     }
     public function listeprof(){

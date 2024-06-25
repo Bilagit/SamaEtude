@@ -28,7 +28,7 @@ Route::get('/etudiant', [EtudiantController::class, 'index'])->name('etudiant.in
 Route::get('/professeur', [ProfessorController::class, 'index'])->name('professeur.index');
 Route::get('/admin', [AdminController::class, 'index'])->name('admin.index');
 Route::post('/addprof', [AdminController::class, 'addProfesseur'])->name('admin.addprof');
-Route::post('/dropprof/{id}', [AdminController::class, 'dropProfesseur'])->name('admin.dropprof');
+Route::get('/dropprof/{id}', [AdminController::class, 'dropProfesseur'])->name('admin.dropprof');
 Route::get('/listeprof', [AdminController::class, 'listeprof'])->name('admin.listeprof');
 Route::post('/logout', [AuthController::class, 'logout'])->name('auth.logout');
 Route::get('/profil', [AuthController::class, 'profil'])->name('auth.profil');
