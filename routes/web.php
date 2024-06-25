@@ -32,3 +32,8 @@ Route::post('/dropprof/{id}', [AdminController::class, 'dropProfesseur'])->name(
 Route::get('/listeprof', [AdminController::class, 'listeprof'])->name('admin.listeprof');
 Route::post('/logout', [AuthController::class, 'logout'])->name('auth.logout');
 Route::get('/profil', [AuthController::class, 'profil'])->name('auth.profil');
+Route::get('/profile/{id}', [EtudiantController::class, 'showProfile'])->name('profile.show');
+Route::get('/profile/{id}/edit', [EtudiantController::class, 'editProfile'])->name('profile.edit');
+Route::post('/profile/{id}/update', [EtudiantController::class, 'updateProfile'])->name('profile.update');
+
+
