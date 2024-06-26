@@ -26,17 +26,6 @@ class AdminController extends Controller
         ]);
     }
     
-    public function dropProfesseur($id)
-    {
-        $prof = Professeur::find($id);
-        if($prof){
-            $prof->delete();
-            return to_route('admin.listeprof')->with('success', 'Professeur supprimé avec succès !');
-        }
-        else{
-            return to_route('admin.index')->with('error', 'impossible de supprimer le professeur.');
-        }
-    }
     public function listeprof(){
         $profs = User::where('role', '=', 'professeur')->paginate(10);
         $categories = Categorie::all();
@@ -105,6 +94,15 @@ class AdminController extends Controller
             $etudiant->delete();
             $user->delete();
             return to_route('admin.getetudiants')->with('success', 'Etudiant supprimé avec succès !');
+        }
+    }
+    public function suppprof($id){
+        $user = User::findOrFail($id);
+        if($user){
+            $prof = Professeur::where('idUser', '=', $id);
+            $prof->delete();
+            $user->delete();
+            return to_route('admin.listeprof')->with('success', 'Professeur supprimé avec succès !');
         }
     }
 }
