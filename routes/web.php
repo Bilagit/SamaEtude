@@ -41,4 +41,4 @@ Route::put('/updateprofiletud/{id}', [AuthController::class, 'updateprofiletud']
 Route::put('/updateprofilprof/{id}', [AuthController::class, 'updateprofilprof'])->name('auth.updateprofilprof');
 Route::post('/ajouterprof', [AdminController::class, 'ajouterprof'])->name('admin.ajouterprof');
 Route::get('/suppprof/{id}', [AdminController::class, 'suppprof'])->name('admin.suppprof');
-Route::get('/exercices', [AdminController::class, 'exercices'])->name('professeur.exercices');
+Route::get('/exercices', [ProfessorController::class, 'exercices'])->name('professeur.exercices');
