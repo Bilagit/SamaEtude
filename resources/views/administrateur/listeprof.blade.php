@@ -313,9 +313,9 @@ table.table .avatar {
                         <div class="modal fade" id="deleteProfModal{{ $prof->id }}" tabindex="-1" role="dialog" aria-labelledby="deleteProfModalLabel{{ $prof->id }}" aria-hidden="true">
                     <div class="modal-dialog" role="document">
                         <div class="modal-content">
-                            <form id="deleteProfForm{{ $prof->id }}" method="GET" action="{{ route('admin.dropprof', $prof->id) }}">
+                            <form id="deleteProfForm{{ $prof->id }}" method="GET" action="{{ route('admin.suppprof', $prof->id) }}">
                                 @csrf
-                                @method('DELETE')
+                                @method('GET')
                                 <div class="modal-header">
                                     <h5 class="modal-title" id="deleteProfModalLabel{{ $prof->id }}">Supprimer Professeur</h5>
                                     <button type="button" class="close" data-dismiss="modal" aria-label="Close">
