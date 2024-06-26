@@ -19,7 +19,6 @@ use App\Http\Controllers\AuthController;
 Route::get('/', function () {
     return view('welcome');
 });
-Route::get('/Cours', [ProfessorController::class, 'cours'])->name('auth.cours');
 Route::get('/register', [AuthController::class, 'register'])->name('auth.register');
 Route::post('/register', [AuthController::class, 'doregister'])->name('auth.doregister');
 Route::get('/login', [AuthController::class, 'login'])->name('auth.login');
@@ -42,3 +41,5 @@ Route::put('/updateprofilprof/{id}', [AuthController::class, 'updateprofilprof']
 Route::post('/ajouterprof', [AdminController::class, 'ajouterprof'])->name('admin.ajouterprof');
 Route::get('/suppprof/{id}', [AdminController::class, 'suppprof'])->name('admin.suppprof');
 Route::get('/exercices', [ProfessorController::class, 'exercices'])->name('professeur.exercices');
+Route::get('/cours', [ProfessorController::class, 'cours'])->name('professeur.cours');
+Route::post('/ajoutercours', [ProfessorController::class, 'ajoutercours'])->name('professeur.ajoutercours');

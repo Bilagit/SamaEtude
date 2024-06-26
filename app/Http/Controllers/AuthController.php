@@ -47,7 +47,7 @@ class AuthController extends Controller
                 return redirect()->intended(route('admin.index'));
             }
             else if ($user->role === 'professeur'){
-                return redirect()->intended(route('professeur.index'));
+                return redirect()->intended(route('professeur.cours'));
             }
             else{
                 return redirect()->intended(route('etudiant.index'));

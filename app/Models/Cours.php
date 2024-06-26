@@ -12,7 +12,7 @@ class Cours extends Model
     protected $fillable = [
         'nom',
         'description',
-        'contenu',
+        'file_path',
         'idCategorie',
         'idProfesseur'
     ];
