@@ -5,6 +5,7 @@ namespace App\Http\Controllers;
 use Illuminate\Http\Request;
 use App\Models\Cours;
 use App\Models\Categorie;
+use Illuminate\Support\Facades\Auth;
 class ProfessorController extends Controller
 {
     public function cours()
