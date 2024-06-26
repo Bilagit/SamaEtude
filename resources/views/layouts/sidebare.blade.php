@@ -130,7 +130,7 @@
         <nav id="sidebar">
             <ul class="list-unstyled components mb-5">
                 <li class="custom-list-item" id="dashboard">
-                    <a href="/admin/dashboard"><span class="fa fa-home mr-3"></span> Tableau de Bord</a>
+                    <a href="/admin"><span class="fa fa-home mr-3"></span> Tableau de Bord</a>
                 </li>
                 <li class="custom-list-item" id="listeprof">
                     <a href="/listeprof"><img src="{{ asset('img/teacher.svg') }}" width="24" height="24" alt=""> Liste

@@ -14,7 +14,7 @@ use App\Models\Professeur;
 class AdminController extends Controller
 {
     public function index(){
-        return view('administrateur/index');
+        return view('administrateur.dashboard');
     }
     public function dropProfesseur($id)
     {
@@ -96,8 +96,5 @@ class AdminController extends Controller
             $user->delete();
             return to_route('admin.getetudiants')->with('success', 'Etudiant supprimé avec succès !');
         }
-    }
-    public function dashboard(){
-        return view('administrateur.dashboard');
     }
 }
