@@ -112,8 +112,6 @@
                             </div>
                             <div class="col-sm-9 text-secondary">
                                     {{ $info->phone_number }}
-                                @else
-                                    N/A
                             </div>
                             @endif
                         </div>
