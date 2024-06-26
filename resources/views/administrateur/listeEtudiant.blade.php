@@ -310,7 +310,7 @@ table.table .avatar {
                             <td>
                                 <button class="btn btn-danger delete-btn" data-toggle="modal"
                                     data-target="#confirmDeleteModal{{ $etudiant->id }}">
-                                    <i class="material-icons">&#xE5C9;</i> Supprimer
+                                    <i class="material-icons">&#xE5C9;</i>
                                 </button>
 
 

@@ -58,16 +58,24 @@
     #sidebar ul li a {
         color: #fff;
         text-decoration: none;
+        padding: 0.5rem; /* Ensure all list items have consistent padding */
+    border-radius: 0.25rem;
     }
 
     #sidebar ul li a:hover {
-        background: green;
+        background-color: darkgreen;
+        border-radius: 0.25rem; /* Adjust the radius as needed */
+    padding: 0.5rem; /* Add padding to make it look like a button */
+    margin: 0.25rem 0;
     }
 
     #sidebar ul li.active>a,
     #sidebar a[aria-expanded="true"] {
         background: green;
         color: #fff;
+        border-radius: 0.25rem; /* Adjust the radius as needed */
+    padding: 0.5rem; /* Add padding to make it look like a button */
+    margin: 0.25rem 0;
     }
     </style>
     <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.0.7/css/all.css" crossorigin="anonymous" />
@@ -85,8 +93,8 @@
     <header class="navbar sticky-top bg-dark flex-md-nowrap p-0 shadow" data-bs-theme="dark">
         <h1 style="color: #f2f2f2;">SamaEtude</h1>
         <div class="dropdown">
-            <a href="/profil" class="d-flex align-items-center text-white text-decoration-none" data-bs-toggle="dropdown"
-                aria-expanded="false">
+            <a href="/profil" class="d-flex align-items-center text-white text-decoration-none"
+                data-bs-toggle="dropdown" aria-expanded="false">
                 <img src="https://github.com/mdo.png" alt="" width="42" height="42" class="rounded-circle me-2">Admin
             </a>
         </div>
@@ -121,21 +129,21 @@
     <div class="wrapper">
         <nav id="sidebar">
             <ul class="list-unstyled components mb-5">
-                <li class="custom-list-item">
-                    <a href="/dashboard"><span class="fa fa-home mr-3"></span> Tableau de Bord</a>
+                <li class="custom-list-item" id="dashboard">
+                    <a href="/admin/dashboard"><span class="fa fa-home mr-3"></span> Tableau de Bord</a>
                 </li>
-                <li class="active custom-list-item">
-                    <a href="/listeprof"><img src="{{ asset('img/teacher.svg') }}" width="24" height="24" alt=""> Liste des
-                        Professeurs</a>
+                <li class="custom-list-item" id="listeprof">
+                    <a href="/listeprof"><img src="{{ asset('img/teacher.svg') }}" width="24" height="24" alt=""> Liste
+                        des Professeurs</a>
                 </li>
-                <li class="custom-list-item">
-                    <a href="/getetudiants"><img src="{{ asset('img/student.svg') }}" width="24" height="24" alt=""> Liste des
-                        Etudiants</a>
+                <li class="custom-list-item" id="getetudiants">
+                    <a href="/getetudiants"><img src="{{ asset('img/student.svg') }}" width="24" height="24" alt="">
+                        Liste des Etudiants</a>
                 </li>
-                <li class="custom-list-item">
+                <li class="custom-list-item" id="listecategorie">
                     <a href="/listecategorie"><span class="fa fa-sticky-note mr-3"></span> Gestion des Catégories</a>
                 </li>
-                <li class="custom-list-item">
+                <li class="custom-list-item" id="profil">
                     <a href="/profil"><span class="fa fa-paper-plane mr-3"></span> Profile</a>
                 </li>
                 <li class="custom-list-item">
@@ -146,6 +154,7 @@
                         <img src="{{ asset('img/box-arrow-right.svg') }}" width="24" height="24" alt=""> Se Déconnecter
                     </a>
                 </li>
+
 
 
             </ul>
@@ -162,6 +171,28 @@
     <script src="js/popper.js"></script>
     <script src="js/bootstrap.min.js"></script>
     <script src="js/main.js"></script>
+    <script>
+        $(document).ready(function() {
+    var url = window.location.href;
+    var activePage = url;
+
+    // Remove trailing slash to match with URL in href attribute
+    if (activePage.substr(-1) === '/') {
+        activePage = activePage.slice(0, -1);
+    }
+
+    // Iterate over each <li> and check if its <a> element's href attribute matches the current URL
+    $('#sidebar ul li').each(function() {
+        var link = $(this).find('a').attr('href');
+
+        // Check if the current page URL contains the link URL
+        if (activePage.includes(link)) {
+            $(this).addClass('active');
+        }
+    });
+});
+
+    </script>
 </body>
 
 </html>
