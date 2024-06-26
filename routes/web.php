@@ -43,3 +43,6 @@ Route::get('/suppprof/{id}', [AdminController::class, 'suppprof'])->name('admin.
 Route::get('/exercices', [ProfessorController::class, 'exercices'])->name('professeur.exercices');
 Route::get('/cours', [ProfessorController::class, 'cours'])->name('professeur.cours');
 Route::post('/ajoutercours', [ProfessorController::class, 'ajoutercours'])->name('professeur.ajoutercours');
+Route::get('/navbar', function () {
+    return view('layouts.navbar');
+});
