@@ -11,8 +11,10 @@ class ProfessorController extends Controller
     public function cours()
     {
         $categories = Categorie::all();
+        $cours = Cours::paginate(10);
         return view('Professeur.cours', [
-            'categories' => $categories
+            'categories' => $categories,
+            'cours' => $cours
         ]);
     }
     public function exercices()
