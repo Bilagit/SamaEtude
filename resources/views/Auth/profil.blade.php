@@ -114,8 +114,8 @@
                                     {{ $info->phone_number }}
                                 @else
                                     N/A
-                                @endif
                             </div>
+                            @endif
                         </div>
                         </div>
                         <hr>
