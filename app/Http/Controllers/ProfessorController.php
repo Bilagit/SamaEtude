@@ -40,4 +40,27 @@ class ProfessorController extends Controller
             return to_route('professeur.cours')->with('success', 'Cours ajouté avec succès ! ');
         }
     }
+    public function suppcours($id){
+        $cours = Cours::find($id);
+        if ($cours) {
+            $cours->delete();
+            return to_route('professeur.cours')->with('success', 'Cours supprimé avec succès ! ');
+        }
+    }
+    public function updatecours(Request $request, $id){
+        $request->validate([
+            'nom' => 'required',
+            'description' => 'required',
+            'file' => 'required',
+            'idCategorie' => 'required'
+        ]);
+        $cours = Cours::findOrFail($id);
+        $path = $request->file('file')->store('cours', 'public');
+        $cours->nom = $request->nom;
+        $cours->description = $request->description;
+        $cours->file_path = $path;
+        $cours->idCategorie = $request->idCategorie;
+        $cours->update();
+        return to_route('professeur.cours')->with('success', 'Cours modifié avec succès ! ');
+    }
 }
