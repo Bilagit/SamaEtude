@@ -176,7 +176,7 @@
                                             </div>
                                             <div class="form-group">
                                                 <label for="phone_number">Numéro de téléphone</label>
-                                                <input type="text" class="form-control" id="phone_number" name="phone_number" value="{{ $info->phone_number }}">
+                                                <input type="text" class="form-control" id="phone_number" name="phone_number" value="{{ $user->role === 'etudiant' || $user->role === 'professeur' ? $info->phone_number : 'N/A' }}">
                                             </div>
                                             @if ($user->role === 'etudiant')
                                                 <div class="form-group">

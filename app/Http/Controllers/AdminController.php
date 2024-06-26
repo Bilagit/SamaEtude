@@ -95,4 +95,7 @@ class AdminController extends Controller
             return to_route('admin.getetudiants')->with('success', 'Etudiant supprimé avec succès !');
         }
     }
+    public function dashboard(){
+        return view('administrateur.dashboard');
+    }
 }
