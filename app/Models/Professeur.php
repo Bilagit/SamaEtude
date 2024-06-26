@@ -10,7 +10,7 @@ class Professeur extends Model
     use HasFactory;
 
     protected $fillable = [
-        'phone_number',
+        'telephone',
         'specialite',
         'idUser'
     ];

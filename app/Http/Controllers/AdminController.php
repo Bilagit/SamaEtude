@@ -16,35 +16,15 @@ class AdminController extends Controller
     public function index(){
         return view('administrateur/index');
     }
-    public function addProfesseur(AddProfesseurRequest $request){
-        $user = User::create([
-            'name' => $request->name,
-            'email' => $request->email,
-            'first_name' => $request->first_name,
-            'role' => 'professeur',
-            'password' => Hash::make($request->password)
-        ]);
-        $prof = Professeur::create([
-            'phone_number' => $request->phone_number,
-            'specialite' => $request->specialite,
-            'idUser' => $user->id
-        ]);
-        if ($prof) {
-            return redirect()->route('admin.listeprof')->with('sucess', 'Professeur ajouté avec succès ! ');
-        }
-        else {
-            return redirect()->route('admin.index')->with('error', "Erreur lors de l'ajout.");
-        }
-    }
     public function dropProfesseur($id)
     {
         $prof = Professeur::find($id);
         if($prof){
             $prof->delete();
-            return redirect()->route('admin.listeprof')->with('success', 'Professeur supprimé avec succès !');
+            return to_route('admin.listeprof')->with('success', 'Professeur supprimé avec succès !');
         }
         else{
-            return redirect()->route('admin.index')->with('error', 'impossible de supprimer le professeur.');
+            return to_route('admin.index')->with('error', 'impossible de supprimer le professeur.');
         }
     }
     public function listeprof(){
@@ -58,6 +38,23 @@ class AdminController extends Controller
         return view('administrateur.listecategorie', [
             'categories' => $categories
         ]);
+    }
+    public function ajouterprof(AddProfesseurRequest $request){
+        $user = User::create([
+            'first_name' => $request->first_name,
+            'name' => $request->name,
+            'role' => 'professeur',
+            'email' => $request->email,
+            'password' => Hash::make($request->password)
+        ]);
+        $prof = Professeur::create([
+            'specialite' => $request->specialite,
+            'idUser' => $user->id,
+            'telephone' => $request->phone_number
+        ]);
+        if($user){
+            return to_route('admin.listeprof')->with('success', 'Professeur ajouté avec succès !');
+        }
     }
     public function addcategorie(AddCategorieRequest $request){
         $categorie = Categorie::create([

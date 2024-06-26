@@ -244,7 +244,7 @@
                                     <span aria-hidden="true">&times;</span>
                                 </button>
                             </div>
-                            <form id="addProfForm" action="{{ route('admin.addprof') }}" method="POST">
+                            <form id="addProfForm" action="{{ route('admin.ajouterprof') }}" method="POST">
                                 @csrf
                                 <div class="modal-body">
                                     <div class="form-group">

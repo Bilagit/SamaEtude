@@ -27,7 +27,6 @@ Route::post('/login', [AuthController::class, 'dologin'])->name('auth.dologin');
 Route::get('/etudiant', [EtudiantController::class, 'index'])->name('etudiant.index');
 Route::get('/professeur', [ProfessorController::class, 'index'])->name('professeur.index');
 Route::get('/admin', [AdminController::class, 'index'])->name('admin.index');
-Route::post('/addprof', [AdminController::class, 'addProfesseur'])->name('admin.addprof');
 Route::get('/dropprof/{id}', [AdminController::class, 'dropProfesseur'])->name('admin.dropprof');
 Route::get('/listeprof', [AdminController::class, 'listeprof'])->name('admin.listeprof');
 Route::post('/logout', [AuthController::class, 'logout'])->name('auth.logout');
@@ -41,3 +40,4 @@ Route::put('/updatecategorie/{id}', [AdminController::class, 'updatecategorie'])
 Route::put('/updateprofil/{id}', [AuthController::class, 'updateprofil'])->name('auth.updateprofil');
 Route::put('/updateprofiletud/{id}', [AuthController::class, 'updateprofiletud'])->name('auth.updateprofiletud');
 Route::put('/updateprofilprof/{id}', [AuthController::class, 'updateprofilprof'])->name('auth.updateprofilprof');
+Route::post('/ajouterprof', [AdminController::class, 'ajouterprof'])->name('admin.ajouterprof');
