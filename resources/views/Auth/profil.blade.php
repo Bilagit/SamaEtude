@@ -111,12 +111,13 @@
                                 <h6 class="mb-0">Téléphone</h6>
                             </div>
                             <div class="col-sm-9 text-secondary">
-                                @if ($user->role === 'etudiant')
+                                @if ($user->role === 'etudiant' || $user->role === 'professeur')
                                     {{ $info->phone_number }}
-                                @elseif ($user->role === 'professeur')
-                                    {{ $info->phone_number }}
+                                @else
+                                    N/A
                                 @endif
                             </div>
+                        </div>
                         </div>
                         <hr>
                         @if ($user->role === 'etudiant')
