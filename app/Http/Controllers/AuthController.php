@@ -5,6 +5,7 @@ namespace App\Http\Controllers;
 use Illuminate\Http\Request;
 use App\Models\User;
 use App\Models\Etudiant;
+use App\Models\Professeur;
 use Illuminate\Support\Facades\Hash;
 use App\Http\Requests\SignInRequest;
 use App\Http\Requests\SignUpRequest;

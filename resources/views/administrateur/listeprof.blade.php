@@ -206,8 +206,10 @@ table.table .avatar {
     /* Augmentez l'espacement intérieur */
 }
 </style>
+<link rel="stylesheet" href="https://cdn.datatables.net/1.13.6/css/jquery.dataTables.min.css">
+
 <!-- Page Content  -->
-<div id="content" class="p-4 p-md-5 pt-5">
+<div class="p-4 p-md-5 pt-5">
     @if ($message = Session::get('success'))
 
     <div class="alert alert-success">
@@ -228,9 +230,6 @@ table.table .avatar {
                                 data-target="#addProfModal"><i class="material-icons">&#xE147;</i>
                                 Ajouter un Professeur
                             </button>
-
-                            <a href="#" class="btn btn-secondary"><i class="material-icons">&#xE24D;</i>
-                                <span>Exporter un excel</span></a>
                         </div>
                     </div>
                 </div>
@@ -290,7 +289,7 @@ table.table .avatar {
                     </div>
                 </div>
 
-                <table class="table table-striped table-hover">
+                <table id="example" class="table table-striped table-hover">
                     <thead>
                         <tr>
                             <th>#</th>
@@ -339,20 +338,31 @@ table.table .avatar {
 
                     </tbody>
                 </table>
-                <div class="clearfix">
-                    <div class="hint-text">Showing <b>5</b> out of <b>25</b> entries</div>
-                    <ul class="pagination">
-                        <li class="page-item disabled"><a href="#">Previous</a></li>
-                        <li class="page-item"><a href="#" class="page-link">1</a></li>
-                        <li class="page-item"><a href="#" class="page-link">2</a></li>
-                        <li class="page-item active"><a href="#" class="page-link">3</a></li>
-                        <li class="page-item"><a href="#" class="page-link">4</a></li>
-                        <li class="page-item"><a href="#" class="page-link">5</a></li>
-                        <li class="page-item"><a href="#" class="page-link">Next</a></li>
-                    </ul>
-                </div>
             </div>
         </div>
     </div>
 </div>
+<script src="https://cdn.datatables.net/1.13.6/js/jquery.dataTables.min.js"></script>
+<script src="https://cdn.datatables.net/2.0.8/js/dataTables.js"></script>
+<script src="https://cdn.jsdelivr.net/npm/bootstrap@4.6.2/dist/js/bootstrap.bundle.min.js"
+    integrity="sha384-Fy6S3B9q64WdZWQUiU+q4/2Lc9npb8tCaSX9FK7E8HnRr0Jz8D6OP9dO5Vg3Q9ct" crossorigin="anonymous">
+</script>
+<script src="https://cdn.jsdelivr.net/npm/bootstrap@5.2.3/dist/js/bootstrap.bundle.min.js"></script>
+
+<script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
+<script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.bundle.min.js"></script>
+<script src="https://code.jquery.com/jquery-3.7.0.js"></script>
+<script src="https://cdn.datatables.net/1.13.6/js/jquery.dataTables.min.js"></script>
+<script>
+new DataTable('#example');
+$('#exampleModal').on('show.bs.modal', function(event) {
+    var button = $(event.relatedTarget) // Button that triggered the modal
+    var recipient = button.data('whatever') // Extract info from data-* attributes
+    // If necessary, you could initiate an AJAX request here (and then do the updating in a callback).
+    // Update the modal's content. We'll use jQuery here, but you could use a data binding library or other methods instead.
+    var modal = $(this)
+    modal.find('.modal-title').text('New message to ' + recipient)
+    modal.find('.modal-body input').val(recipient)
+})
+</script>
 @endsection

@@ -16,6 +16,8 @@
         background: #f5f5f5;
         font-family: 'Poppins', sans-serif;
         font-size: 13px;
+        margin: 0;
+        padding: 0;
     }
 
     .wrapper {
@@ -24,18 +26,21 @@
     }
 
     #sidebar {
-        min-width: 250px;
-        max-width: 250px;
+        position: fixed;
+        top: 0;
+        left: 0;
+        height: 100%;
+        width: 250px; /* Specify a fixed width */
         background: #333;
-        color: #696969;
+        color: #fff;
         transition: all 0.3s;
+        z-index: 1000; /* Ensure sidebar stays above other content */
     }
 
     #sidebar .logo {
         display: block;
         text-align: center;
         padding: 20px 0;
-        color: #fff;
         font-size: 24px;
         font-weight: bold;
     }
@@ -43,11 +48,6 @@
     #sidebar ul.components {
         padding: 20px 0;
         border-bottom: 1px solid #47748b;
-    }
-
-    #sidebar ul p {
-        color: #fff;
-        padding: 10px;
     }
 
     #sidebar ul li {
@@ -58,24 +58,40 @@
     #sidebar ul li a {
         color: #fff;
         text-decoration: none;
-        padding: 0.5rem; /* Ensure all list items have consistent padding */
-    border-radius: 0.25rem;
+        padding: 0.5rem;
     }
 
     #sidebar ul li a:hover {
         background-color: darkgreen;
-        border-radius: 0.25rem; /* Adjust the radius as needed */
-    padding: 0.5rem; /* Add padding to make it look like a button */
-    margin: 0.25rem 0;
+        border-radius: 0.25rem;
+        padding: 0.5rem;
+        margin: 0.25rem 0;
     }
 
     #sidebar ul li.active>a,
     #sidebar a[aria-expanded="true"] {
         background: green;
         color: #fff;
-        border-radius: 0.25rem; /* Adjust the radius as needed */
-    padding: 0.5rem; /* Add padding to make it look like a button */
-    margin: 0.25rem 0;
+        border-radius: 0.25rem;
+        padding: 0.5rem;
+        margin: 0.25rem 0;
+    }
+
+    #content {
+        margin-left: 250px; /* Adjust based on sidebar width */
+        padding: 20px;
+    }
+
+    /* Responsive adjustments */
+    @media (max-width: 768px) {
+        #sidebar {
+            width: 100%;
+            height: auto;
+            position: relative;
+        }
+        #content {
+            margin-left: 0;
+        }
     }
     </style>
     <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.0.7/css/all.css" crossorigin="anonymous" />
@@ -128,6 +144,9 @@
     </header>
     <div class="wrapper">
         <nav id="sidebar">
+            <div class="logo">
+                SamaEtude
+            </div>
             <ul class="list-unstyled components mb-5">
                 <li class="custom-list-item" id="dashboard">
                     <a href="/admin"><span class="fa fa-home mr-3"></span> Tableau de Bord</a>
@@ -154,44 +173,34 @@
                         <img src="{{ asset('img/box-arrow-right.svg') }}" width="24" height="24" alt=""> Se Déconnecter
                     </a>
                 </li>
-
-
-
             </ul>
         </nav>
         <!-- Page Content  -->
-        @yield('content')
+        <div id="content">
+            @yield('content')
+        </div>
     </div>
-    <script src="https://code.jquery.com/jquery-3.5.1.min.js"></script>
-    <script src="https://cdn.jsdelivr.net/npm/popper.js@1.16.0/dist/umd/popper.min.js"></script>
-    <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.5.0/js/bootstrap.min.js"></script>
 
-
-    <script src="js/jquery.min.js"></script>
-    <script src="js/popper.js"></script>
-    <script src="js/bootstrap.min.js"></script>
-    <script src="js/main.js"></script>
     <script>
-        $(document).ready(function() {
-    var url = window.location.href;
-    var activePage = url;
+    $(document).ready(function() {
+        var url = window.location.href;
+        var activePage = url;
 
-    // Remove trailing slash to match with URL in href attribute
-    if (activePage.substr(-1) === '/') {
-        activePage = activePage.slice(0, -1);
-    }
-
-    // Iterate over each <li> and check if its <a> element's href attribute matches the current URL
-    $('#sidebar ul li').each(function() {
-        var link = $(this).find('a').attr('href');
-
-        // Check if the current page URL contains the link URL
-        if (activePage.includes(link)) {
-            $(this).addClass('active');
+        // Remove trailing slash to match with URL in href attribute
+        if (activePage.substr(-1) === '/') {
+            activePage = activePage.slice(0, -1);
         }
-    });
-});
 
+        // Iterate over each <li> and check if its <a> element's href attribute matches the current URL
+        $('#sidebar ul li').each(function() {
+            var link = $(this).find('a').attr('href');
+
+            // Check if the current page URL contains the link URL
+            if (activePage.includes(link)) {
+                $(this).addClass('active');
+            }
+        });
+    });
     </script>
 </body>
 

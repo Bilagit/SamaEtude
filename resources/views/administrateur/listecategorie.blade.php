@@ -2,7 +2,7 @@
 
 @section('content')
     <!-- Page Content  -->
-    <div id="content" class="p-4 p-md-5 pt-5">
+    <div class="p-4 p-md-5 pt-5">
         @if ($message = Session::get('success'))
             <div class="alert alert-success">
                 <p>{{ $message }}</p>

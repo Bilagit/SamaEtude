@@ -13,9 +13,19 @@ use App\Models\Professeur;
 
 class AdminController extends Controller
 {
-    public function index(){
-        return view('administrateur.dashboard');
+    public function index()
+    {
+        $usersCount = User::count(); 
+        $studentsCount = Etudiant::count(); 
+        $professorsCount = Professeur::count(); 
+    
+        return view('administrateur.dashboard', [
+            'usersCount' => $usersCount,
+            'studentsCount' => $studentsCount,
+            'professorsCount' => $professorsCount,
+        ]);
     }
+    
     public function dropProfesseur($id)
     {
         $prof = Professeur::find($id);

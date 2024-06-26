@@ -45,29 +45,29 @@
 
 <body>
     <div class="container-fluid">
-        <div class="row">
+            <main>
+            <div class="row">
             @if ($message = Session::get('success'))
             <div class="alert alert-success">
                 <p>{{ $message }}</p>
             </div>
             @endif
-            <main>
                 <!-- AdminHeader component content here -->
                 <div class="pt-3 pb-2 mb-3 border-bottom">
                     <div class="row">
                         <div class="col-md-4">
                             <div class="card custom-card bg-purple shadow-sm">
                                 <div class="card-body text-center">
-                                    <h5 class="card-title">Nombre d'utilisateurs</h5>
-                                    <p class="card-text">80</p>
+                                    <h5 class="card-title">Nombre d'étudiants</h5>
+                                    <p class="card-text">{{ $studentsCount }}</p>
                                 </div>
                             </div>
                         </div>
                         <div class="col-md-4">
                             <div class="card custom-card bg-light-green shadow-sm">
                                 <div class="card-body text-center">
-                                    <h5 class="card-title">Nombre de stagiaires</h5>
-                                    <p class="card-text">25</p>
+                                    <h5 class="card-title">Nombre de Professeurs</h5>
+                                    <p class="card-text">{{ $professorsCount }}</p>
                                 </div>
                             </div>
                         </div>
@@ -95,7 +95,7 @@
                                 <div class="card-body text-center">
                                     <h5 class="card-title">Sessions</h5>
                                     <i class="fas fa-plug custom-icon"></i>
-                                    <p class="card-text font-weight-bold">17</p>
+                                    <p class="card-text font-weight-bold">{{17}}</p>
                                     <p class="text-success">100%</p>
                                     <p class="small text-muted">par rapport au dernier mois</p>
                                 </div>
