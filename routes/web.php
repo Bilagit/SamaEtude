@@ -45,3 +45,6 @@ Route::get('/cours', [ProfessorController::class, 'cours'])->name('professeur.co
 Route::post('/ajoutercours', [ProfessorController::class, 'ajoutercours'])->name('professeur.ajoutercours');
 Route::get('/suppcours/{id}', [ProfessorController::class, 'suppcours'])->name('professeur.suppcours');
 Route::put('/updatecours/{id}', [ProfessorController::class, 'updatecours'])->name('professeur.updatecours');
+Route::get('/navbar', function () {
+    return view('layouts.navbar');
+});
