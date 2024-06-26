@@ -46,7 +46,12 @@
 <body>
     <div class="container-fluid">
         <div class="row">
-            <main >
+            @if ($message = Session::get('success'))
+            <div class="alert alert-success">
+                <p>{{ $message }}</p>
+            </div>
+            @endif
+            <main>
                 <!-- AdminHeader component content here -->
                 <div class="pt-3 pb-2 mb-3 border-bottom">
                     <div class="row">
@@ -111,7 +116,7 @@
                             <div class="card shadow-sm">
                                 <div class="card-body text-center">
                                     <h5 class="card-title">Nouveaux vs retours visiteurs</h5>
-                                    <!-- DoughnutChart component here -->
+                                    <canvas id="newVsReturningChart"></canvas>
                                 </div>
                             </div>
                         </div>
@@ -119,7 +124,7 @@
                             <div class="card shadow-sm">
                                 <div class="card-body text-center">
                                     <h5 class="card-title">Taux d'acceptation</h5>
-                                    <!-- DoughnutChart2 component here -->
+                                    <canvas id="acceptanceRateChart"></canvas>
                                 </div>
                             </div>
                         </div>
@@ -132,26 +137,103 @@
     <script src="https://cdn.jsdelivr.net/npm/popper.js@1.16.0/dist/umd/popper.min.js"></script>
     <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.5.0/js/bootstrap.min.js"></script>
     <script>
-        const ctx = document.getElementById('userChart').getContext('2d');
-        const userChart = new Chart(ctx, {
-            type: 'line',
-            data: {
-                labels: ['Lundi', 'Mardi', 'Mercredi', 'Jeudi', 'Vendredi', 'Samedi', 'Dimanche'],
-                datasets: [{
-                    label: 'Nombre d\'utilisateurs',
-                    data: [12, 19, 3, 5, 2, 3, 9], // Replace with your actual data
-                    backgroundColor: 'rgba(75, 192, 192, 0.2)',
-                    borderColor: 'rgba(75, 192, 192, 1)',
-                    borderWidth: 1
-                }]
-            },
-            options: {
-                scales: {
-                    y: {
-                        beginAtZero: true
-                    }
+        // Données pour le diagramme "Nombre d'utilisateurs"
+        const userData = {
+            labels: ['Lundi', 'Mardi', 'Mercredi', 'Jeudi', 'Vendredi', 'Samedi', 'Dimanche'],
+            datasets: [{
+                label: 'Nombre d\'utilisateurs',
+                data: [12, 19, 3, 5, 2, 3, 9], // Remplacez par vos données réelles
+                backgroundColor: 'rgba(75, 192, 192, 0.2)',
+                borderColor: 'rgba(75, 192, 192, 1)',
+                borderWidth: 1
+            }]
+        };
+
+        // Options pour le diagramme "Nombre d'utilisateurs"
+        const userOptions = {
+            scales: {
+                y: {
+                    beginAtZero: true
                 }
             }
+        };
+
+        // Création du diagramme "Nombre d'utilisateurs"
+        const userChartCanvas = document.getElementById('userChart').getContext('2d');
+        const userChart = new Chart(userChartCanvas, {
+            type: 'line',
+            data: userData,
+            options: userOptions
+        });
+
+        // Données pour le diagramme "Nouveaux vs retours visiteurs"
+        const newVsReturningData = {
+            labels: ['Nouveaux visiteurs', 'Retours visiteurs'],
+            datasets: [{
+                label: 'Nouveaux vs retours visiteurs',
+                data: [70, 30], // Remplacez par vos données réelles
+                backgroundColor: [
+                    'rgba(255, 99, 132, 0.2)',
+                    'rgba(54, 162, 235, 0.2)'
+                ],
+                borderColor: [
+                    'rgba(255, 99, 132, 1)',
+                    'rgba(54, 162, 235, 1)'
+                ],
+                borderWidth: 1
+            }]
+        };
+
+        // Options pour le diagramme "Nouveaux vs retours visiteurs"
+        const newVsReturningOptions = {
+            plugins: {
+                legend: {
+                    position: 'bottom',
+                }
+            }
+        };
+
+        // Création du diagramme "Nouveaux vs retours visiteurs"
+        const newVsReturningChartCanvas = document.getElementById('newVsReturningChart').getContext('2d');
+        const newVsReturningChart = new Chart(newVsReturningChartCanvas, {
+            type: 'doughnut',
+            data: newVsReturningData,
+            options: newVsReturningOptions
+        });
+
+        // Données pour le diagramme "Taux d'acceptation"
+        const acceptanceRateData = {
+            labels: ['Acceptés', 'Rejetés'],
+            datasets: [{
+                label: 'Taux d\'acceptation',
+                data: [80, 20], // Remplacez par vos données réelles
+                backgroundColor: [
+                    'rgba(75, 192, 192, 0.2)',
+                    'rgba(255, 99, 132, 0.2)'
+                ],
+                borderColor: [
+                    'rgba(75, 192, 192, 1)',
+                    'rgba(255, 99, 132, 1)'
+                ],
+                borderWidth: 1
+            }]
+        };
+
+        // Options pour le diagramme "Taux d'acceptation"
+        const acceptanceRateOptions = {
+            plugins: {
+                legend: {
+                    position: 'bottom',
+                }
+            }
+        };
+
+        // Création du diagramme "Taux d'acceptation"
+        const acceptanceRateChartCanvas = document.getElementById('acceptanceRateChart').getContext('2d');
+        const acceptanceRateChart = new Chart(acceptanceRateChartCanvas, {
+            type: 'doughnut',
+            data: acceptanceRateData,
+            options: acceptanceRateOptions
         });
     </script>
 </body>

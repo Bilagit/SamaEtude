@@ -249,43 +249,6 @@ table.table .avatar {
                                     <span aria-hidden="true">&times;</span>
                                 </button>
                             </div>
-                            <form id="addProfForm" action="{{ route('admin.addprof') }}" method="POST">
-                                @csrf
-                                <div class="modal-body">
-                                    <div class="form-group">
-                                        <label for="name">Nom</label>
-                                        <input type="text" class="form-control" id="name" name="name" required>
-                                    </div>
-                                    <div class="form-group">
-                                        <label for="first_name">Prénom</label>
-                                        <input type="text" class="form-control" id="first_name" name="first_name"
-                                            required>
-                                    </div>
-                                    <div class="form-group">
-                                        <label for="email">Email</label>
-                                        <input type="email" class="form-control" id="email" name="email" required>
-                                    </div>
-                                    <div class="form-group">
-                                        <label for="password">Mot de Passe</label>
-                                        <input type="password" class="form-control" id="password" name="password"
-                                            required>
-                                    </div>
-                                    <div class="form-group">
-                                        <label for="phone_number">Numéro de Téléphone</label>
-                                        <input type="text" class="form-control" id="phone_number" name="phone_number"
-                                            required>
-                                    </div>
-                                    <div class="form-group">
-                                        <label for="specialite">Niveau</label>
-                                        <input type="text" class="form-control" id="specialite" name="specialite"
-                                            required>
-                                    </div>
-                                </div>
-                                <div class="modal-footer">
-                                    <button type="button" class="btn btn-secondary" data-dismiss="modal">Fermer</button>
-                                    <button type="submit" class="btn btn-primary">Ajouter</button>
-                                </div>
-                            </form>
                         </div>
                     </div>
                 </div>
