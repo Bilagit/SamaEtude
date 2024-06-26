@@ -29,8 +29,10 @@ class AdminController extends Controller
     }
     public function listeprof(){
         $profs = User::where('role', '=', 'professeur')->paginate(10);
+        $categories = Categorie::all();
         return view('administrateur.listeprof', [
-            'profs' => $profs
+            'profs' => $profs,
+            'categories' => $categories
         ]);
     }
     public function listecategorie(){
