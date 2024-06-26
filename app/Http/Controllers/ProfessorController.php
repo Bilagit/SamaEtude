@@ -10,6 +10,10 @@ class ProfessorController extends Controller
     {
         return view('Professeur.cours');
     }
+    public function exercices()
+    {
+        return view('Professeur.exercice');
+    }
     public function index(){
         return view('professeur/index');
     }
