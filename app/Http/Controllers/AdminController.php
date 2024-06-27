@@ -35,9 +35,9 @@ class AdminController extends Controller
         ]);
     }
     public function listecategorie(){
-        $categories = Categorie::paginate(10);
+        $categories = Categorie::withCount('cours')->get();
         return view('administrateur.listecategorie', [
-            'categories' => $categories
+            'categories' => $categories,
         ]);
     }
     public function ajouterprof(AddProfesseurRequest $request){
