@@ -63,6 +63,7 @@ body {
 .rounded {
     border-radius: 5px !important;
 }
+
 .project-info-box p {
     margin-bottom: 15px;
     padding-bottom: 15px;
@@ -106,47 +107,74 @@ strong {
                 <p><b>Date:</b> {{ $exo->created_at }}</p>
                 <p><b>Dernière modification:</b> {{ $exo->updated_at }}</p>
                 <p class="mb-0"><b>Cours:</b>
-    @foreach ($cours as $cour)
-        @if ($cour->id === $exo->idCours)
-            {{ $cour->nom }}
-        @endif
-    @endforeach
-</p>
-
+                    @foreach ($cours as $cour)
+                    @if ($cour->id === $exo->idCours)
+                    {{ $cour->nom }}
+                    @endif
+                    @endforeach
+                </p>
+                <!-- Add thumbnail for the second course display -->
+                <div class="mt-4">
+                    <b>Lire le cours associé à cette exercice :</b>
+                    @foreach ($cours as $cour)
+                    @if ($cour->id === $exo->idCours)
+                    <a href="{{ url('contenu/' .$exo->idCours) }}">
+                        <div class="card">
+                            <img src="{{ asset('img/java.webp') }}" class="rounded" width="100%" height="225" alt="">
+                            <div class="card-body">
+                                <h5 class="card-title">{{ $cour->nom }}</h5>
+                                <p class="card-text">{{ $cour->description }}</p>
+                            </div>
+                        </div>
+                    </a>
+                    @endif
+                    @endforeach
+                </div>
             </div><!-- / project-info-box -->
 
         </div><!-- / column -->
 
-        
         <div class="col-md-7">
             @if (Str::endsWith($exo->contenu, '.pdf'))
-                <embed src="{{ asset('storage/' . $exo->contenu) }}" type="application/pdf" width="100%" height="600px" />
-            @elseif (Str::endsWith($exo->contenu, '.mp4') || Str::endsWith($exo->contenu, '.avi') || Str::endsWith($exo->contenu, '.mkv'))
-                <video width="100%" height="auto" controls>
-                    <source src="{{ asset('storage/' . $exo->contenu) }}" type="video/mp4">
-                    Le navigateur ne peut pas prendre en charge la vidéo.
-                </video>
+            <embed src="{{ asset('storage/' . $exo->contenu) }}" type="application/pdf" width="100%" height="600px" />
+            @elseif (Str::endsWith($exo->contenu, '.mp4') || Str::endsWith($exo->contenu, '.avi') ||
+            Str::endsWith($exo->contenu, '.mkv'))
+            <video width="100%" height="auto" controls>
+                <source src="{{ asset('storage/' . $exo->contenu) }}" type="video/mp4">
+                Le navigateur ne peut pas prendre en charge la vidéo.
+            </video>
             @else
-                <p>Format de fichier non pris en charge</p>
+            <p>Format de fichier non pris en charge</p>
             @endif
             <div class="project-info-box">
-                <div class="row">
-                    <div class="col-md-6">
-                        <p><b>Cours:</b></p>
-                        @foreach ($cours as $cour)
-                            @if ($cour->id === $exo->idCours)
-                                <p>{{ $cour->nom }}</p>
-                            @endif
+                <div class="col-md-14">
+                    <p><b>Exercices Similaires:</b></p>
+                    <ul>
+                        @foreach ($exos as $item)
+                        <li><a href="{{ route('professeur.contenuExo', ['id' => $item->id]) }}">{{ $item->titre }}</a>
+                        </li>
+                        <table class="table">
+                            <thead class="thead-dark">
+                                <tr>
+                                    <th scope="col">#</th>
+                                    <th scope="col"></th>
+                                    <th scope="col">Titre</th>
+                                    <th scope="col">Instituteur</th>
+                                    <th scope="col">Actions</th>
+                                </tr>
+                            </thead>
+                            <tbody>
+                                <tr>
+                                    <th scope="row">{{ $item->id }}</th>
+                                    <td><img src="{{ asset('img/téléchargement.png') }}" class="rounded" width="70%" height="40" alt=""></td>
+                                    <td>{{ $item->titre }}</td>
+                                    <td>@mdo</td>
+                                    <td><a class="btn btn-success" href="{{ route('professeur.contenuExo', ['id' => $item->id]) }}">Consulter</a></td>
+                                </tr>
+                            </tbody>
+                        </table>
                         @endforeach
-                    </div>
-                    <div class="col-md-6">
-                        <p><b>Exercices Similaires:</b></p>
-                        <ul>
-                            @foreach ($exos as $item)
-                                <p><b>Nom:</b> <a href="{{ route('professeur.contenuExo', ['id' => $item->id]) }}">{{ $item->titre }}</a></p>
-                            @endforeach
-                        </ul>
-                    </div>
+                    </ul>
                 </div>
             </div><!-- / project-info-box -->
         </div><!-- / column -->
