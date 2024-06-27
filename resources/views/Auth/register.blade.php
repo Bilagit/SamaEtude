@@ -10,10 +10,28 @@
     <link rel="stylesheet" href="{{ asset('assets/css/bootstrap.min.css') }}">
     <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.7.2/font/bootstrap-icons.css">
     <link rel="stylesheet" type="text/css" href="{{ asset('assets/css/style.css') }}" />
+    <style>
+        #home-button {
+            width: 60px; /* Augmenter la taille du bouton */
+            height: 60px;
+            font-size: 30px; /* Augmenter la taille de l'icône */
+            background-color: #1ABC9C; /* Changer la couleur de fond du bouton */
+            transition: transform 0.3s; /* Ajouter une transition pour l'effet de survol */
+            border-radius: 50%;
+        }
+
+        #home-button:hover {
+            transform: scale(1.1); /* Agrandir le bouton lors du survol */
+        }
+    </style>
 </head>
 <body class="bg-white">
+<a href="/" id="home-button" class="btn btn-success position-absolute top-0 start-0 m-3">
+    <i class="bi bi-house-fill text-white"></i>
+</a>
 <div class="container-fluid vh-100 overflow-auto">
     <div class="row vh-100 ">
+
         <div class="col-lg-6 bg-gray p-5 text-center">
             <h4 class="text-center fw-bolder fs-2">Connexion</h4>
             <p class="mb-3 fs-7">Vous avez déja un compte ?</p>

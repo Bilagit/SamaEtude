@@ -17,7 +17,7 @@
                                 <h2>Gestion des <b>Catégories</b></h2>
                             </div>
                             <div class="col-sm-7">
-                                <button type="button" class="btn btn-primary" data-toggle="modal" data-target="#addCategorieModal">
+                                <button type="button" class="btn btn-primary" data-toggle="modal" data-target="#addCategorieModal" style="margin-left: 520px; background:#00e68a;">
                                     <i class="fas fa-plus"></i> Ajouter une Catégorie
                                 </button>
                             </div>
@@ -52,9 +52,11 @@
                     <table class="table table-striped table-hover">
                         <thead>
                         <tr>
-                            <th>#</th>
+                            <th>ID</th>
                             <th>Nom</th>
-                            <th>Action</th>
+                            <th>Nombre de Cours</th>
+                            <th>Date de création</th>
+                            <th>Actions</th>
                         </tr>
                         </thead>
                         <tbody>
@@ -62,6 +64,8 @@
                             <tr>
                                 <td>{{ $categorie->id }}</td>
                                 <td>{{ $categorie->nom }}</td>
+                                <td>{{$categorie->cours_count}}</td>
+                                <td>{{ $categorie->created_at }}</td>
                                 <td>
                                     <!-- Modifier Button with Font Awesome -->
                                     <button class="btn btn-warning" data-toggle="modal" data-target="#editCategorieModal{{ $categorie->id }}">
@@ -109,11 +113,6 @@
                         @endforeach
                         </tbody>
                     </table>
-
-                    <div class="clearfix">
-                        <div class="hint-text">Showing <b>{{ $categories->count() }}</b> out of <b>{{ $categories->total() }}</b> entries</div>
-                        {{ $categories->links() }}
-                    </div>
                 </div>
             </div>
         </div>
