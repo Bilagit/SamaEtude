@@ -5,6 +5,7 @@ namespace App\Http\Controllers;
 use Illuminate\Http\Request;
 use App\Models\Cours;
 use App\Models\Categorie;
+use App\Models\Exercice;
 use Illuminate\Support\Facades\Auth;
 class ProfessorController extends Controller
 {
@@ -19,7 +20,10 @@ class ProfessorController extends Controller
     }
     public function exercices()
     {
-        return view('Professeur.exercice');
+        $exos = Exercice::paginate(10);
+        return view('Professeur.exercice',[
+            'exos' => $exos
+        ]);
     }
     public function ajoutercours(Request $request){
         $request->validate([
@@ -62,5 +66,43 @@ class ProfessorController extends Controller
         $cours->idCategorie = $request->idCategorie;
         $cours->update();
         return to_route('professeur.cours')->with('success', 'Cours modifié avec succès ! ');
+    }
+    public function ajouterexo(Request $request){
+        $request->validate([
+            'titre' => 'required',
+            'contenu' => 'required|mimes:pdf',
+            'idCours' => 'required'
+        ]);
+        $path = $request->file('contenu')->store('exercices', 'public');
+        $exo = Exercice::create([
+            'titre' => $request->titre,
+            'contenu' => $path,
+            'idProfesseur' => Auth::id(),
+            'idCours' => $request->idCours
+        ]);
+        if ($exo) {
+            return to_route('professeur.exercices')->with('success', 'Exercice ajouté avec succès !');
+        }
+    }
+    public function suppexo($id){
+        $exo = Exercice::find($id);
+        if ($exo) {
+            $exo->delete();
+            return to_route('professeur.exercices')->with('success', 'Exercice supprimé avec succès !');
+        }
+    }
+    public function updateexo(Request $request, $id){
+        $request->validate([
+            'titre' => 'required',
+            'contenu' => 'required',
+            'idCours' => 'required'
+        ]);
+        $exo = Exercice::findOrFail($id);
+        $path = $request->file('contenu')->store('exercices', 'public');
+        $exo->titre = $request->titre;
+        $exo->contenu = $path;
+        $exo->idCours = $request->idCours;
+        $exo->update();
+        return to_route('professeur.exercices')->with('success', 'Exercice modifié avec succès ! ');
     }
 }
