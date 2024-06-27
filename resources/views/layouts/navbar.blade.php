@@ -65,7 +65,7 @@
     </style>
 </head>
 <body>
-<nav class="navbar navbar-expand-lg custom-navbar">
+<nav class="navbar   navbar-expand-lg custom-navbar">
     <div class="container-fluid">
         <a class="navbar-brand" href="#">
             <img src="{{ asset('img/logo.png') }}" width="40" height="40" class="d-inline-block align-top" alt="">
