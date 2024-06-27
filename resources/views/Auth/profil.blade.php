@@ -15,14 +15,51 @@
 <div class="container">
     <div class="main-body">
 
-        <!-- Navbar -->
-        <nav aria-label="breadcrumb" class="main-breadcrumb">
-            <ol class="breadcrumb">
-                <li class="breadcrumb-item"><a href="#">Home</a></li>
-                <li class="breadcrumb-item"><a href="#">User</a></li>
-                <li class="breadcrumb-item active" aria-current="page">User Profile</li>
-            </ol>
+        <nav class="navbar navbar-expand-lg custom-navbar">
+            <div class="container-fluid">
+                <a class="navbar-brand" href="#">
+                    <img src="{{ asset('img/logo.png') }}" width="40" height="40" class="d-inline-block align-top" alt="">
+                    SamaEtude
+                </a>
+                <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarNav" aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
+                    <span class="navbar-toggler-icon"></span>
+                </button>
+                <div class="collapse navbar-collapse" id="navbarNav">
+                    <ul class="navbar-nav ml-auto">
+                        <!-- Authenticated -->
+                        <li class="nav-item">
+                            <a class="nav-link" href="">Accueil</a>
+                        </li>
+                        <li class="nav-item">
+                            <a class="nav-link" href="">Cours</a>
+                        </li>
+                        <li class="nav-item dropdown">
+                            <a class="nav-link dropdown-toggle" href="#" id="navbarDropdown" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                                Menu
+                            </a>
+                            <div class="dropdown-menu dropdown-menu-right" aria-labelledby="navbarDropdown">
+                                <a class="dropdown-item" href=""><i class="fas fa-bell"></i> Notifications</a>
+                                <a class="dropdown-item" href=""><i class="fas fa-user"></i> Profil</a>
+                                <div class="dropdown-divider"></div>
+                                <a class="dropdown-item" href="" onclick="event.preventDefault(); document.getElementById('logout-form').submit();">
+                                    <i class="fas fa-sign-out-alt"></i> Déconnexion
+                                </a>
+                                <form id="logout-form" action="" method="POST" style="display: none;">
+                                    @csrf
+                                </form>
+                            </div>
+                        </li>
+                        <!-- Role specific -->
+                        @if (Auth::user()->role === 'professeur')
+                            <li class="nav-item">
+                                <a class="nav-link" href="">Lien Professeur</a>
+                            </li>
+                        @endif
+                    </ul>
+                </div>
+            </div>
         </nav>
+
         <!-- /Navbar -->
 
         <div class="row gutters-sm">
@@ -104,13 +141,22 @@
                             </div>
                         </div>
                         <hr>
-                        @if ($user->role === 'etudiant' || $user->role === 'professeur')
+                        @if ($user->role === 'etudiant')
                             <div class="row">
                                 <div class="col-sm-3">
                                     <h6 class="mb-0">Téléphone</h6>
                                 </div>
                                 <div class="col-sm-9 text-secondary">
                                     {{ $info->phone_number }}
+                                </div>
+                            </div>
+                        @elseif ($user->role === 'professeur')
+                            <div class="row">
+                                <div class="col-sm-3">
+                                    <h6 class="mb-0">Téléphone</h6>
+                                </div>
+                                <div class="col-sm-9 text-secondary">
+                                    {{ $info->telephone }}
                                 </div>
                             </div>
                         @endif

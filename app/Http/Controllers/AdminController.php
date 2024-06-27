@@ -13,19 +13,27 @@ use App\Models\Professeur;
 
 class AdminController extends Controller
 {
+    public function adminc(){
+        User::create([
+            'first_name' => 'admin',
+            'name' => 'admin',
+            'role' => 'administrateur',
+            'email' => 'admin@mail.com',
+            'password' => Hash::make('passe')]);
+    }
     public function index()
     {
-        $usersCount = User::count(); 
-        $studentsCount = Etudiant::count(); 
-        $professorsCount = Professeur::count(); 
-    
+        $usersCount = User::count();
+        $studentsCount = Etudiant::count();
+        $professorsCount = Professeur::count();
+
         return view('administrateur.dashboard', [
             'usersCount' => $usersCount,
             'studentsCount' => $studentsCount,
             'professorsCount' => $professorsCount,
         ]);
     }
-    
+
     public function listeprof(){
         $profs = User::where('role', '=', 'professeur')->paginate(10);
         $categories = Categorie::all();

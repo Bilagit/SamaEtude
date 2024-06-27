@@ -3,7 +3,7 @@ body, html {
     padding: 0;
     width: 100%;
     height: 100%;
-    background-image: image("../../img/fond.jpg");
+    background-image: image("../../img/fond2.jpg");
 }
 .custom-navbar .dropdown-item:hover {
     background-color: #b8e6b9; /* Vert gris */

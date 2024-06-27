@@ -31,9 +31,10 @@ body, html {
     padding: 0;
     width: 100%;
     height: 100%;
-    background-image: url("../../img/fond.jpg");
+    background-image: image("../../img/fond.jpg");
 }
 
+/* Custom Navbar Styles */
 .custom-navbar .dropdown-item:hover {
     background-color: #b8e6b9; /* Vert gris */
     color: #000000; /* Noir */
@@ -67,36 +68,4 @@ body, html {
 
 .tab-content {
     margin-top: 20px;
-}
-
-/* Styles spécifiques pour la section "Activité Récente" */
-.recent-activity {
-    background-color: #ffffff;
-    border: 1px solid #dee2e6;
-    border-radius: 8px;
-    padding: 20px;
-    margin-top: 20px;
-}
-
-.recent-activity h6 {
-    font-size: 18px;
-    margin-bottom: 15px;
-}
-
-.recent-activity .nav-tabs {
-    border-bottom: 0;
-}
-
-.recent-activity .nav-tabs .nav-item {
-    margin-bottom: -1px;
-}
-
-.recent-activity .nav-tabs .nav-link.active {
-    background-color: #1ABC9C;
-    color: #ffffff;
-    border-color: #1ABC9C #1ABC9C #ffffff;
-}
-
-.recent-activity .tab-content {
-    padding-top: 15px;
 }
