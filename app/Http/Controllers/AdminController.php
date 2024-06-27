@@ -13,14 +13,6 @@ use App\Models\Professeur;
 
 class AdminController extends Controller
 {
-    public function adminc(){
-        User::create([
-            'first_name' => 'admin',
-            'name' => 'admin',
-            'role' => 'administrateur',
-            'email' => 'admin@mail.com',
-            'password' => Hash::make('passe')]);
-    }
     public function index()
     {
         $usersCount = User::count();
