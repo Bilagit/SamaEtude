@@ -88,32 +88,29 @@
                     </li>
                 @else
                     <li class="nav-item">
-                        <a class="nav-link" href="">Cours</a>
+                        <a class="nav-link" href="/cours">Cours</a>
                     </li>
-                    <li class="nav-item">
-                        <a class="nav-link" href="">Accueil</a>
-                    </li>
+                    @if (Auth::user()->role === 'professeur')
+                        <li class="nav-item">
+                            <a class="nav-link" href="/exercices">Exercices</a>
+                        </li>
+                    @endif
                     <li class="nav-item dropdown">
                         <a class="nav-link dropdown-toggle" href="#" id="navbarDropdown" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
                             Menu
                         </a>
                         <div class="dropdown-menu dropdown-menu-right" aria-labelledby="navbarDropdown">
                             <a class="dropdown-item" href=""><i class="fas fa-bell"></i> Notifications</a>
-                            <a class="dropdown-item" href=""><i class="fas fa-user"></i> Profil</a>
+                            <a class="dropdown-item" href="/profil"><i class="fas fa-user"></i> Profil</a>
                             <div class="dropdown-divider"></div>
                             <a class="dropdown-item" href="" onclick="event.preventDefault(); document.getElementById('logout-form').submit();">
                                 <i class="fas fa-sign-out-alt"></i> Déconnexion
                             </a>
-                            <form id="logout-form" action="" method="POST" style="display: none;">
+                            <form id="logout-form" action="/logout" method="POST" style="display: none;">
                                 @csrf
                             </form>
                         </div>
                     </li>
-                    @if (Auth::user()->role === 'professeur')
-                        <li class="nav-item">
-                            <a class="nav-link" href="">Lien Professeur</a>
-                        </li>
-                    @endif
                 @endguest
             </ul>
         </div>

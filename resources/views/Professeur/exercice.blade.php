@@ -1,4 +1,4 @@
-@extends('layouts.sidebareprof')
+@extends('layouts.navbar')
 
 @section('content')
 
