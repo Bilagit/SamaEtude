@@ -17,11 +17,14 @@
         }
 
         .custom-navbar {
-            background-color: #001A09; /* Vert foncé */
+            background-color:#001a1a; /* Vert foncé */
             color: #fafafa; /* Couleur claire */
             width: 100%;
         }
-
+        li {
+            font-size: 20px;
+            margin: 10px;
+        }
         .custom-navbar .navbar-brand,
         .custom-navbar .nav-link {
             color: #f6f2f2; /* Couleur claire */
@@ -30,7 +33,6 @@
 
         .custom-navbar .nav-link:hover {
             color: #ffffff; /* Blanc */
-            background-color: #b8e6b9; /* Vert gris clair */
         }
 
         .custom-navbar .navbar-toggler {

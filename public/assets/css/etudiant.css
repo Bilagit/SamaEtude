@@ -1,0 +1,128 @@
+body, html {
+    margin: 0;
+    padding: 0;
+    width: 100%;
+    height: 100%;
+    background-image: image("../../img/fond.jpg");
+}
+.custom-navbar .dropdown-item:hover {
+    background-color: #b8e6b9; /* Vert gris */
+    color: #000000; /* Noir */
+}
+.custom-navbar {
+    background-color:#00141a; /* Vert foncé */
+    color: #fafafa; /* Couleur claire */
+}
+.custom-navbar .dropdown-menu {
+    background-color: #d4edda; /* Vert clair */
+    color: #000000; /* Noir */
+    margin-top: 18px;
+    margin-right: -37px;
+}
+.custom-navbar .navbar-toggler-icon {
+    background-image: url("data:image/svg+xml;charset=utf8,%3Csvg viewBox='0 0 30 30' xmlns='http://www.w3.org/2000/svg'%3E%3Cpath stroke='rgba(0, 0, 0, 0.5)' stroke-width='2' stroke-linecap='round' stroke-miterlimit='10' d='M4 7h22M4 15h22M4 23h22'/%3E%3C/svg%3E");
+}
+
+.custom-navbar .navbar-brand,
+.custom-navbar .nav-link {
+    color: #f6f2f2; /* Couleur claire */
+    font-weight: 600;
+}
+
+.custom-navbar .nav-link:hover {
+    color: #ffffff; /* Blanc */
+}
+
+.tab-content {
+    margin-top: 20px;
+}
+
+.course-card {
+    display: flex;
+    align-items: center;
+    border: 1px solid #ddd;
+    border-radius: 5px;
+    padding: 15px;
+    margin: 10px 0;
+}
+
+.course-card img {
+    width: 50px;
+    height: 50px;
+    margin-right: 15px;
+    border-radius: 5px;
+}
+
+.course-details {
+    flex: 1;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+}
+
+.course-details .course-info {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    width: 100%;
+}
+
+.course-details .course-info h5 {
+    margin-right: 20px;
+    font-size: 16px;
+}
+
+.course-details .course-info p {
+    margin-right: 20px;
+    font-size: 14px;
+}
+
+.course-rating {
+    display: flex;
+    align-items: center;
+    justify-content: flex-end;
+    width: 100px;
+}
+
+.course-rating span {
+    margin-left: 5px;
+    color: gold;
+}
+
+.search-bar {
+    margin-bottom: 20px;
+}
+
+.filter-bar {
+    margin-bottom: 20px;
+}
+
+.favorite-icon {
+    cursor: pointer;
+    color: #81dd53;
+    margin-left: 20px;
+}
+
+.favorite-icon:hover {
+    color: #60dd7c;
+}
+
+.dropdown-menu {
+    background-color: #adf3be; /* Vert clair */
+    color: #000000; /* Noir */
+    margin-top: 18px;
+    margin-right: -37px;
+}
+
+.dropdown-item {
+    color: #000000; /* Noir */
+}
+
+.dropdown-item:hover {
+    background-color: #b8e6b9; /* Vert gris */
+    color: #000000; /* Noir */
+}
+
+.dropdown-item i {
+    margin-right: 10px; /* Espace entre l'icône et le texte */
+}
