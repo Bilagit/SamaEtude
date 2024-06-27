@@ -57,12 +57,13 @@ class ProfessorController extends Controller
             'idCategorie' => 'required',
         ]);
         $path = $request->file('file')->store('cours', 'public');
+        $prof = Professeur::where('idUser', '=', Auth::id())->first();
         $cours = Cours::create([
             'nom' => $request->nom,
             'description' => $request->description,
             'file_path' => $path,
             'idCategorie' => $request->idCategorie,
-            'idProfesseur' => Auth::id()
+            'idProfesseur' => $prof->id
         ]);
         if($cours){
             return to_route('professeur.cours')->with('success', 'Cours ajouté avec succès ! ');
