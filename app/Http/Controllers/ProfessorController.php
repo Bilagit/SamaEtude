@@ -100,10 +100,11 @@ class ProfessorController extends Controller
             'idCours' => 'required'
         ]);
         $path = $request->file('contenu')->store('exercices', 'public');
+        $prof = Professeur::where('idUser', '=', Auth::id())->first();
         $exo = Exercice::create([
             'titre' => $request->titre,
             'contenu' => $path,
-            'idProfesseur' => Auth::id(),
+            'idProfesseur' => $prof->id,
             'idCours' => $request->idCours
         ]);
         if ($exo) {

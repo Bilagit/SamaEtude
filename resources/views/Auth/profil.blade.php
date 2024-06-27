@@ -26,13 +26,34 @@
                 </button>
                 <div class="collapse navbar-collapse" id="navbarNav">
                     <ul class="navbar-nav ml-auto">
+                        @if($user->role === 'etudiant')
                         <!-- Authenticated -->
                         <li class="nav-item">
-                            <a class="nav-link" href="">Accueil</a>
+                            <a class="nav-link" href="/etudiant">Accueil</a>
                         </li>
                         <li class="nav-item">
-                            <a class="nav-link" href="">Cours</a>
+                            <a class="nav-link" href="/etudiant">Cours</a>
                         </li>
+                        @elseif($user->role === 'professeur')
+                            <li class="nav-item">
+                                <a class="nav-link" href="/cours">Accueil</a>
+                            </li>
+                            <li class="nav-item">
+                                <a class="nav-link" href="/cours">Cours</a>
+                        @elseif($user->role === 'administrateur')
+                            <li class="nav-item">
+                                <a class="nav-link" href="/admin">Accueil</a>
+                            </li>
+                            <li class="nav-item">
+                                <a class="nav-link" href="/getetudiants">Etudiants</a>
+                            </li>
+                            <li class="nav-item">
+                                <a class="nav-link" href="/listecategorie">Catégories</a>
+                            </li>
+                            <li class="nav-item">
+                                <a class="nav-link" href="/listeprof">Professeurs</a>
+                            </li>
+                        @endif
                         <li class="nav-item dropdown">
                             <a class="nav-link dropdown-toggle" href="#" id="navbarDropdown" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
                                 Menu
