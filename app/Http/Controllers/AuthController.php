@@ -61,11 +61,11 @@ class AuthController extends Controller
     {
         $user = Auth::user();
         if ($user->role === 'etudiant') {
-            $info = Etudiant::find($user->id);
+            $info = Etudiant::where('idUser','=',$user->id)->first();
             return view('auth.profil', ['user' => $user, 'info' => $info]);
         }
         if ($user->role === 'professeur') {
-            $info = Professeur::find($user->id);
+            $info = Professeur::where('idUser','=',$user->id)->first();
             return view('auth.profil', ['user' => $user, 'info' => $info]);
         }
         return view('auth.profil', ['user' => $user]);
