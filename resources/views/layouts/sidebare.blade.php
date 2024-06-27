@@ -38,10 +38,11 @@
     }
 
     #sidebar .logo {
-        display: block;
-        text-align: center;
+        display: flex;
+        align-items: center;
+        justify-content: center;
         padding: 20px 0;
-        font-size: 24px;
+        font-size: 18px; /* Adjust font size */
         font-weight: bold;
     }
 
@@ -107,7 +108,10 @@
 
 <body>
     <header class="navbar sticky-top bg-dark flex-md-nowrap p-0 shadow" data-bs-theme="dark">
-        <h1 style="color: #f2f2f2;">SamaEtude</h1>
+        <div class="d-flex align-items-center">
+            <img src="{{ asset('img/logoadmin.png') }}" alt="" width="50" height="50"> <!-- Adjust width and height as needed -->
+            <h1 style="color: #f2f2f2; font-size: 24px; margin-left: 10px;">SamaEtude</h1> <!-- Adjust font size and margin -->
+        </div>
         <div class="dropdown">
             <a href="/profil" class="d-flex align-items-center text-white text-decoration-none"
                 data-bs-toggle="dropdown" aria-expanded="false">
