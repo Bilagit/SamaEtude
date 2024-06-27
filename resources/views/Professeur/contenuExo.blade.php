@@ -60,406 +60,9 @@ body {
     border-bottom: none;
 }
 
-img {
-    width: 100%;
-    max-width: 100%;
-    height: auto;
-    -webkit-backface-visibility: hidden;
-}
-
 .rounded {
     border-radius: 5px !important;
 }
-
-.btn-xs.btn-icon {
-    width: 34px;
-    height: 34px;
-    max-width: 34px !important;
-    max-height: 34px !important;
-    font-size: 10px;
-    line-height: 34px;
-}
-
-/* facebook button */
-.btn-facebook,
-.btn-facebook:active,
-.btn-facebook:focus {
-    color: #fff !important;
-    background: #4e68a1;
-    border: 2px solid #4e68a1;
-}
-
-.btn-facebook:hover {
-    color: #fff !important;
-    background: #3b4f7a;
-    border: 2px solid #3b4f7a;
-}
-
-.btn-facebook-link,
-.btn-facebook-link:active,
-.btn-facebook-link:focus {
-    color: #4e68a1 !important;
-    background: transparent;
-    border: none;
-}
-
-.btn-facebook-link:hover {
-    color: #3b4f7a !important;
-}
-
-.btn-outline-facebook,
-.btn-outline-facebook:active,
-.btn-outline-facebook:focus {
-    color: #4e68a1 !important;
-    background: transparent;
-    border: 2px solid #4e68a1;
-}
-
-.btn-outline-facebook:hover {
-    color: #fff !important;
-    background: #4e68a1;
-    border: 2px solid #4e68a1;
-}
-
-/* twitter button */
-.btn-twitter,
-.btn-twitter:active,
-.btn-twitter:focus {
-    color: #fff !important;
-    background: #65b5f2;
-    border: 2px solid #65b5f2;
-}
-
-.btn-twitter:hover {
-    color: #fff !important;
-    background: #5294c6;
-    border: 2px solid #5294c6;
-}
-
-.btn-twitter:hover {
-    color: #fff !important;
-    background: #5294c6;
-    border: 2px solid #5294c6;
-}
-
-.btn-twitter-link,
-.btn-twitter-link:active,
-.btn-twitter-link:focus {
-    color: #65b5f2 !important;
-    background: transparent;
-    border: none;
-}
-
-.btn-twitter-link:hover {
-    color: #5294c6 !important;
-}
-
-.btn-outline-twitter,
-.btn-outline-twitter:active,
-.btn-outline-twitter:focus {
-    color: #65b5f2 !important;
-    background: transparent;
-    border: 2px solid #65b5f2;
-}
-
-.btn-outline-twitter:hover {
-    color: #fff !important;
-    background: #65b5f2;
-    border: 2px solid #65b5f2;
-}
-
-/* google button */
-.btn-google,
-.btn-google:active,
-.btn-google:focus {
-    color: #fff !important;
-    background: #e05d4b;
-    border: 2px solid #e05d4b;
-}
-
-.btn-google:hover {
-    color: #fff !important;
-    background: #b94c3d;
-    border: 2px solid #b94c3d;
-}
-
-.btn-google-link,
-.btn-google-link:active,
-.btn-google-link:focus {
-    color: #e05d4b !important;
-    background: transparent;
-    border: none;
-}
-
-.btn-google-link:hover {
-    color: #b94c3d !important;
-}
-
-.btn-outline-google,
-.btn-outline-google:active,
-.btn-outline-google:focus {
-    color: #e05d4b !important;
-    background: transparent;
-    border: 2px solid #e05d4b;
-}
-
-.btn-outline-google:hover {
-    color: #fff !important;
-    background: #e05d4b;
-    border: 2px solid #e05d4b;
-}
-
-/* linkedin button */
-.btn-linkedin,
-.btn-linkedin:active,
-.btn-linkedin:focus {
-    color: #fff !important;
-    background: #2083bc;
-    border: 2px solid #2083bc;
-}
-
-.btn-linkedin:hover {
-    color: #fff !important;
-    background: #186592;
-    border: 2px solid #186592;
-}
-
-.btn-linkedin-link,
-.btn-linkedin-link:active,
-.btn-linkedin-link:focus {
-    color: #2083bc !important;
-    background: transparent;
-    border: none;
-}
-
-.btn-linkedin-link:hover {
-    color: #186592 !important;
-}
-
-.btn-outline-linkedin,
-.btn-outline-linkedin:active,
-.btn-outline-linkedin:focus {
-    color: #2083bc !important;
-    background: transparent;
-    border: 2px solid #2083bc;
-}
-
-.btn-outline-linkedin:hover {
-    color: #fff !important;
-    background: #2083bc;
-    border: 2px solid #2083bc;
-}
-
-/* pinterest button */
-.btn-pinterest,
-.btn-pinterest:active,
-.btn-pinterest:focus {
-    color: #fff !important;
-    background: #d2373b;
-    border: 2px solid #d2373b;
-}
-
-.btn-pinterest:hover {
-    color: #fff !important;
-    background: #ad2c2f;
-    border: 2px solid #ad2c2f;
-}
-
-.btn-pinterest-link,
-.btn-pinterest-link:active,
-.btn-pinterest-link:focus {
-    color: #d2373b !important;
-    background: transparent;
-    border: none;
-}
-
-.btn-pinterest-link:hover {
-    color: #ad2c2f !important;
-}
-
-.btn-outline-pinterest,
-.btn-outline-pinterest:active,
-.btn-outline-pinterest:focus {
-    color: #d2373b !important;
-    background: transparent;
-    border: 2px solid #d2373b;
-}
-
-.btn-outline-pinterest:hover {
-    color: #fff !important;
-    background: #d2373b;
-    border: 2px solid #d2373b;
-}
-
-/* dribble button */
-.btn-dribbble,
-.btn-dribbble:active,
-.btn-dribbble:focus {
-    color: #fff !important;
-    background: #ec5f94;
-    border: 2px solid #ec5f94;
-}
-
-.btn-dribbble:hover {
-    color: #fff !important;
-    background: #b4446e;
-    border: 2px solid #b4446e;
-}
-
-.btn-dribbble-link,
-.btn-dribbble-link:active,
-.btn-dribbble-link:focus {
-    color: #ec5f94 !important;
-    background: transparent;
-    border: none;
-}
-
-.btn-dribbble-link:hover {
-    color: #b4446e !important;
-}
-
-.btn-outline-dribbble,
-.btn-outline-dribbble:active,
-.btn-outline-dribbble:focus {
-    color: #ec5f94 !important;
-    background: transparent;
-    border: 2px solid #ec5f94;
-}
-
-.btn-outline-dribbble:hover {
-    color: #fff !important;
-    background: #ec5f94;
-    border: 2px solid #ec5f94;
-}
-
-/* instagram button */
-.btn-instagram,
-.btn-instagram:active,
-.btn-instagram:focus {
-    color: #fff !important;
-    background: #4c5fd7;
-    border: 2px solid #4c5fd7;
-}
-
-.btn-instagram:hover {
-    color: #fff !important;
-    background: #4252ba;
-    border: 2px solid #4252ba;
-}
-
-.btn-instagram-link,
-.btn-instagram-link:active,
-.btn-instagram-link:focus {
-    color: #4c5fd7 !important;
-    background: transparent;
-    border: none;
-}
-
-.btn-instagram-link:hover {
-    color: #4252ba !important;
-}
-
-.btn-outline-instagram,
-.btn-outline-instagram:active,
-.btn-outline-instagram:focus {
-    color: #4c5fd7 !important;
-    background: transparent;
-    border: 2px solid #4c5fd7;
-}
-
-.btn-outline-instagram:hover {
-    color: #fff !important;
-    background: #4c5fd7;
-    border: 2px solid #4c5fd7;
-}
-
-/* youtube button */
-.btn-youtube,
-.btn-youtube:active,
-.btn-youtube:focus {
-    color: #fff !important;
-    background: #e52d27;
-    border: 2px solid #e52d27;
-}
-
-.btn-youtube:hover {
-    color: #fff !important;
-    background: #b31217;
-    border: 2px solid #b31217;
-}
-
-.btn-youtube-link,
-.btn-youtube-link:active,
-.btn-youtube-link:focus {
-    color: #e52d27 !important;
-    background: transparent;
-    border: none;
-}
-
-.btn-youtube-link:hover {
-    color: #b31217 !important;
-}
-
-.btn-outline-youtube,
-.btn-outline-youtube:active,
-.btn-outline-youtube:focus {
-    color: #e52d27 !important;
-    background: transparent;
-    border: 2px solid #e52d27;
-}
-
-.btn-outline-youtube:hover {
-    color: #fff !important;
-    background: #e52d27;
-    border: 2px solid #e52d27;
-}
-
-.btn-xs.btn-icon span,
-.btn-xs.btn-icon i {
-    line-height: 34px;
-}
-
-.btn-icon.btn-circle span,
-.btn-icon.btn-circle i {
-    margin-top: -1px;
-    margin-right: -1px;
-}
-
-.btn-icon i {
-    margin-top: -1px;
-}
-
-.btn-icon span,
-.btn-icon i {
-    display: block;
-    line-height: 50px;
-}
-
-a.btn,
-a.btn-social {
-    display: inline-block;
-}
-
-.mr-5 {
-    margin-right: 5px !important;
-}
-
-.mb-0 {
-    margin-bottom: 0 !important;
-}
-
-.btn-facebook,
-.btn-facebook:active,
-.btn-facebook:focus {
-    color: #fff !important;
-    background: #4e68a1;
-    border: 2px solid #4e68a1;
-}
-
-.btn-circle {
-    border-radius: 50% !important;
-}
-
 .project-info-box p {
     margin-bottom: 15px;
     padding-bottom: 15px;
@@ -480,6 +83,10 @@ strong {
     font-weight: 700 !important;
 }
 </style>
+@extends('layouts.navbar')
+
+@section('content')
+<br>
 <link rel='stylesheet' href='https://cdn.jsdelivr.net/npm/bootstrap@4.4.1/dist/css/bootstrap.min.css'>
 
 <script src='https://cdn.jsdelivr.net/npm/bootstrap@4.4.1/dist/js/bootstrap.bundle.min.js'></script>
@@ -489,19 +96,19 @@ strong {
     <div class="row">
         <div class="col-md-5">
             <div class="project-info-box mt-0">
-                <h5></h5>
-                <p class="mb-0"></p>
+                <h5>Description de l'Exercice</h5>
+                <p class="mb-0">{{ $exo->description }}</p>
             </div><!-- / project-info-box -->
 
             <div class="project-info-box">
-                <p><b>Nom du Exercices:</b> {{ $exo->titre }}</p>
+                <p><b>Nom de l'Exercice:</b> {{ $exo->titre }}</p>
                 <p><b>Professeur:</b> {{ Auth::user()->first_name }} {{ Auth::user()->name }}</p>
                 <p><b>Date:</b> {{ $exo->created_at }}</p>
                 <p><b>Dernière modification:</b> {{ $exo->updated_at }}</p>
-                <p class="mb-0"><b>Catégorie:</b>
+                <p class="mb-0"><b>Cours:</b>
     @foreach ($cours as $cour)
         @if ($cour->id === $exo->idCours)
-            {{ $cour->titre }}
+            {{ $cour->nom }}
         @endif
     @endforeach
 </p>
@@ -512,26 +119,37 @@ strong {
 
         
         <div class="col-md-7">
-            @if (Str::endsWith($exo->file_path, '.pdf'))
-                <embed src="{{ asset('storage/' . $exo->file_path) }}" type="application/pdf" width="100%" height="600px" />
-            @elseif (Str::endsWith($exo->file_path, '.mp4') || Str::endsWith($exo->file_path, '.avi') || Str::endsWith($exo->file_path, '.mkv'))
+            @if (Str::endsWith($exo->contenu, '.pdf'))
+                <embed src="{{ asset('storage/' . $exo->contenu) }}" type="application/pdf" width="100%" height="600px" />
+            @elseif (Str::endsWith($exo->contenu, '.mp4') || Str::endsWith($exo->contenu, '.avi') || Str::endsWith($exo->contenu, '.mkv'))
                 <video width="100%" height="auto" controls>
-                    <source src="{{ asset('storage/' . $exo->file_path) }}" type="video/mp4">
-                    Le navigateur ne peut pas encore en charge la vidéo.
+                    <source src="{{ asset('storage/' . $exo->contenu) }}" type="video/mp4">
+                    Le navigateur ne peut pas prendre en charge la vidéo.
                 </video>
             @else
                 <p>Format de fichier non pris en charge</p>
             @endif
             <div class="project-info-box">
-                <p><b>Exercices Similaires:</b></p>
-                <ul>
-                    @foreach ($exos as $item)
-                        @if ($item->id !== $exo->id)
-                        <p><b>Nom:</b> <a href="{{ route('professeur.contenu', ['id' => $item->id]) }}">{{ $item->nom }}</a></p>
-                        @endif
-                    @endforeach
-                </ul>
+                <div class="row">
+                    <div class="col-md-6">
+                        <p><b>Cours:</b></p>
+                        @foreach ($cours as $cour)
+                            @if ($cour->id === $exo->idCours)
+                                <p>{{ $cour->nom }}</p>
+                            @endif
+                        @endforeach
+                    </div>
+                    <div class="col-md-6">
+                        <p><b>Exercices Similaires:</b></p>
+                        <ul>
+                            @foreach ($exos as $item)
+                                <p><b>Nom:</b> <a href="{{ route('professeur.contenuExo', ['id' => $item->id]) }}">{{ $item->titre }}</a></p>
+                            @endforeach
+                        </ul>
+                    </div>
+                </div>
             </div><!-- / project-info-box -->
         </div><!-- / column -->
     </div>
 </div>
+@endsection

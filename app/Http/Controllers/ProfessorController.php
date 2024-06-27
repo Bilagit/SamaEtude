@@ -41,15 +41,19 @@ class ProfessorController extends Controller
     
     public function contenuExo($id)
     {
-        $exos = Exercice::paginate(10);
+        $exo = Exercice::findOrFail($id);
+        $exos = Exercice::where('idCours', $exo->idCours)->where('id', '!=', $id)->get();
         $categories = Categorie::all();
         $cours = Cours::paginate(10);
-        $exo = Exercice::findOrFail($id);
         return view('Professeur.contenuExo', [
             'categories' => $categories,
-            'cours' => $cours
-        ], compact('exo','exos'));
+            'cours' => $cours,
+            'exo' => $exo,
+            'exos' => $exos
+        ]);
     }
+    
+    
     public function ajoutercours(Request $request){
         $request->validate([
             'nom' => 'required|string',

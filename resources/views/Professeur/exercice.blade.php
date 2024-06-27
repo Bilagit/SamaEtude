@@ -226,9 +226,9 @@
                                 </td>
                                 <td>
                                     <div class="btn-group">
-                                    <a href="{{ url('contenuExo/' . $exo->id) }}" class="btn btn-light">
-                    <img src="{{ asset('img/eye.svg') }}" width="16" height="16" alt="">
-                </a>
+                                        <a href="{{ url('contenuExo/' . $exo->id) }}" class="btn btn-light">
+                                            <img src="{{ asset('img/eye.svg') }}" width="16" height="16" alt="">
+                                        </a>
                                         <button type="button" class="btn btn-info" data-bs-toggle="modal"
                                             data-bs-target="#modalModifierExercice{{$exo->id}}">
                                             <img src="{{ asset('img/pencil.svg') }}" width="16" height="16" alt="">
@@ -297,8 +297,14 @@
                                                     <div class="mb-3">
                                                         <label for="idCours{{$exo->id}}" class="form-label">ID du
                                                             Cours</label>
-                                                        <input type="text" class="form-control" id="idCours{{$exo->id}}"
-                                                            name="idCours" value="{{ $exo->idCours }}" required>
+                                                        <select class="form-select" id="idCours{{$exo->id}}"
+                                                            name="idCours" required>
+                                                            <option value="">Sélectionner un cours</option>
+                                                            @foreach($cours as $course)
+                                                            <option value="{{ $course->id }}">{{ $course->nom }}
+                                                            </option>
+                                                            @endforeach
+                                                        </select>
                                                     </div>
                                                 </div>
                                                 <div class="modal-footer">
@@ -340,8 +346,13 @@
                             <input type="file" class="form-control" id="contenu" name="contenu" accept=".pdf" required>
                         </div>
                         <div class="mb-3">
-                            <label for="idCours" class="form-label">ID du Cours</label>
-                            <input type="text" class="form-control" id="idCours" name="idCours" required>
+                            <label for="idCours{{$exo->id}}" class="form-label">ID du Cours</label>
+                            <select class="form-select" id="idCours{{$exo->id}}" name="idCours" required>
+                                <option value="">Sélectionner un cours</option>
+                                @foreach($cours as $course)
+                                <option value="{{ $course->id }}">{{ $course->nom }}</option>
+                                @endforeach
+                            </select>
                         </div>
                     </div>
                     <div class="modal-footer">
