@@ -18,12 +18,36 @@ class ProfessorController extends Controller
             'cours' => $cours
         ]);
     }
+    public function contenu($id)
+    {
+        $categories = Categorie::all();
+        $cours = Cours::paginate(10);
+        $cour = Cours::findOrFail($id);
+        return view('Professeur.contenu', [
+            'categories' => $categories,
+            'cours' => $cours
+        ], compact('cour'));
+    }
     public function exercices()
     {
         $exos = Exercice::paginate(10);
+        $categories = Categorie::all();
+        $cours = Cours::paginate(10);
         return view('Professeur.exercice',[
             'exos' => $exos
-        ]);
+        ],compact('categories','cours'));
+    }
+    
+    public function contenuExo($id)
+    {
+        $exos = Exercice::paginate(10);
+        $categories = Categorie::all();
+        $cours = Cours::paginate(10);
+        $exo = Exercice::findOrFail($id);
+        return view('Professeur.contenuExo', [
+            'categories' => $categories,
+            'cours' => $cours
+        ], compact('exo','exos'));
     }
     public function ajoutercours(Request $request){
         $request->validate([
