@@ -12,10 +12,10 @@
 </head>
 
 <body>
-<div class="container">
+<div class="container-fluid">
     <div class="main-body">
 
-        <nav class="navbar navbar-expand-lg custom-navbar">
+        <nav class="navbar  navbar-expand-lg custom-navbar">
             <div class="container-fluid">
                 <a class="navbar-brand" href="#">
                     <img src="{{ asset('img/logo.png') }}" width="40" height="40" class="d-inline-block align-top" alt="">
@@ -39,12 +39,12 @@
                             </a>
                             <div class="dropdown-menu dropdown-menu-right" aria-labelledby="navbarDropdown">
                                 <a class="dropdown-item" href=""><i class="fas fa-bell"></i> Notifications</a>
-                                <a class="dropdown-item" href=""><i class="fas fa-user"></i> Profil</a>
+                                <a class="dropdown-item" href="/profil"><i class="fas fa-user"></i> Profil</a>
                                 <div class="dropdown-divider"></div>
                                 <a class="dropdown-item" href="" onclick="event.preventDefault(); document.getElementById('logout-form').submit();">
                                     <i class="fas fa-sign-out-alt"></i> Déconnexion
                                 </a>
-                                <form id="logout-form" action="" method="POST" style="display: none;">
+                                <form id="logout-form" action="{{ route('auth.logout') }}" method="POST" style="display: none;">
                                     @csrf
                                 </form>
                             </div>
@@ -221,12 +221,19 @@
                                                        value="{{ $user->email }}">
                                             </div>
 
-                                            @if ($user->role === 'etudiant' || $user->role === 'professeur')
+                                            @if ($user->role === 'etudiant')
                                                 <div class="form-group">
                                                     <label for="phone_number">Téléphone</label>
                                                     <input type="text" class="form-control" id="phone_number"
                                                            name="phone_number"
                                                            value="{{ $info->phone_number ?? '' }}">
+                                                </div>
+                                            @elseif ($user->role === 'professeur')
+                                                <div class="form-group">
+                                                    <label for="phone_number">Téléphone</label>
+                                                    <input type="text" class="form-control" id="phone_number"
+                                                           name="phone_number"
+                                                           value="{{ $info->telephone?? '' }}">
                                                 </div>
                                             @endif
 

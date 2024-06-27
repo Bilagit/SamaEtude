@@ -31,18 +31,23 @@ body, html {
     padding: 0;
     width: 100%;
     height: 100%;
-    background-image: image("../../img/fond.jpg");
+    background-image: image("../../img/fond2.jpg");
+    background-color: #ffffff;
 }
-
-/* Custom Navbar Styles */
 .custom-navbar .dropdown-item:hover {
     background-color: #b8e6b9; /* Vert gris */
     color: #000000; /* Noir */
 }
-
 .custom-navbar {
     background-color: #00141a; /* Vert foncé */
     color: #fafafa; /* Couleur claire */
+    width: 100%; /* S'assurer que la navbar occupe toute la largeur */
+    padding: 0; /* Enlever les padding par défaut */
+}
+
+.container-fluid {
+    padding-left: 0;
+    padding-right: 0;
 }
 
 .custom-navbar .dropdown-menu {
@@ -51,7 +56,6 @@ body, html {
     margin-top: 18px;
     margin-right: -37px;
 }
-
 .custom-navbar .navbar-toggler-icon {
     background-image: url("data:image/svg+xml;charset=utf8,%3Csvg viewBox='0 0 30 30' xmlns='http://www.w3.org/2000/svg'%3E%3Cpath stroke='rgba(0, 0, 0, 0.5)' stroke-width='2' stroke-linecap='round' stroke-miterlimit='10' d='M4 7h22M4 15h22M4 23h22'/%3E%3C/svg%3E");
 }
