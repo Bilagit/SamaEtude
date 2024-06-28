@@ -20,18 +20,10 @@
 </head>
 
 <body>
-    <svg xmlns="http://www.w3.org/2000/svg" style="display: none;">
-        <!-- Your SVG symbols here -->
-    </svg>
-
-    <!-- Dropdown for theme -->
-    <div class="dropdown position-fixed bottom-0 end-0 mb-3 me-3 bd-mode-toggle">
-        <!-- Dropdown content here -->
-    </div>
 
     <!-- Main content -->
     <main class="col-md-9 ms-sm-auto col-lg-12 px-md-4">
-       @include('Professeur.modals.header')
+        @include('Professeur.modals.header')
 
 
         <!-- Success message -->
@@ -59,93 +51,45 @@
 
         <!-- Album section for courses -->
         <div class="album py-5 bg-body-tertiary">
-    <div class="container">
-        <nav class="navbar navbar-expand-md navbar-dark bg-dark mb-4">
-            <div class="container-fluid">
-                <button class="navbar-toggler" type="button" data-bs-toggle="collapse"
-                    data-bs-target="#navbarCollapse" aria-controls="navbarCollapse" aria-expanded="false"
-                    aria-label="Toggle navigation">
-                    <span class="navbar-toggler-icon"></span>
-                </button>
-                <div class="collapse navbar-collapse" id="navbarCollapse">
-                    <ul class="navbar-nav me-auto mb-2 mb-md-0"></ul>
-                    <form class="d-flex" role="search">
-                        <input class="form-control me-2" type="search" placeholder="Rechercher un Cours"
-                            aria-label="Search">
-                        <button class="btn btn-outline-success" type="submit">Rechercher</button>
-                    </form>
-                </div>
-            </div>
-        </nav>
-        <br>
-        <nav>
-            <div class="nav nav-tabs mb-3" id="nav-tab" role="tablist">
-                @foreach ($categories as $index => $categorie)
-                <button class="nav-link {{ $index === 0 ? 'active' : '' }}"
-                    id="nav-{{ $categorie->id }}-tab" data-bs-toggle="tab"
-                    data-bs-target="#nav-{{ $categorie->id }}" type="button" role="tab"
-                    aria-controls="nav-{{ $categorie->id }}"
-                    aria-selected="{{ $index === 0 ? 'true' : 'false' }}">
-                    {{ $categorie->nom }}
-                </button>
-                @endforeach
-            </div>
-
-            <div class="tab-content" id="nav-tabContent">
-                @foreach ($categories as $index => $categorie)
-                <div class="tab-pane fade {{ $index === 0 ? 'show active' : '' }}"
-                    id="nav-{{ $categorie->id }}" role="tabpanel"
-                    aria-labelledby="nav-{{ $categorie->id }}-tab">
-                    <div class="row row-cols-1 row-cols-sm-2 row-cols-md-3 g-3">
-                        @foreach ($cours->where('idCategorie', $categorie->id) as $cour)
-                        <div class="col">
-                            <div class="card shadow-sm">
-                                <img src="{{ asset('img/java.webp') }}" class="rounded" width="100%"
-                                    height="225" alt="">
-                                <div class="card-body">
-                                    <p class="card-text"><strong>{{ $cour->nom }}</strong></p>
-                                    <p class="card-text">{{ $cour->description }}</p>
-                                    <div class="d-flex justify-content-between align-items-center">
-                                        <div class="btn-group">
-                                            <a href="{{ route('professeur.contenu', ['id' => $cour->id]) }}"
-                                                class="btn btn-light">
-                                                <img src="{{ asset('img/eye.svg') }}" width="16" height="16"
-                                                    alt="">
-                                            </a>
-                                            <button type="button" class="btn btn-info"
-                                                data-bs-toggle="modal"
-                                                data-bs-target="#editCourseModal{{ $cour->id }}">
-                                                <img src="{{ asset('img/pencil.svg') }}" width="16"
-                                                    height="16" alt="">
-                                            </button>
-                                            <button type="button" class="btn btn-danger"
-                                                data-cour-id="{{ $cour->id }}" data-bs-toggle="modal"
-                                                data-bs-target="#confirmDeleteModal{{$cour->id}}"><img
-                                                    src="{{ asset('img/trash.svg') }}" width="16"
-                                                    height="16" alt=""></button>
-                                        </div>
-                                        <small class="text-body-secondary">Le
-                                            {{ $cour->created_at }}</small>
-                                    </div>
-                                </div>
-                            </div>
+            <div class="container">
+                <nav class="navbar navbar-expand-md navbar-dark bg-dark mb-4">
+                    <div class="container-fluid">
+                        <button class="navbar-toggler" type="button" data-bs-toggle="collapse"
+                            data-bs-target="#navbarCollapse" aria-controls="navbarCollapse" aria-expanded="false"
+                            aria-label="Toggle navigation">
+                            <span class="navbar-toggler-icon"></span>
+                        </button>
+                        <div class="collapse navbar-collapse" id="navbarCollapse">
+                            <ul class="navbar-nav me-auto mb-2 mb-md-0"></ul>
+                            <form class="d-flex" role="search">
+                                <input class="form-control me-2" type="search" placeholder="Rechercher un Cours"
+                                    aria-label="Search">
+                                <button class="btn btn-outline-success" type="submit">Rechercher</button>
+                            </form>
                         </div>
-                        <!-- Modale de modification -->
-                        @include('Professeur.modals.modifierCours')
-                        @include('Professeur.modals.supprimerCours')
-                        @endforeach
                     </div>
-                </div>
-                @endforeach
-            </div>
-        </nav>
-    </div>
+                </nav>
+                <br>
+<ul class="nav nav-pills mb-3" id="pills-tab" role="tablist">
+  <li class="nav-item">
+    <a class="nav-link active" id="pills-home-tab" data-toggle="pill" href="#pills-home" role="tab" aria-controls="pills-home" aria-selected="true">Mes Cours</a>
+  </li>
+  <li class="nav-item">
+    <a class="nav-link" id="pills-profile-tab" data-toggle="pill" href="#pills-profile" role="tab" aria-controls="pills-profile" aria-selected="false">Tous les cours</a>
+  </li>
+</ul>
+<div class="tab-content" id="pills-tabContent">
+  <div class="tab-pane fade show active" id="pills-home" role="tabpanel" aria-labelledby="pills-home-tab">@include('Professeur.modals.album1')</div>
+  <div class="tab-pane fade" id="pills-profile" role="tabpanel" aria-labelledby="pills-profile-tab">@include('Professeur.modals.album2')</div>
 </div>
+            </div>
+        </div>
 
 
         <!-- Bootstrap bundle and Chart.js -->
         <script src="https://cdn.jsdelivr.net/npm/chart.js@4.2.1/dist/chart.umd.min.js"
-            integrity="sha384-gdQErvCNWvHQZj6XZM0dNsAoY4v+j5P1XDpNkcM3HJG1Yx04ecqIHk7+4VBOCHOG" crossorigin="anonymous"></script>
+            integrity="sha384-gdQErvCNWvHQZj6XZM0dNsAoY4v+j5P1XDpNkcM3HJG1Yx04ecqIHk7+4VBOCHOG" crossorigin="anonymous">
+        </script>
         <script src="../assets/dist/js/bootstrap.bundle.min.js"></script>
 
         <!-- Additional scripts -->
@@ -153,14 +97,24 @@
         <!-- Global site tag (gtag.js) - Google Analytics -->
         <script async src="https://www.googletagmanager.com/gtag/js?id=UA-23581568-13"></script>
         <script>
-            window.dataLayer = window.dataLayer || [];
-            function gtag() {
-                dataLayer.push(arguments);
-            }
-            gtag('js', new Date());
-            gtag('config', 'UA-23581568-13');
+        window.dataLayer = window.dataLayer || [];
+
+        function gtag() {
+            dataLayer.push(arguments);
+        }
+        gtag('js', new Date());
+        gtag('config', 'UA-23581568-13');
         </script>
-        <script src="js/main.js"></script>
+        <script>
+        import {
+            Ripple,
+            initMDB
+        } from "mdb-ui-kit";
+
+        initMDB({
+            Ripple
+        });
+        </script>
         @endsection
     </main>
 </body>

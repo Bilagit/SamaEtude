@@ -151,8 +151,6 @@ strong {
                     <p><b>Exercices Similaires:</b></p>
                     <ul>
                         @foreach ($exos as $item)
-                        <li><a href="{{ route('professeur.contenuExo', ['id' => $item->id]) }}">{{ $item->titre }}</a>
-                        </li>
                         <table class="table">
                             <thead class="thead-dark">
                                 <tr>

@@ -4,23 +4,43 @@ namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
 use App\Models\Cours;
+use App\Models\User;
 use App\Models\Categorie;
 use App\Models\Professeur;
 use App\Models\Exercice;
 use Illuminate\Support\Facades\Auth;
 class ProfessorController extends Controller
 {
+
     public function cours()
     {
         $categories = Categorie::all();
-        $cours = Cours::paginate(10);
-        $mescours = Cours::where('idProfesseur', Auth::id())->get();
+        $cours = Cours::all();
+        $users = User::all();
+        $profs = Professeur::all();
+        
+        // Vérifier si l'utilisateur actuel est un professeur
+        $professeur = Professeur::where('idUser', Auth::id())->first();
+    
+        if ($professeur) {
+            // Si l'utilisateur est un professeur, obtenir ses cours
+            $mescours = Cours::where('idProfesseur', $professeur->id)->get();
+        } else {
+            // Si l'utilisateur n'est pas un professeur, initialiser $mescours à une collection vide
+            $mescours = collect();
+        }
+    
         return view('Professeur.cours', [
             'categories' => $categories,
+            'mescours' => $mescours,
             'cours' => $cours,
-            'mescours' => $mescours
+            'users' => $users,
+            'profs' => $profs
         ]);
     }
+    
+    
+    
     public function contenu($id)
     {
         $categories = Categorie::all();
