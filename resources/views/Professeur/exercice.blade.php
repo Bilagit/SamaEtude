@@ -200,6 +200,9 @@
                     </div>
                 </div>
                 <br>
+                @if ($exos->isEmpty())
+                        <p>Aucun exercice pour le moment</p>
+                    @else
                 <div class="table-responsive small">
                     <table class="table table-striped table-sm">
                         <thead>
@@ -295,9 +298,9 @@
                                                             name="contenu" accept=".pdf">
                                                     </div>
                                                     <div class="mb-3">
-                                                        <label for="idCours{{$exo->id}}" class="form-label">ID du
+                                                        <label for="" class="form-label">ID du
                                                             Cours</label>
-                                                        <select class="form-select" id="idCours{{$exo->id}}"
+                                                        <select class="form-select" id=""
                                                             name="idCours" required>
                                                             <option value="">Sélectionner un cours</option>
                                                             @foreach($cours as $course)
@@ -322,6 +325,7 @@
                         </tbody>
                     </table>
                 </div>
+                @endif
             </main>
         </div>
     </div>
@@ -346,8 +350,8 @@
                             <input type="file" class="form-control" id="contenu" name="contenu" accept=".pdf" required>
                         </div>
                         <div class="mb-3">
-                            <label for="idCours{{$exo->id}}" class="form-label">ID du Cours</label>
-                            <select class="form-select" id="idCours{{$exo->id}}" name="idCours" required>
+                            <label for="" class="form-label">ID du Cours</label>
+                            <select class="form-select" id="" name="idCours" required>
                                 <option value="">Sélectionner un cours</option>
                                 @foreach($cours as $course)
                                 <option value="{{ $course->id }}">{{ $course->nom }}</option>

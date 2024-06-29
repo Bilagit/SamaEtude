@@ -20,7 +20,7 @@
         <tbody>
             @foreach ($cours as $cour)
             <tr>
-                <td><img src="{{ asset('img/java.webp') }}" class="rounded" width="20%" height="50" alt="">
+                <td><a href="{{ route('professeur.contenu', ['id' => $cour->id]) }}"><img src="{{ asset('img/java.webp') }}" class="rounded" width="20%" height="50" alt=""></a>
                 <strong>{{ $cour->nom }}</strong> <br><small>Ajouté le : {{ $cour->created_at }}</small> </td>
                 <td><span class="dot"></span>
                     @foreach ($categories as $categorie)

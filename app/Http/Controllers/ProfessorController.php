@@ -17,19 +17,14 @@ class ProfessorController extends Controller
         $categories = Categorie::all();
         $cours = Cours::all();
         $users = User::all();
-        $profs = Professeur::all();
-        
-        // Vérifier si l'utilisateur actuel est un professeur
+        $profs = Professeur::all();        
         $professeur = Professeur::where('idUser', Auth::id())->first();
     
         if ($professeur) {
-            // Si l'utilisateur est un professeur, obtenir ses cours
             $mescours = Cours::where('idProfesseur', $professeur->id)->get();
         } else {
-            // Si l'utilisateur n'est pas un professeur, initialiser $mescours à une collection vide
             $mescours = collect();
-        }
-    
+        }    
         return view('Professeur.cours', [
             'categories' => $categories,
             'mescours' => $mescours,
@@ -46,10 +41,15 @@ class ProfessorController extends Controller
         $categories = Categorie::all();
         $cours = Cours::paginate(10);
         $cour = Cours::findOrFail($id);
+        $exos = Exercice::all();
+        $profs = Professeur::all();
+        $users = User::all();
         return view('Professeur.contenu', [
             'categories' => $categories,
-            'cours' => $cours
-        ], compact('cour'));
+            'cours' => $cours,
+            'profs' => $profs,
+            'users' => $users
+        ], compact('cour','exos'));
     }
     public function exercices()
     {
