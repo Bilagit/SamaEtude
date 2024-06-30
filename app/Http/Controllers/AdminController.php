@@ -29,9 +29,11 @@ class AdminController extends Controller
     public function listeprof(){
         $profs = User::where('role', '=', 'professeur')->paginate(10);
         $categories = Categorie::all();
+        $professeurs = Professeur::all();
         return view('administrateur.listeprof', [
             'profs' => $profs,
-            'categories' => $categories
+            'categories' => $categories,
+            'professeurs' => $professeurs
         ]);
     }
     public function listecategorie(){
@@ -83,8 +85,10 @@ class AdminController extends Controller
     }
     public function getetudiants(){
         $etudiants = User::where('role', '=', 'etudiant')->paginate(10);
+        $users = Etudiant::all();
         return view('administrateur.listeEtudiant', [
-            'etudiants' => $etudiants
+            'etudiants' => $etudiants,
+            'users' => $users
         ]);
     }
     public function suppetudiant($id){

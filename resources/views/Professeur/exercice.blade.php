@@ -216,8 +216,8 @@
                         <tbody>
                             @foreach ($exos as $exo)
                             <tr>
-                                <td><img src="{{ asset('img/téléchargement.png') }}" class="rounded" width="90%"
-                                        height="60" alt=""></td>
+                                <td><img src="{{ asset('img/téléchargement.png') }}" class="rounded" width="50%"
+                                        height="50" alt=""></td>
                                 <td>{{ $exo->titre }} <br><small>{{ $exo->created_at }}</small> </td>
                                 <td>
                                     <span

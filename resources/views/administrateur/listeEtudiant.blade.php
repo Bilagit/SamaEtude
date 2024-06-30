@@ -1,286 +1,271 @@
 @extends('layouts.sidebare')
 
 @section('content')
-<link rel="stylesheet" href="https://cdn.datatables.net/1.13.6/css/jquery.dataTables.min.css">
 <style>
-.table-responsive {
-    margin: 30px 0;
+body {
+    background-color: #f8f9fa !important
 }
 
-.table-wrapper {
-    min-width: 1000px;
-    background: #fff;
-    padding: 20px 25px;
-    border-radius: 3px;
-    box-shadow: 0 1px 1px rgba(0, 0, 0, .05);
+.p-4 {
+    padding: 1.5rem !important;
 }
 
-.table-title {
-    padding-bottom: 15px;
-    background: #299be4;
-    color: #fff;
-    padding: 16px 30px;
-    margin: -20px -25px 10px;
-    border-radius: 3px 3px 0 0;
+.mb-0,
+.my-0 {
+    margin-bottom: 0 !important;
 }
 
-.table-title h2 {
-    margin: 5px 0 0;
-    font-size: 24px;
+.shadow-sm {
+    box-shadow: 0 .125rem .25rem rgba(0, 0, 0, .075) !important;
 }
 
-.table-title .btn {
-    color: #566787;
-    float: right;
-    font-size: 13px;
-    background: #fff;
-    border: none;
-    min-width: 50px;
-    border-radius: 2px;
-    border: none;
-    outline: none !important;
-    margin-left: 10px;
+/* user-dashboard-info-box */
+.user-dashboard-info-box .candidates-list .thumb {
+    margin-right: 20px;
 }
 
-.table-title .btn:hover,
-.table-title .btn:focus {
-    color: #566787;
-    background: #f2f2f2;
-}
-
-.table-title .btn i {
-    float: left;
-    font-size: 21px;
-    margin-right: 5px;
-}
-
-.table-title .btn span {
-    float: left;
-    margin-top: 2px;
-}
-
-table.table tr th,
-table.table tr td {
-    border-color: #e9e9e9;
-    padding: 12px 15px;
-    vertical-align: middle;
-}
-
-table.table tr th:first-child {
-    width: 60px;
-}
-
-table.table tr th:last-child {
-    width: 100px;
-}
-
-table.table-striped tbody tr:nth-of-type(odd) {
-    background-color: #fcfcfc;
-}
-
-table.table-striped.table-hover tbody tr:hover {
-    background: #f5f5f5;
-}
-
-table.table th i {
-    font-size: 13px;
-    margin: 0 5px;
-    cursor: pointer;
-}
-
-table.table td:last-child i {
-    opacity: 0.9;
-    font-size: 22px;
-    margin: 0 5px;
-}
-
-table.table td a {
-    font-weight: bold;
-    color: #566787;
-    display: inline-block;
-    text-decoration: none;
-}
-
-table.table td a:hover {
-    color: #2196F3;
-}
-
-table.table td a.settings {
-    color: #2196F3;
-}
-
-table.table td a.delete {
-    color: #F44336;
-}
-
-table.table td i {
-    font-size: 19px;
-}
-
-table.table .avatar {
+.user-dashboard-info-box .candidates-list .thumb .avatar-circle {
+    width: 80px;
+    height: 80px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
     border-radius: 50%;
+}
+
+.user-dashboard-info-box .candidates-list .thumb .avatar-circle .avatar-initials {
+    font-size: 24px;
+    color: white;
+}
+
+.user-dashboard-info-box .title {
+    display: flex;
+    align-items: center;
+    padding: 30px 0;
+}
+
+.user-dashboard-info-box .candidates-list td {
     vertical-align: middle;
-    margin-right: 10px;
 }
 
-.status {
-    font-size: 30px;
-    margin: 2px 2px 0 0;
-    display: inline-block;
-    vertical-align: middle;
-    line-height: 10px;
+.user-dashboard-info-box td li {
+    margin: 0 4px;
 }
 
-.text-success {
-    color: #10c469;
+.user-dashboard-info-box .table thead th {
+    border-bottom: none;
 }
 
-.text-info {
-    color: #62c9e8;
+.table.manage-candidates-top th {
+    border: 0;
 }
 
-.text-warning {
-    color: #FFC107;
+.user-dashboard-info-box .candidate-list-favourite-time .candidate-list-favourite {
+    margin-bottom: 10px;
 }
 
-.text-danger {
-    color: #ff5b5b;
+.table.manage-candidates-top {
+    min-width: 650px;
 }
 
-.pagination {
-    float: right;
-    margin: 0 0 5px;
+.user-dashboard-info-box .candidate-list-details ul {
+    color: #969696;
 }
 
-.pagination li a {
+/* Candidate List */
+.candidate-list {
+    background: #ffffff;
+    display: flex;
+    border-bottom: 1px solid #eeeeee;
+    align-items: center;
+    padding: 20px;
+    transition: all 0.3s ease-in-out;
+}
+
+.candidate-list:hover {
+    box-shadow: 0px 0px 34px 4px rgba(33, 37, 41, 0.06);
+    position: relative;
+    z-index: 99;
+}
+
+.candidate-list:hover .candidate-list-favourite {
+    color: #e74c3c;
+    box-shadow: -1px 4px 10px 1px rgba(24, 111, 201, 0.1);
+}
+
+.candidate-list .candidate-list-image {
+    margin-right: 25px;
+    flex: 0 0 80px;
     border: none;
+}
+
+.candidate-list .candidate-list-image img {
+    width: 80px;
+    height: 80px;
+    object-fit: cover;
+}
+
+.candidate-list-title {
+    margin-bottom: 5px;
+}
+
+.candidate-list-details ul {
+    display: flex;
+    flex-wrap: wrap;
+    margin-bottom: 0px;
+}
+
+.candidate-list-details ul li {
+    margin: 5px 10px 5px 0px;
     font-size: 13px;
-    min-width: 30px;
-    min-height: 30px;
-    color: #999;
-    margin: 0 2px;
-    line-height: 30px;
-    border-radius: 2px !important;
+}
+
+.candidate-list .candidate-list-favourite-time {
+    margin-left: auto;
     text-align: center;
-    padding: 0 6px;
-}
-
-.pagination li a:hover {
-    color: #666;
-}
-
-.pagination li.active a,
-.pagination li.active a.page-link {
-    background: #03A9F4;
-}
-
-.pagination li.active a:hover {
-    background: #0397d6;
-}
-
-.pagination li.disabled i {
-    color: #ccc;
-}
-
-.pagination li i {
-    font-size: 16px;
-    padding-top: 6px
-}
-
-.hint-text {
-    float: left;
-    margin-top: 10px;
     font-size: 13px;
+    flex: 0 0 90px;
 }
 
-.custom-green-background {
-    background-color: #D3D3D3;
-    color: black;
-    padding: 10px;
-    border-radius: 5px;
+.candidate-list .candidate-list-favourite-time span {
+    display: block;
+    margin: 0 auto;
 }
 
-.custom-list-item {
+.candidate-list .candidate-list-favourite-time .candidate-list-favourite {
+    display: inline-block;
+    position: relative;
+    height: 40px;
+    width: 40px;
+    line-height: 40px;
+    border: 1px solid #eeeeee;
+    border-radius: 100%;
+    text-align: center;
+    transition: all 0.3s ease-in-out;
+    margin-bottom: 20px;
     font-size: 16px;
-    /* Augmentez la taille du texte */
-    padding: 20px 15px;
-    /* Augmentez l'espacement intérieur */
+    color: #646f79;
+}
+
+.candidate-list .candidate-list-favourite-time .candidate-list-favourite:hover {
+    background: #ffffff;
+    color: #e74c3c;
+}
+
+.candidate-banner .candidate-list:hover {
+    position: inherit;
+    box-shadow: inherit;
+    z-index: inherit;
+}
+
+.bg-white {
+    background-color: #ffffff !important;
+}
+
+.p-4 {
+    padding: 1.5rem !important;
+}
+
+.mb-0,
+.my-0 {
+    margin-bottom: 0 !important;
+}
+
+.shadow-sm {
+    box-shadow: 0 .125rem .25rem rgba(0, 0, 0, .075) !important;
 }
 </style>
-<link rel="stylesheet" href="https://cdn.datatables.net/1.13.6/css/jquery.dataTables.min.css">
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.13.1/css/all.min.css"
+    integrity="sha256-2XFplPlrFClt0bIdPgpz8H7ojnk10H69xRqd9+uTShA=" crossorigin="anonymous" />
+@if ($message = Session::get('success'))
+<div class="alert alert-success">
+    <p>{{ $message }}</p>
+</div>
+@endif
+<div class="container mt-3 mb-4">
+    <div class="col-lg-9 mt-4 mt-lg-0">
+        <div class="row">
+        <div class="col-sm-6">
+                <h2>Gestion des <b>Etudiants</b></h2>
+            </div>
+            <div class="col-md-12">
+                <div class="user-dashboard-info-box table-responsive mb-0 bg-white p-4 shadow-sm">
+                    <table class="table manage-candidates-top mb-0">
+                        <thead>
+                            <tr>
+                                <th>Nom</th>
+                                <th class="text-center">Action</th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            @foreach ($etudiants as $etudiant)
+                            <tr class="candidates-list">
+                                <td class="title">
+                                    <div class="thumb">
+                                        @php
+                                        // Générer une couleur aléatoire basée sur l'ID de l'étudiant
+                                        $randomColor = '#' . substr(md5($etudiant->id), 0, 6);
+                                        @endphp
+                                        <div class="avatar-circle" style="background-color: {{$randomColor}};">
+                                            <span class="avatar-initials">
+                                                {{ strtoupper(substr($etudiant->first_name, 0, 1)) }}{{ strtoupper(substr($etudiant->name, 0, 1)) }}
+                                            </span>
+                                        </div>
+                                    </div>
+                                    <div class="candidate-list-details">
+                                        <div class="candidate-list-info">
+                                            <div class="candidate-list-title">
+                                                <h5 class="mb-0">{{$etudiant->first_name}} {{$etudiant->name}}</h5>
+                                            </div>
+                                            <div class="candidate-list-option">
+                                                <ul class="list-unstyled">
+                                                    <li><i class="fa fa-envelope pr-1"></i> {{$etudiant->email}}</li>
+                                                    <li><i class="fa fa-phone pr-1"></i>
+                                                        @foreach ($users as $user)
+                                                        @if ($etudiant->id === $user->idUser)
+                                                        {{ $user->phone_number }}
+                                                        @endif
+                                                        @endforeach
+                                                    </li>
+                                                    <li><i class="fa fa-graduation-cap"></i>
+                                                        @foreach ($users as $user)
+                                                        @if ($etudiant->id === $user->idUser)
+                                                        {{ $user->level }}
+                                                        @endif
+                                                        @endforeach
+                                                    </li>
+                                                </ul>
+                                                <small>
+                                                    <strong>Ajouté le :</strong>
+                                                    <span>{{ $etudiant->created_at->formatLocalized('%d %B %Y') }}</span>
+                                                </small>
 
-<!-- Page Content  -->
-<div class="p-4 p-md-5 pt-5" >
-    @if ($message = Session::get('success'))
-
-    <div class="alert alert-success">
-        <p>{{ $message }}</p>
-    </div>
-    @endif
-    <div class="container-xl">
-        <div class="table-responsive">
-            <div class="table-wrapper">
-                <div class="table-title custom-green-background">
-                    <div class="row">
-                        <div class="col-sm-5">
-                            <h2>Gestion des <b>Etudiants</b></h2>
-                        </div>
-                    </div>
-                </div>
-                <div class="modal fade" id="addProfModal" tabindex="-1" role="dialog"
-                    aria-labelledby="addProfModalLabel" aria-hidden="true">
-                    <div class="modal-dialog" role="document">
-                        <div class="modal-content">
-                            <div class="modal-header">
-                                <h5 class="modal-title" id="addProfModalLabel">Ajouter un Professeur</h5>
-                                <button type="button" class="close" data-dismiss="modal" aria-label="Close">
-                                    <span aria-hidden="true">&times;</span>
-                                </button>
-                            </div>
-                        </div>
-                    </div>
-                </div>
-
-                <table class="table table-striped table-hover" id="example" style="width:100%">
-                    <thead>
-                        <tr>
-                            <th>#</th>
-                            <th>Nom</th>
-                            <th>Prénom</th>
-                            <th>Email</th>
-                            <th>Action</th>
-                        </tr>
-                    </thead>
-                    <tbody>
-                        @foreach ($etudiants as $etudiant)
-                        <tr>
-                            <td>{{$etudiant->id}}</td>
-                            <td>{{$etudiant->name}}</td>
-                            <td>{{$etudiant->first_name}}</td>
-                            <td>{{$etudiant->email}}</td>
-                            <td>
-                                <button class="btn btn-danger delete-btn" data-toggle="modal"
-                                    data-target="#confirmDeleteModal{{ $etudiant->id }}">
-                                    <i class="material-icons">&#xE5C9;</i>
-                                </button>
-
-
-                            </td>
-                            <div class="modal fade" id="confirmDeleteModal{{ $etudiant->id }}" tabindex="-1"
-                                role="dialog" aria-labelledby="confirmDeleteModalLabel{{ $etudiant->id }}"
-                                aria-hidden="true">
+                                            </div>
+                                        </div>
+                                    </div>
+                                </td>
+                                <td class="candidate-list-favourite-time text-center">
+                                    <button class="btn btn-danger delete-btn" data-toggle="modal"
+                                        data-target="#confirmDeleteModal{{$etudiant->id}}">
+                                        <i class="far fa-trash-alt"></i>
+                                    </button>
+                                </td>
+                            </tr>
+                            <!-- Delete Modal -->
+                            <div class="modal fade" id="confirmDeleteModal{{$etudiant->id}}" tabindex="-1" role="dialog"
+                                aria-labelledby="confirmDeleteModalLabel{{$etudiant->id}}" aria-hidden="true">
                                 <div class="modal-dialog" role="document">
                                     <div class="modal-content">
                                         <div class="modal-header">
-                                            <h5 class="modal-title" id="confirmDeleteModalLabel{{ $etudiant->id }}">
+                                            <h5 class="modal-title" id="confirmDeleteModalLabel{{$etudiant->id}}">
                                                 Confirmation de suppression</h5>
                                             <button type="button" class="close" data-dismiss="modal" aria-label="Close">
                                                 <span aria-hidden="true">&times;</span>
                                             </button>
                                         </div>
                                         <div class="modal-body">
-                                            Êtes-vous sûr de vouloir supprimer l'étudiant {{ $etudiant->name }}
-                                            {{ $etudiant->first_name }} ?
+                                            Êtes-vous sûr de vouloir supprimer l'étudiant {{$etudiant->name}}
+                                            {{$etudiant->first_name}} ?
                                         </div>
                                         <div class="modal-footer">
                                             <button type="button" class="btn btn-secondary"
@@ -295,42 +280,12 @@ table.table .avatar {
                                     </div>
                                 </div>
                             </div>
-
-
-                        </tr>
-                        @endforeach
-
-                    </tbody>
-                </table>
-
+                            @endforeach
+                        </tbody>
+                    </table>
+                </div>
             </div>
         </div>
     </div>
 </div>
-<script>
-new DataTable('#example');
-</script>
-<script src="https://cdn.datatables.net/1.13.6/js/jquery.dataTables.min.js"></script>
-<script src="https://cdn.datatables.net/2.0.8/js/dataTables.js"></script>
-<script src="https://cdn.jsdelivr.net/npm/bootstrap@4.6.2/dist/js/bootstrap.bundle.min.js"
-    integrity="sha384-Fy6S3B9q64WdZWQUiU+q4/2Lc9npb8tCaSX9FK7E8HnRr0Jz8D6OP9dO5Vg3Q9ct" crossorigin="anonymous">
-</script>
-<script src="https://cdn.jsdelivr.net/npm/bootstrap@5.2.3/dist/js/bootstrap.bundle.min.js"></script>
-
-<script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
-<script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.bundle.min.js"></script>
-<script src="https://code.jquery.com/jquery-3.7.0.js"></script>
-<script src="https://cdn.datatables.net/1.13.6/js/jquery.dataTables.min.js"></script>
-<script>
-new DataTable('#example');
-$('#exampleModal').on('show.bs.modal', function(event) {
-    var button = $(event.relatedTarget) // Button that triggered the modal
-    var recipient = button.data('whatever') // Extract info from data-* attributes
-    // If necessary, you could initiate an AJAX request here (and then do the updating in a callback).
-    // Update the modal's content. We'll use jQuery here, but you could use a data binding library or other methods instead.
-    var modal = $(this)
-    modal.find('.modal-title').text('New message to ' + recipient)
-    modal.find('.modal-body input').val(recipient)
-})
-</script>
 @endsection
