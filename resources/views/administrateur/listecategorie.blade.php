@@ -17,7 +17,7 @@
                                 <h2>Gestion des <b>Catégories</b></h2>
                             </div>
                             <div class="col-sm-7">
-                                <button type="button" class="btn btn-primary" data-toggle="modal" data-target="#addCategorieModal" style="margin-left: 520px; background:#00e68a;">
+                                <button type="button" class="btn btn-primary" data-toggle="modal" data-target="#addCategorieModal" style="margin-left:65%; background:#00e68a;">
                                     <i class="fas fa-plus"></i> Ajouter une Catégorie
                                 </button>
                             </div>
