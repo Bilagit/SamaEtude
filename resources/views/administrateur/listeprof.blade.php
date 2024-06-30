@@ -42,6 +42,19 @@
 .text-fade {
     color: #999;
 }
+
+/* New styles for initials-circle */
+.initials-circle {
+    border-radius: 50%;
+    width: 60px;
+    height: 60px;
+    text-align: center;
+    line-height: 60px;
+    font-size: 24px;
+    color: white;
+    margin-right: 12px;
+}
+
 </style>
 <link href="https://maxcdn.bootstrapcdn.com/font-awesome/4.3.0/css/font-awesome.min.css" rel="stylesheet">
 <link rel="stylesheet" href="https://cdn.datatables.net/1.13.6/css/jquery.dataTables.min.css">
@@ -71,8 +84,10 @@
             <div class="card">
                 <div class="media card-body">
                     <div class="media-left pr-12">
-                        <img class="avatar no-radius" src="https://bootdey.com/img/Content/avatar/avatar1.png"
-                            alt="...">
+                        <!-- Randomly colored initials circle -->
+                        <div class="initials-circle" style="background-color: {{ '#' . dechex(rand(0x000000, 0xFFFFFF)) }}">
+                            {{ substr($prof->first_name, 0, 1) }}{{ substr($prof->name, 0, 1) }}
+                        </div>
                     </div>
                     <div class="media-body">
                         <div class="mb-2">
@@ -202,9 +217,11 @@
 </div>
 <script src="https://cdn.datatables.net/1.13.6/js/jquery.dataTables.min.js"></script>
 <script src="https://cdn.datatables.net/2.0.8/js/dataTables.js"></script>
-<script src="https://cdn.jsdelivr.net/npm/bootstrap@4.6.2/dist/js/bootstrap.bundle.min.js"
-    integrity="sha384-Fy6S3B9q64WdZWQUiU+q4/2Lc9npb8tCaSX9FK7E8HnRr0Jz8D6OP9dO5Vg3Q9ct" crossorigin="anonymous">
+<script src="https://cdn.jsdelivr.net/npm/bootstrap@4.6.2/dist/js/bootstrap.bundle
+.min.js"
+integrity="sha384-Fy6S3B9q64WdZWQUiU+q4/2Lc9npb8tCaSX9FK7E8HnRr0Jz8D6OP9dO5Vg3Q9ct" crossorigin="anonymous">
 </script>
+
 <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.2.3/dist/js/bootstrap.bundle.min.js"></script>
 <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
 <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.bundle.min.js"></script>

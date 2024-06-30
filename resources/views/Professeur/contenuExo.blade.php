@@ -20,6 +20,19 @@ body {
     margin-bottom: 30px;
 }
 
+.modal-header-info {
+    color: #fff;
+    padding: 9px 15px;
+    border-bottom: 1px solid #eee;
+    background-color: #5bc0de;
+    -webkit-border-top-left-radius: 5px;
+    -webkit-border-top-right-radius: 5px;
+    -moz-border-radius-topleft: 5px;
+    -moz-border-radius-topright: 5px;
+    border-top-left-radius: 5px;
+    border-top-right-radius: 5px;
+}
+
 .has-spacer-extra-space {
     margin-left: 30px;
     margin-right: 30px;
@@ -164,17 +177,36 @@ strong {
                             <tbody>
                                 <tr>
                                     <th scope="row">{{ $item->id }}</th>
-                                    <td><img src="{{ asset('img/téléchargement.png') }}" class="rounded" width="70%" height="40" alt=""></td>
+                                    <td><img src="{{ asset('img/téléchargement.png') }}" class="rounded" width="70%"
+                                            height="40" alt=""></td>
                                     <td>{{ $item->titre }}</td>
                                     <td>@mdo</td>
-                                    <td><a class="btn btn-success" href="{{ route('professeur.contenuExo', ['id' => $item->id]) }}">Consulter</a></td>
+                                    <td><a class="btn btn-success"
+                                            href="{{ route('professeur.contenuExo', ['id' => $item->id]) }}">Consulter</a>
+                                    </td>
                                 </tr>
                             </tbody>
                         </table>
                         @endforeach
                     </ul>
                 </div>
+            </div>
+            @if (Auth::user()->role === 'etudiant')
+            <div class="project-info-box">
+                <div class="modal-header modal-header-info">
+                    <h4 class="modal-title"><i class="fa fa-file-alt" style="color: white;"></i> Soummettre Exercice
+                    </h4>
+                </div>
+                <div class="card mb-4">
+                    <div class="card-body">
+                        <h3 class="h6">Exercice</h3>
+                        <input class="form-control" type="file">
+                        <br>
+                        <button class="btn btn-info">Soummettre</button>
+                    </div>
+                </div>
             </div><!-- / project-info-box -->
+            @endif
         </div><!-- / column -->
     </div>
 </div>

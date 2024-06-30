@@ -26,9 +26,9 @@
     </style>
 </head>
 <body class="bg-white">
-<a href="/" id="home-button" class="btn btn-success position-absolute top-0 start-0 m-3">
-    <i class="bi bi-house-fill text-white"></i>
-</a>
+    <a href="/" id="home-button" class="btn btn-success position-absolute top-0 start-0 m-3">
+        <i class="bi bi-house-fill text-white"></i>
+    </a>
     <div class="container-fluid vh-100 overflow-auto">
         <div class="row vh-100">
             <div class="col-lg-6 bg-gray p-5 text-center">
@@ -45,6 +45,17 @@
                 <div class="row d-flex vh-100">
                     <div class="col-md-8 p-4 ikigui m-auto text-center align-items-center">
                         <h4 class="text-center fw-bolder mb-4 fs-2">Se Connecter</h4>
+
+                        @if ($errors->any())
+                            <div class="alert alert-danger">
+                                <ul>
+                                    @foreach ($errors->all() as $error)
+                                        <li>{{ $error }}</li>
+                                    @endforeach
+                                </ul>
+                            </div>
+                        @endif
+
                         <form method="POST" action="{{ route('auth.dologin') }}">
                             @csrf
                             <div class="input-group mb-4">
