@@ -19,4 +19,18 @@ class EtudiantController extends Controller
             'users' => $users
         ]);
     }
+    public function contenucours($id){
+        $categories = Categorie::all();
+        $cours = Cours::paginate(10);
+        $cour = Cours::findOrFail($id);
+        $exos = Exercice::all();
+        $profs = Professeur::all();
+        $users = User::all();
+        return view('etudiant.contenu', [
+            'categories' => $categories,
+            'cours' => $cours,
+            'profs' => $profs,
+            'users' => $users
+        ], compact('cour','exos'));
+    }
 }
