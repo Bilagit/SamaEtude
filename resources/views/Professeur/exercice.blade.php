@@ -298,8 +298,7 @@
                                                             name="contenu" accept=".pdf">
                                                     </div>
                                                     <div class="mb-3">
-                                                        <label for="" class="form-label">ID du
-                                                            Cours</label>
+                                                        <label for="" class="form-label">Cours</label>
                                                         <select class="form-select" id=""
                                                             name="idCours" required>
                                                             <option value="">Sélectionner un cours</option>
@@ -350,7 +349,7 @@
                             <input type="file" class="form-control" id="contenu" name="contenu" accept=".pdf" required>
                         </div>
                         <div class="mb-3">
-                            <label for="" class="form-label">ID du Cours</label>
+                            <label for="" class="form-label">Cours</label>
                             <select class="form-select" id="" name="idCours" required>
                                 <option value="">Sélectionner un cours</option>
                                 @foreach($cours as $course)
