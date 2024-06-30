@@ -56,7 +56,7 @@ class ProfessorController extends Controller
         $prof = Professeur::where('idUser', '=', Auth::id())->first();
         $exos = Exercice::where('idProfesseur', '=', $prof->id)->get();
         $categories = Categorie::all();
-        $cours = Cours::paginate(10);
+        $cours = Cours::where('idProfesseur', '=', $prof->id)->get();
         return view('Professeur.exercice',[
             'exos' => $exos
         ],compact('categories','cours'));
