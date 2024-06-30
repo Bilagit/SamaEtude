@@ -53,7 +53,8 @@ class ProfessorController extends Controller
     }
     public function exercices()
     {
-        $exos = Exercice::paginate(10);
+        $prof = Professeur::where('idUser', '=', Auth::id())->first();
+        $exos = Exercice::where('idProfesseur', '=', $prof->id)->get();
         $categories = Categorie::all();
         $cours = Cours::paginate(10);
         return view('Professeur.exercice',[
@@ -75,10 +76,6 @@ class ProfessorController extends Controller
         ]);
     }
     
-    public function mescours(){
-        $mescours = Cours::where('idProfesseur', Auth::id())->get();
-        return view('Professeur.');
-    }
     public function ajoutercours(Request $request){
         $request->validate([
             'nom' => 'required|string',
