@@ -161,4 +161,7 @@ class ProfessorController extends Controller
         $exo->update();
         return to_route('professeur.exercices')->with('success', 'Exercice modifié avec succès ! ');
     }
+    public function noter(){
+        return view('Professeur.noter');
+    }
 }
