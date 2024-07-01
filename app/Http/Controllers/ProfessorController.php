@@ -90,7 +90,8 @@ class ProfessorController extends Controller
         $exos = Exercice::where('idCours', $exo->idCours)->where('id', '!=', $id)->get();
         $categories = Categorie::all();
         $cours = Cours::paginate(10);
-        $exercices = ExoSoumis::all();
+        $etu = Etudiant::where('idUser', '=', Auth::id())->first();
+        $exercices = ExoSoumis::where('idEtudiant', '=', $etu->id)->get();
         $profs = Professeur::all();
         $users = User::all();
         return view('Professeur.contenuExo', [
