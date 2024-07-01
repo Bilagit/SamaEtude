@@ -230,7 +230,7 @@
                                 <td>
                                     <div class="btn-group">
                                         <a href="{{ url('contenuExo/' . $exo->id) }}" class="btn btn-light">
-                                            <img src="{{ asset('img/eye.svg') }}" width="16" height="16" alt="">
+                                            <img src="{{ asset('img/eyes.svg') }}" width="16" height="16" alt="">
                                         </a>
                                         <button type="button" class="btn btn-info" data-bs-toggle="modal"
                                             data-bs-target="#modalModifierExercice{{$exo->id}}">

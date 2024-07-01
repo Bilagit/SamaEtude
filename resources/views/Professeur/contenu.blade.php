@@ -326,7 +326,11 @@ strong {
                     @foreach ($cours as $coure)
                     @if ($coure->idCategorie == $cour->idCategorie && $coure->id != $cour->id)
                     <div>
-                        <img src="{{ asset('img/java.webp') }}" alt="..." class="rounded">
+                    @foreach ($categories as $categorie)
+                        @if ($categorie->id == $cour->idCategorie)
+                            <img src="{{ asset('storage/' . $categorie->image) }}" width="50" height="50" alt="Image de {{ $categorie->nom }}">
+                        @endif
+                    @endforeach
                         <p>{{ $coure->nom }}</p>
                         <a href="{{ route('professeur.contenu', ['id' => $coure->id]) }}">Voir le cours</a>
                     </div>
@@ -494,26 +498,24 @@ strong {
                 </button>
             </div>
             <div class="modal-body">
-    <form action="{{ route('etudiant.evaluercours') }}" method="POST">
-        @csrf
-        <div class="form-group">
-            <label for="rating">Évaluer</label>
-            <div class="star-rating">
-                <input type="radio" name="score" value="5" id="5"><label for="5">☆</label>
-                <input type="radio" name="score" value="4" id="4"><label for="4">☆</label>
-                <input type="radio" name="score" value="3" id="3"><label for="3">☆</label>
-                <input type="radio" name="score" value="2" id="2"><label for="2">☆</label>
-                <input type="radio" name="score" value="1" id="1"><label for="1">☆</label>
+                <form action="" method="POST">
+                    @csrf
+                    <div class="form-group">
+                        <label for="rating">Evaluer</label>
+                        <div class="star-rating">
+                            <input type="radio" name="score" value="5" id="5"><label for="5">☆</label>
+                            <input type="radio" name="score" value="4" id="4"><label for="4">☆</label>
+                            <input type="radio" name="score" value="3" id="3"><label for="3">☆</label>
+                            <input type="radio" name="score" value="2" id="2"><label for="2">☆</label>
+                            <input type="radio" name="score" value="1" id="1"><label for="1">☆</label>
+                        </div>
+                    </div>
+                    <div class="modal-footer">
+                        <button type="button" class="btn btn-secondary" data-dismiss="modal">Fermer</button>
+                        <button type="submit" class="btn btn-primary">Envoyer</button>
+                    </div>
+                </form>
             </div>
-        </div>
-        <input type="hidden" name="idCours" value="{{ $cours->id }}">
-        <div class="modal-footer">
-            <button type="button" class="btn btn-secondary" data-dismiss="modal">Fermer</button>
-            <button type="submit" class="btn btn-primary">Envoyer</button>
-        </div>
-    </form>
-</div>
-
         </div>
     </div>
 </div>

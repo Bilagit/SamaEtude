@@ -18,7 +18,7 @@
                 @if ($cour->idCategorie == $categorie->id)
                 <div class="col">
                     <div class="card shadow-sm">
-                        <img src="{{ asset('img/java.webp') }}" class="rounded" width="100%" height="225" alt="">
+                        <img src="{{ asset('storage/' . $categorie->image) }}" alt="Image de {{ $categorie->nom }}" class="rounded" width="100%" height="225" alt="">
                         <div class="card-body">
                             <p class="card-text"><strong>{{ $cour->nom }}</strong></p>
                             <p class="card-text">{{ $cour->description }}</p>
@@ -26,7 +26,7 @@
                                 <div class="btn-group">
                                     <a href="{{ route('professeur.contenu', ['id' => $cour->id]) }}"
                                         class="btn btn-light">
-                                        <img src="{{ asset('img/eye.svg') }}" width="16" height="16" alt="">
+                                        <img src="{{ asset('img/eyes.svg') }}" width="16" height="16" alt="">
                                     </a>
                                     <button type="button" class="btn btn-info" data-bs-toggle="modal"
                                         data-bs-target="#editCourseModal{{ $cour->id }}">
