@@ -53,8 +53,8 @@ Route::get('/contenu/{id}', [ProfessorController::class, 'contenu'])->name('prof
 Route::get('/contenuExo/{id}', [ProfessorController::class, 'contenuExo'])->name('professeur.contenuExo');
 Route::post('/soumettre', [EtudiantController::class, 'soumettre'])->name('etudiant.soumettre');
 Route::get('/exos', [EtudiantController::class, 'mesexos'])->name('etudiant.exos');
-Route::put('/modifexosoumis', [EtudiantController::class, 'modifexosoumis'])->name('etudiant.modifexos');
-Route::get('/suppexosoumis', [EtudiantController::class, 'suppexosoumis'])->name('etudiant.suppexo');
+Route::put('/modifexosoumis/{id}', [EtudiantController::class, 'modifexosoumis'])->name('etudiant.modifexos');
+Route::get('/suppexosoumis/{id}', [EtudiantController::class, 'suppexosoumis'])->name('etudiant.suppexo');
 Route::get('/navbar', function () {
     return view('layouts.navbar');
 });
