@@ -91,12 +91,16 @@ class ProfessorController extends Controller
         $categories = Categorie::all();
         $cours = Cours::paginate(10);
         $exercices = ExoSoumis::all();
+        $profs = Professeur::all();
+        $users = User::all();
         return view('Professeur.contenuExo', [
             'categories' => $categories,
             'cours' => $cours,
             'exo' => $exo,
             'exos' => $exos,
             'exercices' => $exercices,
+            'profs' => $profs,
+            'users' => $users
         ]);
     }
     

@@ -78,19 +78,20 @@ class EtudiantController extends Controller
     }
     public function modifexosoumis(Request $request, $id){
         $request->validate([
-            'file' => 'required'
+            'file' => 'required',
+            'idExo' => 'required'
         ]);
         $exo = ExoSoumis::findOrFail($id);
         $path = $request->file('file')->store('exercices_soumis', 'public');
         $exo->contenu = $path;
         $exo->update();
-        return to_route('etudiant.exos')->with('success', 'Exercice modifié avec succès !');
+        return to_route('professeur.contenuExo' ,['id' => $request->idExo])->with('success', 'Exercice modifié avec succès !');
     }
     public function suppexosoumis($id){
         $exo = ExoSoumis::findOrFail($id);
         if($exo){
             $exo->delete();
-            return to_route('etudiant.exos')->with('success', 'Exercice supprimé avec succès !');
+            return to_route('professeur.contenuExo' ,['id' => $exo->id])->with('success', 'Exercice supprimé avec succès !');
         }
     }
     public function evaluercours(Request $request){
