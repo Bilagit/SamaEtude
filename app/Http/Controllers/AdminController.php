@@ -60,9 +60,10 @@ class AdminController extends Controller
         }
     }
     public function addcategorie(AddCategorieRequest $request){
+        $path = $request->file('image')->store('categories', 'public');
         $categorie = Categorie::create([
             'nom' => $request->nom,
-            'image' => $request->categorie
+            'image' => $path
         ]);
         if ($categorie) {
             return to_route('admin.listecategorie')->with('success', 'Catégorie ajoutée avec succès !');
