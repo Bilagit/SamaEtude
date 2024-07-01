@@ -44,7 +44,22 @@
             <div class="row d-flex vh-100">
                 <div class="col-md-8 p-4 ikigui m-auto text-center align-items-center">
                     <h4 class="text-center fw-bolder mb-4 fs-2">Register</h4>
-                    <form method="POST" action="{{ route('auth.doregister') }}">
+
+                    <!-- Affichage des messages d'erreur -->
+                    <div id="errorMessages" class="alert alert-danger" style="display: none;">
+                        <ul id="errorList"></ul>
+                    </div>
+                    @if ($errors->any())
+                            <div class="alert alert-danger">
+                                <ul>
+                                    @foreach ($errors->all() as $error)
+                                        <li>{{ $error }}</li>
+                                    @endforeach
+                                </ul>
+                            </div>
+                        @endif
+
+                    <form id="registerForm">
                         @csrf
                         <div class="input-group mb-4">
                             <span class="input-group-text border-end-0 inbg" id="basic-addon1"><i class="bi bi-person"></i></span>
@@ -83,7 +98,7 @@
                         </div>
                         <button type="submit" class="btn btn-lg fw-bold fs-7 btn-success w-100">Register</button>
                     </form>
-                    <p class="text-center py-4 fw-bold fs-8">Suivez nous  sur les réseaux sociaux</p>
+                    <p class="text-center py-4 fw-bold fs-8">Suivez nous sur les réseaux sociaux</p>
                     <ul class="d-inline-block mx-auto">
                         <li class="float-start px-3"><a href="#"><i class="bi bi-facebook"></i></a></li>
                         <li class="float-start px-3"><a href="#"><i class="bi bi-twitter"></i></a></li>
@@ -101,5 +116,63 @@
 <script src="{{ asset('assets/plugins/scroll-fixed/jquery-scrolltofixed-min.js') }}"></script>
 <script src="{{ asset('assets/plugins/testimonial/js/owl.carousel.min.js') }}"></script>
 <script src="{{ asset('assets/js/script.js') }}"></script>
+
+<script>
+    document.getElementById('registerForm').addEventListener('submit', function(event) {
+        event.preventDefault(); // Empêche l'envoi du formulaire
+
+        var errors = [];
+        var firstName = document.querySelector('input[name="first_name"]').value.trim();
+        var lastName = document.querySelector('input[name="name"]').value.trim();
+        var phoneNumber = document.querySelector('input[name="phone_number"]').value.trim();
+        var level = document.querySelector('select[name="level"]').value;
+        var email = document.querySelector('input[name="email"]').value.trim();
+        var password = document.querySelector('input[name="password"]').value;
+        var passwordConfirmation = document.querySelector('input[name="password_confirmation"]').value;
+
+        // Validation des champs
+        if (firstName === '') errors.push('Le prénom est obligatoire.');
+        if (lastName === '') errors.push('Le nom est obligatoire.');
+        if (phoneNumber === '') errors.push('Le numéro de téléphone est obligatoire.');
+        if (level === '') errors.push('Le niveau est obligatoire.');
+        if (email === '') errors.push('L\'email est obligatoire.');
+        else if (!validateEmail(email)) errors.push('L\'adresse email n\'est pas valide.');
+        if (password === '') errors.push('Le mot de passe est obligatoire.');
+        if (password !== passwordConfirmation) errors.push('Les mots de passe ne correspondent pas.');
+
+        // Vérification si l'email existe déjà (cette partie doit être remplacée par une requête AJAX au serveur)
+        // if (emailExistsInDatabase(email)) errors.push('L\'adresse email existe déjà.');
+
+        if (errors.length > 0) {
+            displayErrors(errors);
+        } else {
+            this.submit(); // Soumet le formulaire si tout est valide
+        }
+    });
+
+    function displayErrors(errors) {
+        var errorList = document.getElementById('errorList');
+        var errorMessages = document.getElementById('errorMessages');
+        errorList.innerHTML = '';
+        errors.forEach(function(error) {
+            var li = document.createElement('li');
+            li.textContent = error;
+            errorList.appendChild(li);
+        });
+        errorMessages.style.display = 'block';
+    }
+
+    function validateEmail(email) {
+        var re = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
+        return re.test(email);
+    }
+
+    // Simulation de la vérification de l'existence de l'email dans la base de données
+    // Remplacez cette fonction par une requête AJAX au serveur pour vérifier l'existence de l'email
+    function emailExistsInDatabase(email) {
+        var existingEmails = ['example@example.com', 'test@test.com'];
+        return existingEmails.includes(email);
+    }
+</script>
 </body>
 </html>

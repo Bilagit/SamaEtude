@@ -497,7 +497,7 @@ strong {
                 <form action="" method="POST">
                     @csrf
                     <div class="form-group">
-                        <label for="rating">Rating</label>
+                        <label for="rating">Evaluer</label>
                         <div class="star-rating">
                             <input type="radio" name="rating" value="5" id="5"><label for="5">☆</label>
                             <input type="radio" name="rating" value="4" id="4"><label for="4">☆</label>
@@ -506,13 +506,9 @@ strong {
                             <input type="radio" name="rating" value="1" id="1"><label for="1">☆</label>
                         </div>
                     </div>
-                    <div class="form-group">
-                        <label for="review">Review</label>
-                        <textarea name="review" id="review" rows="3" class="form-control"></textarea>
-                    </div>
                     <div class="modal-footer">
-                        <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
-                        <button type="submit" class="btn btn-primary">Submit</button>
+                        <button type="button" class="btn btn-secondary" data-dismiss="modal">Fermer</button>
+                        <button type="submit" class="btn btn-primary">Envoyer</button>
                     </div>
                 </form>
             </div>

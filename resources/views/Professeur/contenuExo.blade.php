@@ -1,10 +1,18 @@
+@extends('layouts.navbar')
+
+@section('content')
+<br>
+<link rel='stylesheet' href='https://cdn.jsdelivr.net/npm/bootstrap@4.4.1/dist/css/bootstrap.min.css'>
+<script src='https://cdn.jsdelivr.net/npm/bootstrap@4.4.1/dist/js/bootstrap.bundle.min.js'></script>
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.12.1/css/all.min.css"
+    integrity="sha256-mmgLkCYLUQbXn0B1SRqzHar6dCnv9oZFPEC1g1cwlkk=" crossorigin="anonymous" />
+
 <style>
 body {
     background: #f5f5f5;
     margin-top: 20px;
 }
 
-/*------- portfolio -------*/
 .project {
     margin: 15px 0;
 }
@@ -97,22 +105,18 @@ strong {
     font-weight: 700 !important;
 }
 </style>
-@extends('layouts.navbar')
-
-@section('content')
-<br>
-<link rel='stylesheet' href='https://cdn.jsdelivr.net/npm/bootstrap@4.4.1/dist/css/bootstrap.min.css'>
-
-<script src='https://cdn.jsdelivr.net/npm/bootstrap@4.4.1/dist/js/bootstrap.bundle.min.js'></script>
-<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.12.1/css/all.min.css"
-    integrity="sha256-mmgLkCYLUQbXn0B1SRqzHar6dCnv9oZFPEC1g1cwlkk=" crossorigin="anonymous" />
 <div class="container">
+@if ($message = Session::get('success'))
+        <div class="alert alert-success">
+            <p>{{ $message }}</p>
+        </div>
+        @endif
     <div class="row">
         <div class="col-md-5">
             <div class="project-info-box mt-0">
                 <h5>Description de l'Exercice</h5>
                 <p class="mb-0">{{ $exo->description }}</p>
-            </div><!-- / project-info-box -->
+            </div>
 
             <div class="project-info-box">
                 <p><b>Nom de l'Exercice:</b> {{ $exo->titre }}</p>
@@ -126,7 +130,6 @@ strong {
                     @endif
                     @endforeach
                 </p>
-                <!-- Add thumbnail for the second course display -->
                 <div class="mt-4">
                     <b>Lire le cours associé à cette exercice :</b>
                     @foreach ($cours as $cour)
@@ -143,15 +146,13 @@ strong {
                     @endif
                     @endforeach
                 </div>
-            </div><!-- / project-info-box -->
-
-        </div><!-- / column -->
+            </div>
+        </div>
 
         <div class="col-md-7">
             @if (Str::endsWith($exo->contenu, '.pdf'))
             <embed src="{{ asset('storage/' . $exo->contenu) }}" type="application/pdf" width="100%" height="600px" />
-            @elseif (Str::endsWith($exo->contenu, '.mp4') || Str::endsWith($exo->contenu, '.avi') ||
-            Str::endsWith($exo->contenu, '.mkv'))
+            @elseif (Str::endsWith($exo->contenu, '.mp4') || Str::endsWith($exo->contenu, '.avi') || Str::endsWith($exo->contenu, '.mkv'))
             <video width="100%" height="auto" controls>
                 <source src="{{ asset('storage/' . $exo->contenu) }}" type="video/mp4">
                 Le navigateur ne peut pas prendre en charge la vidéo.
@@ -159,6 +160,7 @@ strong {
             @else
             <p>Format de fichier non pris en charge</p>
             @endif
+
             <div class="project-info-box">
                 <div class="col-md-14">
                     <p><b>Exercices Similaires:</b></p>
@@ -191,6 +193,7 @@ strong {
                     </ul>
                 </div>
             </div>
+
             @if (Auth::user()->role === 'etudiant')
             <div class="project-info-box">
                 <div class="modal-header modal-header-info">
@@ -200,14 +203,17 @@ strong {
                 <div class="card mb-4">
                     <div class="card-body">
                         <h3 class="h6">Exercice</h3>
-                        <input class="form-control" type="file">
-                        <br>
-                        <button class="btn btn-info">Soummettre</button>
+                        <form method="POST" action="{{ route('etudiant.soumettre') }}" enctype="multipart/form-data">
+                            @csrf
+                            <input type="hidden" name="idExo" value="{{ $exo->id }}">
+                            <input class="form-control mb-3" type="file" name="file" required>
+                            <button type="submit" class="btn btn-info">Soumettre</button>
+                        </form>
                     </div>
                 </div>
-            </div><!-- / project-info-box -->
+            </div>
             @endif
-        </div><!-- / column -->
+        </div>
     </div>
 </div>
 @endsection

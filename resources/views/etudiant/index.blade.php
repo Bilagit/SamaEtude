@@ -162,23 +162,6 @@
                     </a>
 
                     @endforeach
-                    <div class="course-card">
-                        <img src="{{ asset("img/python.jpg") }}" alt="Cours Image">
-                        <div class="course-details">
-                            <div class="course-info">
-                                <h5>Phyton Avancé</h5>
-                                <p>
-                                    <div class="initials-circle">AS</div>
-                                    Dr: A.SY
-                                </p>
-                            </div>
-                            <div class="course-rating">
-                                <span>4.0</span>
-                                <span>★</span>
-                            </div>
-                            <i class="fas fa-heart favorite-icon"></i>
-                        </div>
-                    </div>
                 </div>
             </div>
             <!-- Onglet Mes Cours -->
@@ -238,8 +221,6 @@ Dr: DIOP
 </div>
 </div>
 
-php
-Copier le code
 <script>
     // Fonction pour générer une couleur aléatoire en format hexadécimal
     function getRandomColor() {

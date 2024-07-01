@@ -2,13 +2,17 @@
 
 namespace App\Http\Controllers;
 
+use App\Models\Categorie;
 use App\Models\Cours;
+use App\Models\Exercice;
 use App\Models\Professeur;
 use App\Models\User;
 use App\Models\Etudiant;
 use App\Models\ExoSoumis;
 use App\Models\Note;
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\Auth;
+
 
 class EtudiantController extends Controller
 {
@@ -44,21 +48,31 @@ class EtudiantController extends Controller
         $path = $request->file('file')->store('exercices_soumis', 'public');
         $etu = Etudiant::where('idUser', '=', Auth::id())->first();
         $exo = ExoSoumis::create([
-            'file' => $path,
+            'contenu' => $path,
             'idExo' => $request->idExo,
             'idEtudiant' => $etu->id
         ]);
         if ($exo) {
-            return to_route('professeur.contenuExo')->with('success', 'Exercice soumis avec succès !');
+            return to_route('professeur.contenuExo', ['id' => $exo->idExo])->with('success', 'Exercice soumis avec succès !');
         }
     }
     public function mesexos(){
         $etu = Etudiant::where('idUser', '=', Auth::id())->first();
         $exos = ExoSoumis::where('idEtudiant', '=', $etu->id)->get();
         $notes = Note::where('idEtudiant', '=', $etu->id)->get();
+        $exercices = Exercice::all();
+        $cours = Cours::all();
+        $profs = Professeur::all();
+        $categories = Categorie::all();
+        $users = User::all();
         return view('etudiant.exercices', [
             'exos' => $exos,
-            'notes' => $notes
+            'notes' => $notes,
+            'exercices' => $exercices,
+            'cours' => $cours,
+            'profs' => $profs,
+            'users' => $users,
+            'categories' => $categories
         ]);
     }
 }
