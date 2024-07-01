@@ -10,6 +10,7 @@ use App\Models\User;
 use App\Models\Etudiant;
 use App\Models\ExoSoumis;
 use App\Models\Note;
+use App\Models\Evaluation;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
 
@@ -90,6 +91,30 @@ class EtudiantController extends Controller
         if($exo){
             $exo->delete();
             return to_route('etudiant.exos')->with('success', 'Exercice supprimé avec succès !');
+        }
+    }
+    public function evaluercours(Request $request){
+        $request->validate([
+            'score' => 'required',
+            'idCours' => 'required'
+        ]);
+        $etu = Etudiant::where('idUser', '=', Auth::id())->first();
+        $eval = Evaluation::where([
+            ['idetudiant', '=', $etu->id],
+            ['idCours', '=', $request->idCours]
+        ])->get();
+        if($eval){
+            $eval->score = $request->score;
+            $eval->update();
+            return to_route('professeur.contenu', ['id' => $reques->idCours])->with('success', 'Cours noté !');
+        }
+        else{
+            $eval = Evaluation::create([
+                'score' => $request->score,
+                'idCours' => $request->idCours,
+                'idetudiant' => $etu->id
+            ]);
+            return to_route('professeur.contenu', ['id' => $request->idCours])->with('success', 'Cours noté !');
         }
     }
 }

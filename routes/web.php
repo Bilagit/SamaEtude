@@ -55,6 +55,7 @@ Route::post('/soumettre', [EtudiantController::class, 'soumettre'])->name('etudi
 Route::get('/exos', [EtudiantController::class, 'mesexos'])->name('etudiant.exos');
 Route::put('/modifexosoumis', [EtudiantController::class, 'modifexosoumis'])->name('etudiant.modifexos');
 Route::get('/suppexosoumis', [EtudiantController::class, 'suppexosoumis'])->name('etudiant.suppexo');
+Route::post('/evaluercours', [EtudiantController::class, 'evaluercours'])->name('etudiant.evaluercours');
 Route::get('/navbar', function () {
     return view('layouts.navbar');
 });
