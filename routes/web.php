@@ -68,7 +68,7 @@ Route::get('/contenuExo/{id}', [ProfessorController::class, 'contenuExo'])->name
 Route::post('/soumettre', [EtudiantController::class, 'soumettre'])->name('etudiant.soumettre');
 Route::get('/exos', [EtudiantController::class, 'mesexos'])->name('etudiant.exos');
 Route::put('/modifexosoumis/{id}', [EtudiantController::class, 'modifexosoumis'])->name('etudiant.modifexos');
-Route::get('/suppexosoumis/{id}', [EtudiantController::class, 'suppexosoumis'])->name('etudiant.suppexo');
+Route::post('/suppexosoumis', [EtudiantController::class, 'suppexosoumis'])->name('etudiant.suppexo');
 Route::post('/evaluercours', [EtudiantController::class, 'evaluercours'])->name('etudiant.evaluercours');
 Route::get('/contact', [Controller::class, 'contact'])->name('contact');
 Route::get('/about', [Controller::class, 'about'])->name('about');
