@@ -75,4 +75,21 @@ class EtudiantController extends Controller
             'categories' => $categories
         ]);
     }
+    public function modifexosoumis(Request $request, $id){
+        $request->validate([
+            'file' => 'required'
+        ]);
+        $exo = ExoSoumis::findOrFail($id);
+        $path = $request->file('file')->store('exercices_soumis', 'public');
+        $exo->contenu = $path;
+        $exo->update();
+        return to_route('etudiant.exos')->with('success', 'Exercice modifié avec succès !');
+    }
+    public function suppexosoumis($id){
+        $exo = ExoSoumis::findOrFail($id);
+        if($exo){
+            $exo->delete();
+            return to_route('etudiant.exos')->with('success', 'Exercice supprimé avec succès !');
+        }
+    }
 }
