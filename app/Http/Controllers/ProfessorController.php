@@ -84,7 +84,7 @@ class ProfessorController extends Controller
             'categories' => $categories,
             'cours' => $cours,
             'exo' => $exo,
-            'exos' => $exos
+            'exos' => $exos,
         ]);
     }
     
