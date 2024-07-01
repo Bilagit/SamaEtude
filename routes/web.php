@@ -5,6 +5,11 @@ use App\Http\Controllers\ProfessorController;
 use App\Http\Controllers\AdminController;
 use App\Http\Controllers\EtudiantController;
 use App\Http\Controllers\AuthController;
+use App\Http\Controllers\Controller;
+use App\Models\Etudiant;
+use App\Models\Cours;
+use App\Models\Exercice;
+use App\Models\Professeur;
 /*
 |--------------------------------------------------------------------------
 | Web Routes
@@ -17,7 +22,16 @@ use App\Http\Controllers\AuthController;
 */
 
 Route::get('/', function () {
-    return view('welcome');
+    $nbcours = Cours::count();
+    $nbexos = Exercice::count();
+    $nbprofs = Professeur::count();
+    $nbetudiants = Etudiant::count();
+    return view('welcome', [
+        'nbcours' => $nbcours,
+        'nbexos' => $nbexos,
+        'nbprofs' => $nbprofs,
+        'nbetudiants' => $nbetudiants
+    ]);
 });
 Route::get('/register', [AuthController::class, 'register'])->name('auth.register');
 Route::post('/register', [AuthController::class, 'doregister'])->name('auth.doregister');
@@ -56,6 +70,8 @@ Route::get('/exos', [EtudiantController::class, 'mesexos'])->name('etudiant.exos
 Route::put('/modifexosoumis/{id}', [EtudiantController::class, 'modifexosoumis'])->name('etudiant.modifexos');
 Route::get('/suppexosoumis/{id}', [EtudiantController::class, 'suppexosoumis'])->name('etudiant.suppexo');
 Route::post('/evaluercours', [EtudiantController::class, 'evaluercours'])->name('etudiant.evaluercours');
+Route::get('/contact', [Controller::class, 'contact'])->name('contact');
+Route::get('/about', [Controller::class, 'about'])->name('about');
 Route::get('/navbar', function () {
     return view('layouts.navbar');
 });
