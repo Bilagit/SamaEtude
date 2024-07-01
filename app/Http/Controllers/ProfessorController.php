@@ -51,6 +51,7 @@ class ProfessorController extends Controller
         ];
         $total = Evaluation::where('idCours', '=', $id)->count();
         $etu = Etudiant::where('idUser', '=', Auth::id())->first();
+        $moneval = null;
         if ($etu) {
             $moneval = Evaluation::where([
                 ['idCours', '=', $id],
