@@ -12,7 +12,7 @@ class Evaluation extends Model
     protected $fillable = [
         'score',
         'idCours',
-        'idEtudiant'
+        'idetudiant'
     ];
 
 }
