@@ -9,6 +9,7 @@ use App\Models\Categorie;
 use App\Models\Professeur;
 use App\Models\Exercice;
 use App\Models\Evaluation;
+use App\Models\Etudiant;
 use Illuminate\Support\Facades\Auth;
 class ProfessorController extends Controller
 {
@@ -48,6 +49,13 @@ class ProfessorController extends Controller
             '5_etoile' => $evaluations->where('score', 5)->count()
         ];
         $total = Evaluation::where('idCours', '=', $id)->count();
+        $etu = Etudiant::where('idUser', '=', Auth::id())->first();
+        if ($etu) {
+            $moneval = Evaluation::where([
+                ['idCours', '=', $id],
+                ['idetudiant', '=', $etu->id]
+            ])->get();
+        }
         $categories = Categorie::all();
         $cours = Cours::paginate(10);
         $cour = Cours::findOrFail($id);
@@ -60,7 +68,8 @@ class ProfessorController extends Controller
             'profs' => $profs,
             'users' => $users,
             'etoiles' => $etoiles,
-            'total' => $total
+            'total' => $total,
+            'moneval' => $moneval
         ], compact('cour','exos'));
     }
     public function exercices()
