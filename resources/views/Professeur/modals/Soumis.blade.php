@@ -79,11 +79,18 @@
                     </div>
                     <div class="modal-footer">
                         <button type="button" class="btn btn-secondary" data-dismiss="modal">Annuler</button>
-                        <a href="{{ route('etudiant.suppexo', $exercice->id) }}" class="btn btn-danger">Supprimer</a>
+                        <form method="POST" action="{{ route('etudiant.suppexo', $exercice->id) }}">
+                            @csrf
+                            @method('POST')
+                            <input type="hidden" name="id" value="{{ $exercice->id }}" id="id" >
+                            <input type="hidden" name="idExo" value="{{ $exo->id }}" id="idExo" >
+                            <button type="submit" class="btn btn-danger">Supprimer</button>
+                        </form>
                     </div>
                 </div>
             </div>
         </div>
+        @endforeach
 
         <!-- Modal for PDF View -->
         <div class="modal fade" id="pdfModal" tabindex="-1" role="dialog" aria-labelledby="pdfModalLabel" aria-hidden="true">
@@ -106,6 +113,7 @@
         </div>
 
         <!-- Modal for Edit Form -->
+        @foreach ($exercices as $exercice)
         <div class="modal fade" id="editModal{{ $exercice->id }}" tabindex="-1" role="dialog" aria-labelledby="editModalLabel{{ $exercice->id }}" aria-hidden="true">
             <div class="modal-dialog" role="document">
                 <div class="modal-content">
@@ -119,7 +127,7 @@
                         <form id="editForm{{ $exercice->id }}" method="POST" action="{{ route('etudiant.modifexos', $exercice->id) }}" enctype="multipart/form-data">
                             @csrf
                             @method('PUT')
-                            <input type="hidden" name="idExo" value="{{ $exercice->id }}">
+                            <input type="hidden" name="idExo" value="{{ $exo->id }}" id="idExo" >
                             <input class="form-control mb-3" type="file" name="file" required>
                             <button type="submit" class="btn btn-info">Modifier</button>
                         </form>
