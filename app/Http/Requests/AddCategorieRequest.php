@@ -22,7 +22,8 @@ class AddCategorieRequest extends FormRequest
     public function rules(): array
     {
         return [
-            'nom' => 'required'
+            'nom' => 'required',
+            'image' => 'required'
         ];
     }
 }

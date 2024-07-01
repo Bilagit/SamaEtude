@@ -61,7 +61,8 @@ class AdminController extends Controller
     }
     public function addcategorie(AddCategorieRequest $request){
         $categorie = Categorie::create([
-            'nom' => $request->nom
+            'nom' => $request->nom,
+            'image' => $request->categorie
         ]);
         if ($categorie) {
             return to_route('admin.listecategorie')->with('success', 'Catégorie ajoutée avec succès !');
@@ -76,10 +77,12 @@ class AdminController extends Controller
     }
     public function updatecategorie(Request $request, $id){
         $request->validate([
-            'nom' => 'required'
+            'nom' => 'required',
+            'image' => 'required'
         ]);
         $categorie = Categorie::findOrFail($id);
         $categorie->nom = $request->nom;
+        $categorie->image = $request->image;
         $categorie->update();
         return to_route('admin.listecategorie')->with('success', 'Catégorie modifiée avec succès !');
     }
