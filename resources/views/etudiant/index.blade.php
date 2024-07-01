@@ -165,45 +165,6 @@
                 </div>
             </div>
             <!-- Onglet Mes Cours -->
-            <div class="tab-pane fade" id="mes-cours" role="tabpanel" aria-labelledby="mes-cours-tab">
-                <div id="favoriteCourseList">
-                    <!-- Exemples de cours favoris -->
-                    <div class="course-card">
-                        <img src="path_to_course_image.jpg" alt="Cours Image">
-                        <div class="course-details">
-                            <div class="course-info">
-                                <h5>Phyton</h5>
-                                <p>
-                                    <div class="initials-circle">AS</div>
-                                    Dr: A.SY
-                                </p>
-                            </div>
-                            <div class="course-rating">
-                                <span>4.5</span>
-                                <span>★</span>
-                            </div>
-                            <i class="fas fa-times favorite-icon"></i>
-                        </div>
-                    </div>
-                    <div class="course-card">
-                        <img src="path_to_course_image.jpg" alt="Cours Image">
-<div class="course-details">
-<div class="course-info">
-<h5>JAVA</h5>
-<p>
-<div class="initials-circle">DD</div>
-Dr: DIOP
-</p>
-</div>
-<div class="course-rating">
-<span>4.0</span>
-<span>★</span>
-</div>
-<i class="fas fa-times favorite-icon"></i>
-</div>
-</div>
-</div>
-</div>
 <!-- Onglet Evaluations -->
 <div class="tab-pane fade" id="evaluations" role="tabpanel" aria-labelledby="evaluations-tab">
 <div id="evaluationList">
