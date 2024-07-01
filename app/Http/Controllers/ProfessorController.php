@@ -92,7 +92,10 @@ class ProfessorController extends Controller
         $categories = Categorie::all();
         $cours = Cours::paginate(10);
         $etu = Etudiant::where('idUser', '=', Auth::id())->first();
-        $exercices = ExoSoumis::where('idEtudiant', '=', $etu->id)->get();
+        $exercices = null;
+        if ($etu) {
+            $exercices = ExoSoumis::where('idEtudiant', '=', $etu->id)->get();
+        }
         $profs = Professeur::all();
         $users = User::all();
         return view('Professeur.contenuExo', [
