@@ -106,7 +106,7 @@ class EtudiantController extends Controller
         if($eval){
             $eval->score = $request->score;
             $eval->update();
-            return to_route('professeur.contenu', ['id' => $reques->idCours])->with('success', 'Cours noté !');
+            return to_route('professeur.contenu', ['id' => $request->idCours])->with('success', 'Cours noté !');
         }
         else{
             $eval = Evaluation::create([
