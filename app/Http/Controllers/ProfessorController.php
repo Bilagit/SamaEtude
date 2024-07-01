@@ -10,6 +10,7 @@ use App\Models\Professeur;
 use App\Models\Exercice;
 use App\Models\Evaluation;
 use App\Models\Etudiant;
+use App\Models\ExoSoumis;
 use Illuminate\Support\Facades\Auth;
 class ProfessorController extends Controller
 {
@@ -89,11 +90,13 @@ class ProfessorController extends Controller
         $exos = Exercice::where('idCours', $exo->idCours)->where('id', '!=', $id)->get();
         $categories = Categorie::all();
         $cours = Cours::paginate(10);
+        $exercices = ExoSoumis::all();
         return view('Professeur.contenuExo', [
             'categories' => $categories,
             'cours' => $cours,
             'exo' => $exo,
             'exos' => $exos,
+            'exercices' => $exercices,
         ]);
     }
     

@@ -147,6 +147,9 @@ strong {
                     @endforeach
                 </div>
             </div>
+            <div class="project-info-box">
+                <p>Soumis</p>
+            </div>
         </div>
 
         <div class="col-md-7">
@@ -179,8 +182,8 @@ strong {
                             <tbody>
                                 <tr>
                                     <th scope="row">{{ $item->id }}</th>
-                                    <td><img src="{{ asset('img/téléchargement.png') }}" class="rounded" width="70%"
-                                            height="40" alt=""></td>
+                                    <td><img src="{{ asset('img/téléchargement.png') }}" class="rounded" width="70%" height="40"
+                                            alt=""></td>
                                     <td>{{ $item->titre }}</td>
                                     <td>@mdo</td>
                                     <td><a class="btn btn-success"
@@ -203,12 +206,21 @@ strong {
                 <div class="card mb-4">
                     <div class="card-body">
                         <h3 class="h6">Exercice</h3>
+                        @php
+                        $exerciceSoumis = $exercices->where('idExo', $exo->id)->first();
+                        @endphp
+                        @if($exerciceSoumis)
+                        <div class="alert alert-warning">
+                            <p>Vous avez déjà soumis cet exercice.</p>
+                        </div>
+                        @else
                         <form method="POST" action="{{ route('etudiant.soumettre') }}" enctype="multipart/form-data">
                             @csrf
                             <input type="hidden" name="idExo" value="{{ $exo->id }}">
                             <input class="form-control mb-3" type="file" name="file" required>
                             <button type="submit" class="btn btn-info">Soumettre</button>
                         </form>
+                        @endif
                     </div>
                 </div>
             </div>
