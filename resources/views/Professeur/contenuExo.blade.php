@@ -256,8 +256,11 @@ strong {
                     @if ($cour->id === $exo->idCours)
                     <a href="{{ url('contenu/' .$exo->idCours) }}">
                         <div class="card">
-                            <img src="{{ asset('img/java.webp') }}" class="rounded" width="100%" height="225" alt="">
-                            <div class="card-body">
+                        @foreach ($categories as $categorie)
+                        @if ($categorie->id == $cour->idCategorie)
+                            <img src="{{ asset('storage/' . $categorie->image) }}" width="100%" height="225" alt="Image de {{ $categorie->nom }}">
+                        @endif
+                    @endforeach                            <div class="card-body">
                                 <h5 class="card-title">{{ $cour->nom }}</h5>
                                 <p class="card-text">{{ $cour->description }}</p>
                             </div>
@@ -268,7 +271,11 @@ strong {
                 </div>
             </div>
             @php
+            if($exercices != null)
             $exerciceSoumis = $exercices->where('idExo', $exo->id)->first();
+            else{
+                $exerciceSoumis = null;
+            }
             @endphp
             @if($exerciceSoumis)
             <div class="project-info-box">
@@ -333,7 +340,11 @@ strong {
                     <div class="card-body">
                         <h3 class="h6">Exercice</h3>
                         @php
+                        if($exercices != null)
                         $exerciceSoumis = $exercices->where('idExo', $exo->id)->first();
+                        else{
+                            $exerciceSoumis = null;
+                        }
                         @endphp
                         @if($exerciceSoumis)
                         <div class="alert alert-warning">

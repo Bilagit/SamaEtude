@@ -11,44 +11,44 @@
     <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/js/bootstrap.min.js"></script>
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.3/css/all.min.css">
     <style>
-        /* Réinitialiser le style du lien */
-        a.course-link {
-            color: inherit;
-            /* Conserve la couleur du texte */
-            text-decoration: none;
-            /* Supprime le soulignement */
-        }
+    /* Réinitialiser le style du lien */
+    a.course-link {
+        color: inherit;
+        /* Conserve la couleur du texte */
+        text-decoration: none;
+        /* Supprime le soulignement */
+    }
 
-        /* Forcer les styles des éléments enfants */
-        a.course-link .course-card {
-            display: block;
-            /* S'assure que le div prend tout l'espace du lien */
-        }
+    /* Forcer les styles des éléments enfants */
+    a.course-link .course-card {
+        display: block;
+        /* S'assure que le div prend tout l'espace du lien */
+    }
 
-        a.course-link h5,
-        a.course-link p,
-        a.course-link {
-            color: inherit;
-            /* Conserve la couleur du texte */
-            font-family: inherit;
-            /* Conserve la police du texte */
-            font-size: inherit;
-            /* Conserve la taille de la police */
-        }
+    a.course-link h5,
+    a.course-link p,
+    a.course-link {
+        color: inherit;
+        /* Conserve la couleur du texte */
+        font-family: inherit;
+        /* Conserve la police du texte */
+        font-size: inherit;
+        /* Conserve la taille de la police */
+    }
 
-        /* Style pour le cercle des initiales */
-        .initials-circle {
-            display: inline-block;
-            width: 40px;
-            height: 40px;
-            border-radius: 50%;
-            color: white;
-            text-align: center;
-            line-height: 40px;
-            font-size: 18px;
-            margin-left: 520px;
-            position: absolute;
-        }
+    /* Style pour le cercle des initiales */
+    .initials-circle {
+        display: inline-block;
+        width: 40px;
+        height: 40px;
+        border-radius: 50%;
+        color: white;
+        text-align: center;
+        line-height: 40px;
+        font-size: 18px;
+        margin-left: 520px;
+        position: absolute;
+    }
     </style>
 </head>
 
@@ -139,17 +139,25 @@
                         <div class="course-card">
                             <div class="course-details">
                                 <div class="course-info">
-                                    <h5><img src="{{ asset("img/java.jpg") }}" alt="Cours Image">{{ $cour->nom }}</h5>
+                                    <h5>
+                                        @foreach ($categories as $categorie)
+                                        @if ($categorie->id == $cour->idCategorie)
+                                        <img src="{{ asset('storage/' . $categorie->image) }}" width="100%" height="225"
+                                            alt="Image de {{ $categorie->nom }}">
+                                        @endif
+                                        @endforeach
+                                        {{ $cour->nom }}
+                                    </h5>
                                     <p>
                                         @foreach ($profs as $prof)
                                         @foreach ($users as $user)
                                         @if ($cour->idProfesseur == $prof->id && $prof->idUser == $user->id)
-                                        <div class="initials-circle">
-                                            {{ substr($user->first_name, 0, 1) }}{{ substr($user->name, 0, 1) }}
-                                        </div>Pr. {{$user->first_name}} {{$user->name}}
-                                        @endif
-                                        @endforeach
-                                        @endforeach
+                                    <div class="initials-circle">
+                                        {{ substr($user->first_name, 0, 1) }}{{ substr($user->name, 0, 1) }}
+                                    </div>Pr. {{$user->first_name}} {{$user->name}}
+                                    @endif
+                                    @endforeach
+                                    @endforeach
                                     </p>
                                 </div>
                                 <div class="course-rating">
@@ -165,24 +173,24 @@
                 </div>
             </div>
             <!-- Onglet Mes Cours -->
-<!-- Onglet Evaluations -->
-<div class="tab-pane fade" id="evaluations" role="tabpanel" aria-labelledby="evaluations-tab">
-<div id="evaluationList">
-<!-- Exemples d'évaluations -->
-<div class="course-card">
-<h5>Évaluation final python</h5>
-<p>19/20</p>
-</div>
-<div class="course-card">
-<h5>Évaluation java N2</h5>
-<p>17/20</p>
-</div>
-</div>
-</div>
-</div>
-</div>
+            <!-- Onglet Evaluations -->
+            <div class="tab-pane fade" id="evaluations" role="tabpanel" aria-labelledby="evaluations-tab">
+                <div id="evaluationList">
+                    <!-- Exemples d'évaluations -->
+                    <div class="course-card">
+                        <h5>Évaluation final python</h5>
+                        <p>19/20</p>
+                    </div>
+                    <div class="course-card">
+                        <h5>Évaluation java N2</h5>
+                        <p>17/20</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
 
-<script>
+    <script>
     // Fonction pour générer une couleur aléatoire en format hexadécimal
     function getRandomColor() {
         var letters = '0123456789ABCDEF';
@@ -231,6 +239,7 @@
             });
         });
     });
-</script>
+    </script>
 </body>
+
 </html>

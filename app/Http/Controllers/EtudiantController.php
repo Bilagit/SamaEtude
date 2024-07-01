@@ -18,13 +18,15 @@ use Illuminate\Support\Facades\Auth;
 class EtudiantController extends Controller
 {
     public function index(){
+        $categories = Categorie::all();
         $cours = Cours::all();
         $profs = Professeur::all();
         $users = User::where('role', '=', 'professeur')->get();
         return view('etudiant.index', [
             'cours' => $cours,
             'profs' => $profs,
-            'users' => $users
+            'users' => $users,
+            'categories' => $categories
         ]);
     }
     public function contenucours($id){
